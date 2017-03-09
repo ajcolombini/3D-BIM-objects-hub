@@ -101,9 +101,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Dashboard.aspx" />
     <Content Include="FireBaseLogin.html" />
     <Content Include="Home.aspx" />
     <Content Include="images\BIMHub.PNG" />
+    <Content Include="ManufacturerRegister.aspx" />
     <Content Include="packages.config" />
     <Content Include="obj\Debug\BootmetroUI.csprojResolveAssemblyReference.cache" />
     <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
@@ -120,14 +122,23 @@
     <Content Include="bin\BootmetroUI.pdb" />
     <Content Include="bootstrap-elements.html" />
     <Content Include="bootstrap-grid.html" />
-    <Content Include="forms.html" />
     <Content Include="Login.aspx" />
     <Content Include="obj\Debug\BootmetroUI.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\BootmetroUI.dll" />
     <Content Include="obj\Debug\BootmetroUI.pdb" />
+    <Content Include="Portfolio.aspx" />
+    <Content Include="ProductRegister.aspx" />
+    <Content Include="User.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -149,10 +160,38 @@
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ManufacturerRegister.aspx.cs">
+      <DependentUpon>ManufacturerRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ManufacturerRegister.aspx.designer.cs">
+      <DependentUpon>ManufacturerRegister.aspx</DependentUpon>
+    </Compile>
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="Portfolio.aspx.cs">
+      <DependentUpon>Portfolio.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Portfolio.aspx.designer.cs">
+      <DependentUpon>Portfolio.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProductRegister.aspx.cs">
+      <DependentUpon>ProductRegister.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ProductRegister.aspx.designer.cs">
+      <DependentUpon>ProductRegister.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User.aspx.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="User.aspx.designer.cs">
+      <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

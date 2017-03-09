@@ -36,22 +36,19 @@
         .post-container {
             overflow: auto;
         }
-
         .post-thumb {
             float: left;
         }
-
-            .post-thumb img {
-                display: block;
-            }
-
+        .post-thumb img {
+            display: block;
+        }
         .post-content {
             margin-left: 210px;
         }
-
         .post-title {
             font-weight: bold;
             font-size: 200%;
+            width: 200px;
         }
     </style>
 </head>
@@ -76,16 +73,14 @@
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
-                        <li class="active"><a href="Main.aspx"><i class="fa fa-bullseye"></i>&nbsp;Dashboard</a></li>
-                        <li><a href="portfolio.html"><i class="fa fa-tasks"></i>&nbsp;Portfolio</a></li>
-                        <li><a href="blog.html"><i class="fa fa-globe"></i>&nbsp;Blog</a></li>
-                        <li><a href="forms.html"><i class="fa fa-list-ol"></i>&nbsp;Forms</a></li>
-                        <li><a href="typography.html"><i class="fa fa-font"></i>&nbsp;Typography</a></li>
-                        <li><a href="bootstrap-elements.html"><i class="fa fa-list-ul"></i>&nbsp;Bootstrap Elements</a></li>
-                        <li><a href="bootstrap-grid.html"><i class="fa fa-table"></i>&nbsp;Bootstrap Grid</a></li>
+                        <li class="active"><a href="Main.aspx"><i class="fa fa-list-ul"></i>&nbsp;Dashboard</a></li>
+                        <li><a href="Search.aspx"><i class="fa fa-search"></i>&nbsp;Busca</a></li>
+                        <li><a href="User.aspx"><i class="fa fa-user"></i>&nbsp;Usuário</a></li>
+                        <li><a href="ManufacturerRegister.aspx"><i class="fa fa-industry"></i>&nbsp;Registrar Fabricante</a></li>
+                        <li><a href="ProductRegister.aspx"><i class="fa fa-spoon"></i>&nbsp;Registrar Produto</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right navbar-user">
-                        <li class="dropdown messages-dropdown">
+                       <%-- <li class="dropdown messages-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i>&nbsp;Messages <span class="badge">2</span> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li class="dropdown-header">2 New Messages</li>
@@ -105,7 +100,7 @@
                                 <li class="divider"></li>
                                 <li><a href="#">Go to Inbox <span class="badge">2</span></a></li>
                             </ul>
-                        </li>
+                        </li>--%>
                         <li class="dropdown user-dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;Airton<b class="caret"></b></a>
                             <ul class="dropdown-menu">

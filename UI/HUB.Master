@@ -47,7 +47,7 @@
         }
         .post-title {
             font-weight: bold;
-            font-size: 200%;
+            font-size: 180%;
             width: 200px;
         }
     </style>
@@ -76,8 +76,8 @@
                         <li class="active"><a href="Main.aspx"><i class="fa fa-list-ul"></i>&nbsp;Dashboard</a></li>
                         <li><a href="Search.aspx"><i class="fa fa-search"></i>&nbsp;Busca</a></li>
                         <li><a href="User.aspx"><i class="fa fa-user"></i>&nbsp;Usuário</a></li>
-                        <li><a href="ManufacturerRegister.aspx"><i class="fa fa-industry"></i>&nbsp;Registrar Fabricante</a></li>
-                        <li><a href="ProductRegister.aspx"><i class="fa fa-spoon"></i>&nbsp;Registrar Produto</a></li>
+                        <li><a href="ManufacturerRegister.aspx"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;Registrar Fabricante</a></li>
+                        <li><a href="ProductRegister.aspx"><i class="fa fa-cube"></i>&nbsp;Registrar Produto</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right navbar-user">
                        <%-- <li class="dropdown messages-dropdown">

@@ -2,58 +2,88 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
-        <form>
-            <div class="form-group row">
-                <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-                <div class="col-sm-10">
-                    <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
-                </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Cadastro de Fabricante</h3>
             </div>
-            <div class="form-group row">
-                <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
-                <div class="col-sm-10">
-                    <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
-                </div>
-            </div>
-            <fieldset class="form-group row">
-                <legend class="col-form-legend col-sm-2">Radios</legend>
-                <div class="col-sm-10">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
-                            Option one is this and that&mdash;be sure to include why it's great
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
-                            Option two can be something else and selecting it will deselect option one
-                        </label>
-                    </div>
-                    <div class="form-check disabled">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios3" value="option3" disabled>
-                            Option three is disabled
-                        </label>
+            <div class="panel-body">
+
+                <div class="form-group row">
+                    <label for="inputName" class="col-sm-2 col-form-label">Razão Social</label>
+                    <div class="col-sm-10 col-md-10">
+                        <input type="text" class="form-control" id="inputName" placeholder="Nome registrado no CNPJ" required />
                     </div>
                 </div>
-            </fieldset>
-            <div class="form-group row">
-                <label class="col-sm-2">Checkbox</label>
-                <div class="col-sm-10">
-                    <div class="form-check">
-                        <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox">
-                            Check me out
-                        </label>
+
+                <div class="form-group row">
+                    <label for="inputNomeComercial" class="col-sm-2 col-form-label">Nome Comercial</label>
+                    <div class="col-sm-10 col-md-10">
+                        <input type="text" class="form-control" id="inputNomeComercial" placeholder="Nome Comercial (Como é conhecido pelo público)" required/>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputSite" class="col-sm-2 col-form-label">Site</label>
+                    <div class="col-sm-10 col-md-10">
+                        <input type="text" class="form-control" id="inputSite" placeholder="www.seusite.com" />
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
+                    <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail" placeholder="" required>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="inputPassword" class="col-sm-2 col-form-label">Senha Administrador</label>
+                    <div class="col-sm-10 col-md-10">
+                        <input type="password" class="form-control" id="inputPassword" placeholder="" required />
+                    </div>
+                </div>
+                <fieldset class="form-group row">
+                    <label for="inputLogo" class="col-sm-2 col-form-label">Seu Logo</label>
+                    <div class="col-sm-10 col-md-10">
+                        <div>
+                            Anexar Arquivo <small>(arquivos .gif .jpeg ou .png de até 100kb):</small>
+                        </div>
+                        <%-- FILE UPLOAD--%>
+                        <div class="input-group">
+                            <label class="input-group-btn">
+                                <span class="btn btn-info">Selecione…
+                                    <input type="file" style="display: none;" multiple=""/>
+                                </span>
+                            </label>
+                            <input id="fileUploaded" type="text" class="form-control" readonly=""/>
+                        </div>
+                        <%--!FILE UPLOAD--%>
+                    </div>
+                </fieldset>
+                <div class="form-group row">
+                </div>
+                <div class="form-group row">
+                    <div class="offset-sm-2 col-sm-10">
+                        <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" class="btn btn-primary btn-lg" OnClick="btnRegistrar_Click" />
                     </div>
                 </div>
             </div>
-            <div class="form-group row">
-                <div class="offset-sm-2 col-sm-10">
-                    <button type="submit" class="btn btn-primary">Sign in</button>
-                </div>
-            </div>
-        </form>
+        </div>
     </div>
+    <script>
+
+        //Mostra arquivo uploaded
+        $(document).on('change', ':file', function () {
+            var input = $(this),
+                numFiles = input.get(0).files ? input.get(0).files.length : 1,
+                label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
+            input.trigger('fileselect', [numFiles, label]);
+        });
+        
+        $(document).ready(function () {
+            $(':file').on('fileselect', function (event, numFiles, label) {
+                $('#fileUploaded').val(label);
+            });
+        });
+    </script>
 </asp:Content>

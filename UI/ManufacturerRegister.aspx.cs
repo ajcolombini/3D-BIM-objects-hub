@@ -7,6 +7,9 @@ using System.Web.UI.WebControls;
 using Firebase.Auth;
 using FireSharp;
 using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
+using FireSharp.Response;
 
 namespace UI
 {
@@ -41,7 +44,14 @@ namespace UI
             }
             #endregion
 
-     
+            var tasks = new List<Task<PushResponse>>();
+
+            using (FireBaseHelper _fb = new FireBaseHelper())
+            {
+                tasks.Add(_fb.SaveManufacturer(_model));
+            }
+            Task.WaitAll(tasks.ToArray());
+
             //string _body = FireBaseHelper.JsonModel;
             //FireSharp.Response.PushResponse _push = new FireSharp.Response.PushResponse(_body, System.Net.HttpStatusCode.OK, new System.Net.Http.HttpResponseMessage());
         }

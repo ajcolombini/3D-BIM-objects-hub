@@ -7,7 +7,7 @@ using System.Configuration;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
-using
+
 using System.Web.Script.Serialization;
 using System.IO;
 using System.Net;
@@ -15,15 +15,27 @@ using FireSharp.Response;
 
 namespace UI
 {
-    public class FireBaseHelper
+    public class FireBaseHelper : IDisposable
     {
         public static IFirebaseClient client;
         public static IFirebaseConfig config;
 
-        private const string BasePath = "https://dhub-4bd37.firebaseio.com/";
-        private const string FirebaseSecret = "AIzaSyA3LGLgBNc9mxQEPDqSg9GzqKhsIUtW0lI";
-        private static FirebaseClient _client;
+        string BasePath;
+        string FirebaseToken;
 
+
+        Firebase()
+        {
+            BasePath = ConfigurationManager.AppSettings["FireBaseUrl"];
+            FirebaseToken = ConfigurationManager.AppSettings["FireBaseToken"];
+
+            config.AuthSecret = FirebaseToken;
+            config.BasePath = BasePath;
+
+            client = new FirebaseClient(config);
+
+           // _client = new FirebaseClient(config);
+        }
 
         public string JsonModel { get { return _jsonModel; } }
 
@@ -204,22 +216,60 @@ namespace UI
 
         public async Task<PushResponse> SaveManufacturer(Model oModel)
         {
-            PushResponse response = await _client.PushAsync("manufacturer/", oModel.manufacturer);
+            var response = await client.PushAsync("manufacturer/", oModel.manufacturer);
             return response;
         }
 
         public async Task<PushResponse> SaveProduct(Model oModel)
         {
-            PushResponse response = await _client.PushAsync("manufacturer/products", oModel.manufacturer.products);
+            var response = await client.PushAsync("manufacturer/products", oModel.manufacturer.products);
             return response;
         }
 
         public async Task<PushResponse> SaveDocument(Model oModel, string productId)
         {
-            PushResponse response = await _client.PushAsync("manufacturer/products/documents", oModel.manufacturer.products);
+            var response = await client.PushAsync("manufacturer/products/documents", oModel.manufacturer.products);
             return response;
         }
 
+
+
+        #endregion
+
+
+        #region IDisposable Support
+        private bool disposedValue = false; // To detect redundant calls
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    // TODO: dispose managed state (managed objects).
+                }
+
+                // TODO: free unmanaged resources (unmanaged objects) and override a finalizer below.
+                // TODO: set large fields to null.
+                disposedValue = true;
+            }
+        }
+
+        // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
+        ~FireBaseHelper()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            // TODO: uncomment the following line if the finalizer is overridden above.
+            //GC.SuppressFinalize(this);
+        }
         #endregion
     }
 }

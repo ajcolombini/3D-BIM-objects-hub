@@ -40,7 +40,8 @@ namespace UI
                 _model.manufacturer.logo = _imgString; //save as base64 array
             }
             #endregion
-            
+
+     
             //string _body = FireBaseHelper.JsonModel;
             //FireSharp.Response.PushResponse _push = new FireSharp.Response.PushResponse(_body, System.Net.HttpStatusCode.OK, new System.Net.Http.HttpResponseMessage());
         }

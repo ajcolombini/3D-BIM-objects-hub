@@ -5,18 +5,21 @@ using System.Web;
 
 namespace UI
 {
-
+    [Serializable]
     public class Model : IDisposable
     {
         public Manufacturer manufacturer { get; set; }
         public Model() { this.manufacturer = new Manufacturer(); }
-
+        ~Model() { }
         public void Dispose()
         {
             this.manufacturer = null;
         }
+
+       
     }
 
+    [Serializable]
     public class Manufacturer
     {
         public string id { get; set; }
@@ -31,7 +34,7 @@ namespace UI
         public Manufacturer() { this.products = new List<Product>(); }
     }
 
-
+    [Serializable]
     public class Product
     {
         public string id { get; set; }
@@ -50,6 +53,7 @@ namespace UI
         public Product() { this.docs = new List<Doc>(); }
     }
 
+    [Serializable]
     public class Doc
     {
         public string id { get; set; }
@@ -59,5 +63,6 @@ namespace UI
         public string docObject { get; set; }
     }
 
+   
 
 }

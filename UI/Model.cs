@@ -35,7 +35,9 @@ namespace UI
     {
         public string id { get; set; }
         public string name { get; set; }
+        public string formalName { get; set; }
         public string logo { get; set; }
+        public string phone { get; set; }
         public string eMail { get; set; }
         public string webSite { get; set; }
         public List<Product> products { get; set; }

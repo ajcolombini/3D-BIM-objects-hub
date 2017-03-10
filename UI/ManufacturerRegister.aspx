@@ -33,6 +33,13 @@
                 </div>
 
                 <div class="form-group row">
+                    <label for="inputSite" class="col-sm-2 col-form-label">Telefone</label>
+                    <div class="col-sm-10 col-md-10">
+                        <asp:TextBox ID="txtPhone" class="form-control" TextMode="Phone" runat="server" placeholder=""></asp:TextBox>
+                    </div>
+                </div>
+
+                <div class="form-group row">
                     <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
                     <div class="col-sm-10">
                         <%--<input type="email" class="form-control" id="inputEmail" placeholder="" required>--%>
@@ -58,10 +65,11 @@
                             <label class="input-group-btn">
                                 <span class="btn btn-info">Selecione…
                                     <%--<input type="file" style="display: none;" multiple=""/>--%>
-                                    <asp:FileUpload ID="FileUpload1" runat="server" style="display: none;"/>
+                                    <asp:FileUpload ID="fileUploadLogo" runat="server" style="display: none;"/>
                                 </span>
                             </label>
                             <input id="fileUploaded" type="text" class="form-control" readonly=""/>
+                            <asp:HiddenField ID="hdnFileSelected" runat="server" />
                         </div>
                         <%--!FILE UPLOAD--%>
                     </div>
@@ -89,6 +97,7 @@
         $(document).ready(function () {
             $(':file').on('fileselect', function (event, numFiles, label) {
                 $('#fileUploaded').val(label);
+                $('#<%=hdnFileSelected.ClientID%>').val(label);
             });
         });
     </script>

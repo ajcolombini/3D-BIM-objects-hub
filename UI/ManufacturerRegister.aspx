@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HUB.Master" AutoEventWireup="true" CodeBehind="ManufacturerRegister.aspx.cs" Inherits="UI.ManufacturerRegister" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HUB.Master" AutoEventWireup="true" CodeBehind="ManufacturerRegister.aspx.cs" Inherits="UI.ManufacturerRegister"   %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="container">
@@ -81,8 +81,8 @@
                             </span>
                             <asp:TextBox ID="txtFileName" class="form-control input-sm" Enabled="true" runat="server"></asp:TextBox>
                             <span class="input-group-btn">
-                                <asp:Button ID="btnSaveFile" runat="server" class="btn btn-primary btn-sm" Text="Confirme" Enabled="true" OnClick="btnSaveFile_Click" />
-                                <asp:Button ID="btnDelFile" runat="server" class="btn btn-danger btn-sm" Text="Cancele" Enabled="true" OnClick="btnDelFile_Click" />
+                                <asp:Button ID="btnSaveFile" runat="server" class="btn btn-primary btn-sm" Text="Confirme" Enabled="true" OnClick="btnSaveFile_Click" style="display:none"/>
+                                <asp:Button ID="btnDelFile" runat="server" class="btn btn-danger btn-sm" Text="Cancele" Enabled="true" OnClick="btnDelFile_Click" CausesValidation="False" />
                             </span>
                         </div>
                     </div>

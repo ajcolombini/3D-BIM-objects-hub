@@ -27,9 +27,9 @@ namespace UI
             _model.manufacturer.phone = txtPhone.Text;
             _model.manufacturer.eMail = txtEmail.Text;
             _model.manufacturer.webSite = txtSite.Text;
+            #region ImageLogo
             if (!string.IsNullOrEmpty(txtFileName.Text) && System.IO.File.Exists(Server.MapPath("~/tempfiles/") + txtFileName.Text))
             {
-                
                 String filepath = Server.MapPath("~/tempfiles/") + txtFileName.Text;
                 // convert to byte array
                 byte[] _imgArr = ImageToByteArray(filepath);
@@ -39,15 +39,13 @@ namespace UI
 
                 _model.manufacturer.logo = _imgString; //save as base64 array
             }
-
-
-         
+            #endregion
+            
             //string _body = FireBaseHelper.JsonModel;
-
             //FireSharp.Response.PushResponse _push = new FireSharp.Response.PushResponse(_body, System.Net.HttpStatusCode.OK, new System.Net.Http.HttpResponseMessage());
         }
 
-       
+
         public static byte[] ImageToByteArray(string imageLocation)
         {
             byte[] imageData = null;
@@ -96,7 +94,9 @@ namespace UI
 
         protected void btnDelFile_Click(object sender, EventArgs e)
         {
-            //FileName = null;
+            if (File.Exists(Server.MapPath("~/tempfiles/") + txtFileName.Text))
+                File.Delete(Server.MapPath("~/tempfiles/") + txtFileName.Text);
+
             txtFileName.Text = string.Empty;
         }
 

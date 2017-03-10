@@ -72,43 +72,7 @@ namespace UI
                                             }";
         #endregion
 
-        protected const string BasePath = "https://firesharp.firebaseio.com/";
-        protected const string BasePathWithoutSlash = "https://firesharp.firebaseio.com";
-        protected string FirebaseSecret = ConfigurationManager.AppSettings["FireBaseToken"];
-
-        private IFirebaseClient _client;
-
-        
-        public async void TestFixtureSetUp()
-        {
-            IFirebaseConfig config = new FirebaseConfig
-            {
-                AuthSecret = FirebaseSecret,
-                BasePath = BasePath
-            };
-            _client = new FirebaseClient(config); //Uses Newtonsoft.Json Json Serializer
-
-            var task1 = _client.DeleteAsync("todos");
-            var task2 = _client.DeleteAsync("fakepath");
-
-            await Task.WhenAll(task1, task2);
-        }
-
-        protected override void FinalizeSetUp()
-        { }
-
-        
-        public void Delete()
-        {
-            _client.Push("manufacturer/push", new ManufacturerRegister
-            {
-                name = "Execute PUSH4GET",
-                priority = 2
-            });
-
-            var response = _client.Delete("todos/push");
-            Assert.NotNull(response);
-        }
+       
 
     }
 }

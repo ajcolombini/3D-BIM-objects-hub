@@ -11,35 +11,40 @@
                 <div class="form-group row">
                     <label for="inputName" class="col-sm-2 col-form-label">Razão Social</label>
                     <div class="col-sm-10 col-md-10">
-                        <input type="text" class="form-control" id="inputName" placeholder="Nome registrado no CNPJ" required />
+                        <%--<input type="text" class="form-control" id="inputName" placeholder="Nome registrado no CNPJ" required />--%>
+                        <asp:TextBox ID="txtName" class="form-control" runat="server" placeholder="Nome registrado no CNPJ" required></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="inputNomeComercial" class="col-sm-2 col-form-label">Nome Comercial</label>
                     <div class="col-sm-10 col-md-10">
-                        <input type="text" class="form-control" id="inputNomeComercial" placeholder="Nome Comercial (Como é conhecido pelo público)" required/>
+                        <%--<input type="text" class="form-control" id="inputNomeComercial" placeholder="Nome Comercial (Como é conhecido pelo público)" required/>--%>
+                        <asp:TextBox ID="txtFormalName"  class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)" required></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="inputSite" class="col-sm-2 col-form-label">Site</label>
                     <div class="col-sm-10 col-md-10">
-                        <input type="text" class="form-control" id="inputSite" placeholder="www.seusite.com" />
+                        <%--<input type="text" class="form-control" id="inputSite" placeholder="www.seusite.com" />--%>
+                        <asp:TextBox ID="txtSite" class="form-control" runat="server" placeholder="www.seusite.com"></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail" placeholder="" required>
+                        <%--<input type="email" class="form-control" id="inputEmail" placeholder="" required>--%>
+                        <asp:TextBox ID="txtEmail" class="form-control" TextMode="Email" runat="server" required></asp:TextBox>
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label for="inputPassword" class="col-sm-2 col-form-label">Senha Administrador</label>
                     <div class="col-sm-10 col-md-10">
-                        <input type="password" class="form-control" id="inputPassword" placeholder="" required />
+                        <%--<input type="password" class="form-control" id="inputPassword" placeholder="" required />--%>
+                        <asp:TextBox ID="txtPassword" class="form-control" TextMode="Password" runat="server" required></asp:TextBox>
                     </div>
                 </div>
                 <fieldset class="form-group row">
@@ -52,7 +57,8 @@
                         <div class="input-group">
                             <label class="input-group-btn">
                                 <span class="btn btn-info">Selecione…
-                                    <input type="file" style="display: none;" multiple=""/>
+                                    <%--<input type="file" style="display: none;" multiple=""/>--%>
+                                    <asp:FileUpload ID="FileUpload1" runat="server" style="display: none;"/>
                                 </span>
                             </label>
                             <input id="fileUploaded" type="text" class="form-control" readonly=""/>

@@ -65,7 +65,7 @@
                             <div class="row">
                                 <asp:Panel ID="pnlInfo" runat="server" Visible="false">
                                     <div class="col-lg-10">
-                                        <div id="divPnlError" class="alert alert-dismissable alert-info">
+                                        <div id="divPnlInfo" class="alert alert-dismissable alert-info">
                                             <button type="button" class="close" data-dismiss="alert">&times;</button>
                                             <strong>Aviso</strong> <asp:Label ID="lblInfoMsg" runat="server" Text=""></asp:Label></span>
                                         </div>

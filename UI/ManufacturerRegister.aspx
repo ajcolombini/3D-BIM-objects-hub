@@ -20,7 +20,7 @@
                     <label for="inputNomeComercial" class="col-sm-2 col-form-label">Nome Comercial</label>
                     <div class="col-sm-10 col-md-10">
                         <%--<input type="text" class="form-control" id="inputNomeComercial" placeholder="Nome Comercial (Como é conhecido pelo público)" required/>--%>
-                        <asp:TextBox ID="txtFormalName"  class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)" required></asp:TextBox>
+                        <asp:TextBox ID="txtFormalName" class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)" required></asp:TextBox>
                     </div>
                 </div>
 
@@ -61,17 +61,30 @@
                             Anexar Arquivo <small>(arquivos .gif .jpeg ou .png de até 100kb):</small>
                         </div>
                         <%-- FILE UPLOAD--%>
-                        <div class="input-group">
+                        <%-- <div class="input-group">
                             <label class="input-group-btn">
                                 <span class="btn btn-info">Selecione…
-                                    <%--<input type="file" style="display: none;" multiple=""/>--%>
-                                    <asp:FileUpload ID="fileUploadLogo" runat="server" style="display: none;"/>
+                                    <asp:FileUpload ID="fileUploadLogo" runat="server" Style="display: none;" />
                                 </span>
                             </label>
-                            <input id="fileUploaded" type="text" class="form-control" readonly=""/>
+                            <input id="fileUploaded" type="text" class="form-control" readonly="" />
                             <asp:HiddenField ID="hdnFileSelected" runat="server" />
-                        </div>
+                        </div>--%>
                         <%--!FILE UPLOAD--%>
+
+                        <div class="input-group">
+                            <span class="input-group-btn">
+                                <label class="btn btn-default btn-sm btn-file">
+                                    Selecione
+                                    <asp:FileUpload ID="fileUploadLogo" runat="server" Style="display: none;" />
+                                </label>
+                            </span>
+                            <asp:TextBox ID="txtFileName" class="form-control input-sm" Enabled="true" runat="server"></asp:TextBox>
+                            <span class="input-group-btn">
+                                <asp:Button ID="btnSaveFile" runat="server" class="btn btn-primary btn-sm" Text="Confirme" Enabled="true" OnClick="btnSaveFile_Click" />
+                                <asp:Button ID="btnDelFile" runat="server" class="btn btn-danger btn-sm" Text="Cancele" Enabled="true" OnClick="btnDelFile_Click" />
+                            </span>
+                        </div>
                     </div>
                 </fieldset>
                 <div class="form-group row">
@@ -83,21 +96,56 @@
                 </div>
             </div>
         </div>
+        <div class="row">
+            <asp:Panel ID="pnlError" runat="server" Visible="false">
+                <div class="col-lg-10">
+                    <div id="divError" class="alert alert-dismissable alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Atenção</strong>
+                        <asp:Label ID="lblErrorMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
+        <div class="row">
+            <asp:Panel ID="pnlInfo" runat="server" Visible="false">
+                <div class="col-lg-10">
+                    <div id="divInfo" class="alert alert-dismissable alert-info">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Aviso</strong>
+                        <asp:Label ID="lblInfoMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
+        <div class="row">
+            <asp:Panel ID="pnlSuccess" runat="server" Visible="false">
+                <div class="col-lg-10">
+                    <div id="divSuccess" class="alert alert-dismissable alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Aviso</strong>
+                        <asp:Label ID="lblSuccessMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
     </div>
     <script>
 
         //Mostra arquivo uploaded
-        $(document).on('change', ':file', function () {
+        $(document).on('change', ":file", function () {
             var input = $(this),
                 numFiles = input.get(0).files ? input.get(0).files.length : 1,
                 label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
             input.trigger('fileselect', [numFiles, label]);
         });
-        
+
         $(document).ready(function () {
-            $(':file').on('fileselect', function (event, numFiles, label) {
-                $('#fileUploaded').val(label);
-                $('#<%=hdnFileSelected.ClientID%>').val(label);
+            $('#<%=fileUploadLogo.ClientID%>').on('fileselect', function (event, numFiles, label) {
+                $('#<%=txtFileName.ClientID%>').val(label);
+
+                //PostBack clickEvent for btnSaveFile
+                <%= ClientScript.GetPostBackEventReference(btnSaveFile, string.Empty) %>;
             });
         });
     </script>

@@ -11,6 +11,7 @@ namespace UI
         public Manufacturer manufacturer { get; set; }
         public Model() { this.manufacturer = new Manufacturer(); }
         ~Model() { }
+
         public void Dispose()
         {
             this.manufacturer = null;

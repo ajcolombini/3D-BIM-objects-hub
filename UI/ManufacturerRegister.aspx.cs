@@ -10,14 +10,21 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using FireSharp.Response;
+using System.Configuration;
 
 namespace UI
 {
     public partial class ManufacturerRegister : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected  void Page_Load(object sender, EventArgs e)
         {
             this.Form.DefaultButton = btnRegistrar.UniqueID;
+
+            if (!IsPostBack)
+            {
+
+               
+            }
         }
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
@@ -44,13 +51,25 @@ namespace UI
             }
             #endregion
 
-            var tasks = new List<Task<PushResponse>>();
 
-            using (FireBaseHelper _fb = new FireBaseHelper())
+            try
             {
-                tasks.Add(_fb.SaveManufacturer(_model));
+                using (FireBaseHelper _fb = new FireBaseHelper())
+                {
+                    Task resultTask = _fb.SaveManufacturer(_model);
+                    resultTask.Wait();
+                }
             }
-            Task.WaitAll(tasks.ToArray());
+            catch (AggregateException aEx)
+            {
+                pnlError.Visible = true;
+                lblErrorMsg.Text = aEx.Message + "\n" + aEx.InnerException ?? aEx.InnerException.ToString();
+            }
+            catch (Exception ex)
+            {
+                lblErrorMsg.Text = ex.Message;
+            }
+
 
             //string _body = FireBaseHelper.JsonModel;
             //FireSharp.Response.PushResponse _push = new FireSharp.Response.PushResponse(_body, System.Net.HttpStatusCode.OK, new System.Net.Http.HttpResponseMessage());

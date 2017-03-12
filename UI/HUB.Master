@@ -102,7 +102,7 @@
                             </ul>
                         </li>--%>
                         <li class="dropdown user-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;Airton<b class="caret"></b></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;<asp:Label ID="lblUser" runat="server" Text=""></asp:Label><b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li><a href="#"><i class="fa fa-user"></i>&nbsp;Perfil</a></li>
                                 <li><a href="#"><i class="fa fa-gear"></i>&nbsp;Configurações</a></li>
@@ -216,6 +216,18 @@
                     { field: "email", title: "Email Address", width: "270px" }
                 ]
             });
+        });
+    </script>
+    <script>
+        firebase.auth().onAuthStateChanged(function (user) {
+            if (user) {
+                // User is signed in.
+                $('#<%=lblUser%>').val(user.name);
+            }
+            else {
+                // No user is signed in.
+                $('#<%=lblUser%>').val('Anônimo');
+            }
         });
     </script>
 </body>

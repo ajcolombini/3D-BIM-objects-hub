@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="UI.Login" Async="True" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="UI.Login" Async="True"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -39,16 +39,16 @@
 
                                 <fieldset>
                                     <div class="form-group">
-                                        <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="e-mail" required="required" autofocus="autofocus"></asp:TextBox>
+                                        <asp:TextBox ID="txtEmail" runat="server" class="form-control" placeholder="e-mail"  autofocus="autofocus"></asp:TextBox>
                                     </div>
                                     <div class="form-group">
-                                        <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="senha" type="password" required="required"></asp:TextBox>
+                                        <asp:TextBox ID="txtPassword" runat="server" class="form-control" placeholder="senha" type="password" ></asp:TextBox>
                                     </div>
                                     <div class="checkbox">
                                         <asp:LinkButton ID="lnkForgotPassword" runat="server">Esqueci minha senha</asp:LinkButton>
                                     </div>
                                     <asp:Button ID="btnSignIn" runat="server" Text="Entrar" type="button" class="btn btn-sm btn-success" OnClick="btnSignIn_Click" />
-
+                                    &nbsp;<asp:CheckBox ID="chkAnonimous" runat="server" text="Logar anônimo"/>
                                 </fieldset>
 
                             </div>
@@ -84,6 +84,16 @@
         <div class="col-md-4"></div>
 
     </form>
+    <script language="javascript" type="text/javascript">
+      <%--  $(document).ready(function() {
+            $('#<%=chkAnonimous.ClientID%>').check(){
+                $("form").each(function(){
+                    var inputs = $(this).find(':input'); //<-- Should return all input elements in that specific form.
+                    inputs.each.attr('required', '');
+                });
+            };
+        });--%>
+    </script>
 </body>
 
 </html>

@@ -25,15 +25,22 @@ namespace UI
 
             try
             {
-
                 FirebaseAuthProvider _fireAuth = new FirebaseAuthProvider(new FirebaseConfig(_apiKey));
-                var _fbAuth = await _fireAuth.SignInWithEmailAndPasswordAsync(this.txtEmail.Text, this.txtPassword.Text);
-
-                if (_fbAuth.User != null)
+                if (chkAnonimous.Checked)
                 {
-                    Session["CurrentUser"] = _fbAuth.User;
-                    Response.Redirect("Home.aspx");
+                    var _fbAuth = await _fireAuth.SignInAnonymouslyAsync();
                 }
+                else
+                {
+                    var _fbAuth = await _fireAuth.SignInWithEmailAndPasswordAsync(this.txtEmail.Text, this.txtPassword.Text);
+
+                    if (_fbAuth.User != null)
+                    {
+                        Session["CurrentUser"] = _fbAuth.User;
+                    }
+                }
+
+                Response.Redirect("Home.aspx");
             }
             catch (Firebase.Auth.FirebaseAuthException)
             {

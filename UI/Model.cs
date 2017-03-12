@@ -5,16 +5,36 @@ using System.Web;
 
 namespace UI
 {
+    [Serializable]
+    public class Model : IDisposable
+    {
+        public Manufacturer manufacturer { get; set; }
+        public Model() { this.manufacturer = new Manufacturer(); }
+        ~Model() { }
+        public void Dispose()
+        {
+            this.manufacturer = null;
+        }
 
-    public class Doc
+       
+    }
+
+    [Serializable]
+    public class Manufacturer
     {
         public string id { get; set; }
         public string name { get; set; }
-        public string format { get; set; }
-        public string sizeKb { get; set; }
-        public string docObject { get; set; }
+        public string formalName { get; set; }
+        public string logo { get; set; }
+        public string phone { get; set; }
+        public string eMail { get; set; }
+        public string webSite { get; set; }
+        public List<Product> products { get; set; }
+
+        public Manufacturer() { this.products = new List<Product>(); }
     }
 
+    [Serializable]
     public class Product
     {
         public string id { get; set; }
@@ -30,30 +50,19 @@ namespace UI
         public string image { get; set; }
         public List<Doc> docs { get; set; }
 
-        Product()
-        {
-            this.docs = new List<Doc>();
-        }
+        public Product() { this.docs = new List<Doc>(); }
     }
 
-    public class Manufacturer
+    [Serializable]
+    public class Doc
     {
         public string id { get; set; }
         public string name { get; set; }
-        public string formalName { get; set; }
-        public string logo { get; set; }
-        public string eMail { get; set; }
-        public string webSite { get; set; }
-        public List<Product> products { get; set; }
+        public string format { get; set; }
+        public string sizeKb { get; set; }
+        public string docObject { get; set; }
     }
 
-    public class ModelObject
-    {
-        public Manufacturer manufacturer { get; set; }
-        ModelObject()
-        {
-            this.manufacturer.products = new List<Product>();
-        }
-    }
+   
 
 }

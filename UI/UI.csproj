@@ -222,6 +222,7 @@
     <Folder Include="font-awesome\" />
     <Folder Include="js\" />
     <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="tempFiles\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

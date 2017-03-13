@@ -29,7 +29,7 @@
                         <div class="login-panel panel panel-default">
                             <div class="panel-heading">
                                 <div style="align-content: center; text-align: center; vertical-align: middle;">
-                                    <img alt="logo" src="images/BIM.Sphere.PNG" style="width:320px;height:auto;" />
+                                   <%-- <img alt="logo" src="images/BIM.Sphere.PNG" style="width:80%;height:auto;" />--%>
                                 </div>
                             </div>
                             <div class="panel-heading">
@@ -48,7 +48,7 @@
                                         <asp:LinkButton ID="lnkForgotPassword" runat="server">Esqueci minha senha</asp:LinkButton>
                                     </div>
                                     <asp:Button ID="btnSignIn" runat="server" Text="Entrar" type="button" class="btn btn-sm btn-success" OnClick="btnSignIn_Click" />
-                                    &nbsp;<asp:CheckBox ID="chkAnonimous" runat="server" text="Logar anônimo"/>
+                                    &nbsp;<asp:CheckBox ID="chkAnonimous" runat="server"  text="Acessar anônimo"/>
                                 </fieldset>
 
                             </div>
@@ -73,7 +73,7 @@
                                 </asp:Panel>
                             </div>
                             <div class="panel-footer">
-                                <p>2017  -  direitos reservados.</p>
+                                <p>LogicalWorks - 2017 direitos reservados.</p>
                             </div>
                         </div>
                     </div>

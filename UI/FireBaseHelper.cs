@@ -227,18 +227,21 @@ namespace UI
         //}
               
 
-        public async Task<List<Model>> searchManufacturerByName(string name)
+        public async Task<object> searchManufacturerByName(string name)
         {
 
             var firebase = new FirebaseClient(FirebaseUrl);
-
-            var fabricantes = await firebase.Child("manufacturers")
-                                              .OrderByKey()
-                                              .StartAt(name)
-                                              .LimitToFirst(50)
-                                              .OnceAsync<Model>();
-
-            return (List<Model>)fabricantes;
+            Task t = Task.Factory.StartNew(() =>
+            {
+                firebase.Child("manufacturers")
+                .OrderByKey()
+                .StartAt(name)
+                .LimitToFirst(50)
+                .OnceAsync<Model>();
+            });
+            t.Wait();
+           
+            return t;
         }
 
         #region IDisposable Support

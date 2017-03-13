@@ -18,7 +18,7 @@
             <div class="input-group input-group-lg">
                 <asp:TextBox ID="txtBusca" cssClass="form-control" type="text" placeholder="Fabricante, Modelo, Código ..." runat="server"></asp:TextBox>
                 <span class="input-group-btn">
-                    <asp:Button ID="btnBuscar" cssClass="btn btn-primary" runat="server"  Text="Buscar" />
+                    <asp:Button ID="btnBuscar" cssClass="btn btn-primary" runat="server"  Text="Buscar" OnClick="btnBuscar_Click" />
                 </span>
             </div>
             <!-- /input-group -->

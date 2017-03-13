@@ -225,9 +225,9 @@ namespace UI
         //    var response = await firebase.PushAsync("manufacturer/products/documents", oModel.manufacturer.products);
         //    return response;
         //}
-              
 
-        public async Task<object> searchManufacturerByName(string name)
+
+        public Task searchManufacturerByName(string name)
         {
 
             var firebase = new FirebaseClient(FirebaseUrl);
@@ -239,8 +239,7 @@ namespace UI
                 .LimitToFirst(50)
                 .OnceAsync<Model>();
             });
-            t.Wait();
-           
+
             return t;
         }
 

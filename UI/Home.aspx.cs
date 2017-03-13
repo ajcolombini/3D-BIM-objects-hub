@@ -15,14 +15,14 @@ namespace UI
 
         }
 
-        protected void btnBuscar_Click(object sender, EventArgs e)
+        protected  void btnBuscar_Click(object sender, EventArgs e)
         {
             try
             {
                 using (FireBaseHelper _fb = new FireBaseHelper())
                 {
-                    Task resultTask = _fb.searchManufacturerByName(txtBusca.Text);
-                    
+                    Task resultTask =  _fb.searchManufacturerByName(txtBusca.Text);
+                    resultTask.Wait();
                 }
             }
             catch (AggregateException aEx)

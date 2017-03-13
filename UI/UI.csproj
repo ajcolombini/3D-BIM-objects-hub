@@ -124,7 +124,10 @@
     <Content Include="Dashboard.aspx" />
     <Content Include="FireBaseLogin.html" />
     <Content Include="Home.aspx" />
+    <Content Include="images\BIM.sphere.logo.png" />
+    <Content Include="images\BIM.sphere.png" />
     <Content Include="images\BIMHub.PNG" />
+    <Content Include="images\BIMSphere.png" />
     <Content Include="ManufacturerRegister.aspx" />
     <Content Include="packages.config" />
     <Content Include="obj\Debug\BootmetroUI.csprojResolveAssemblyReference.cache" />

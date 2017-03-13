@@ -6,7 +6,7 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BIM Hub</title>
+    <title>BIM Sphere</title>
 
     <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>
     <script>
@@ -66,9 +66,9 @@
                     </button>
                     <div class="post-container">
                         <div class="post-thumb">
-                            <img alt="logo" src="images/BIMHub.PNG" style="width: 50px; height: 50px; border: 0px" />
+                            <img alt="logo" src="images/BIM.Sphere.Logo.PNG" style="width: 55px; height: auto; border: 0px" />
                         </div>
-                        <h3 class="post-title">BIM Hub</h3>
+                        <h3 class="post-title">&nbsp;BIM Sphere</h3>
                     </div>
                 </div>
                 <div class="collapse navbar-collapse navbar-ex1-collapse">

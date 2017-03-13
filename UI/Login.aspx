@@ -29,7 +29,7 @@
                         <div class="login-panel panel panel-default">
                             <div class="panel-heading">
                                 <div style="align-content: center; text-align: center; vertical-align: middle;">
-                                    <img alt="logo" src="images/BIMHub.PNG" />
+                                    <img alt="logo" src="images/BIM.Sphere.PNG" style="width:320px;height:auto;" />
                                 </div>
                             </div>
                             <div class="panel-heading">

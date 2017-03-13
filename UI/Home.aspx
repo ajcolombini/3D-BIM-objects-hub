@@ -7,7 +7,7 @@
             <h3>Buscar </h3>
             <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                Bem-vindo ao BIM Hubb. 
+                Bem-vindo ao BIM Sphere. 
                  <br />
                 Faça sua busca por código de modelo, nome do modelo ou fabricante...
             </div>

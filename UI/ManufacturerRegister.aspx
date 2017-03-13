@@ -81,7 +81,7 @@
                 </div>
                 <div class="form-group row">
                     <div class="offset-sm-2 col-sm-10">
-                        <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" class="btn btn-primary btn-lg" OnClick="btnRegistrar_Click" />
+                        <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" class="btn btn-success btn-lg" OnClick="btnRegistrar_Click" />
                     </div>
                 </div>
             </div>

@@ -47,8 +47,12 @@
                                     <div class="checkbox">
                                         <asp:LinkButton ID="lnkForgotPassword" runat="server">Esqueci minha senha</asp:LinkButton>
                                     </div>
-                                    <asp:Button ID="btnSignIn" runat="server" Text="Entrar" type="button" class="btn btn-sm btn-success" OnClick="btnSignIn_Click" />
-                                    &nbsp;<asp:CheckBox ID="chkAnonimous" runat="server"  text="Acessar anônimo"/>
+                                    <div class="form-group">
+                                        <asp:Button ID="btnSignIn" runat="server" Text="Entrar" type="button" class="btn btn-sm btn-success" OnClick="btnSignIn_Click" />
+                                    </div>
+                                    <div class="form-group">
+                                        <asp:CheckBox ID="chkAnonimous" runat="server" type="checkbox"   text="Acessar anônimo" />
+                                    </div>
                                 </fieldset>
 
                             </div>

@@ -1,87 +1,91 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HUB.Master" AutoEventWireup="true" CodeBehind="ManufacturerRegister.aspx.cs" Inherits="UI.ManufacturerRegister"  %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HUB.Master" AutoEventWireup="true" CodeBehind="ManufacturerRegister.aspx.cs" Inherits="UI.ManufacturerRegister" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <div class="float-container">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h3 class="panel-title">Cadastro de Fabricante</h3>
-            </div>
-            <div class="panel-body">
-
-                <div class="form-group row">
-                    <label for="txtName" class="col-sm-2 col-form-label">Razão Social</label>
-                    <div class="col-sm-10 col-md-10 col-lg-12">
-                        <%--<input type="text" class="form-control" id="inputName" placeholder="Nome registrado no CNPJ" required />--%>
-                        <asp:TextBox ID="txtName" class="form-control" runat="server" placeholder="Nome registrado no CNPJ" required></asp:TextBox>
+        <div class="row">
+            <div class="col-sm-12 col-md-10 col-lg-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Cadastro de Fabricante</h3>
                     </div>
-                </div>
+                    <div class="panel-body">
 
-                <div class="form-group row">
-                    <label for="inputNomeComercial" class="col-sm-2 col-form-label">Nome Comercial</label>
-                    <div class="col-sm-10 col-md-10 col-lg-12">
-                        <%--<input type="text" class="form-control" id="inputNomeComercial" placeholder="Nome Comercial (Como é conhecido pelo público)" required/>--%>
-                        <asp:TextBox ID="txtFormalName" class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)" required></asp:TextBox>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="inputSite" class="col-sm-2 col-form-label">Site</label>
-                    <div class="col-sm-8 col-md-10 col-lg-12">
-                        <%--<input type="text" class="form-control" id="inputSite" placeholder="www.seusite.com" />--%>
-                        <asp:TextBox ID="txtSite" class="form-control" runat="server" placeholder="www.seusite.com"></asp:TextBox>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="inputSite" class="col-sm-2 col-form-label">Telefone</label>
-                    <div class="col-sm-8 col-md-10 col-lg-12">
-                        <asp:TextBox ID="txtPhone" class="form-control" TextMode="Phone" runat="server" placeholder=""></asp:TextBox>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
-                    <div class="col-sm-8 col-md-10 col-lg-12">
-                        <%--<input type="email" class="form-control" id="inputEmail" placeholder="" required>--%>
-                        <asp:TextBox ID="txtEmail" class="form-control" TextMode="Email" runat="server" required></asp:TextBox>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label for="inputPassword" class="col-sm-2 col-form-label">Senha Administrador</label>
-                    <div class="col-sm-8 col-md-10 col-lg-12">
-                        <%--<input type="password" class="form-control" id="inputPassword" placeholder="" required />--%>
-                        <asp:TextBox ID="txtPassword" class="form-control" TextMode="Password" runat="server" required></asp:TextBox>
-                    </div>
-                </div>
-                <fieldset class="form-group row">
-                    <label for="inputLogo" class="col-sm-2 col-form-label">Seu Logo</label>
-                    <div class="col-sm-8 col-md-10 col-lg-12">
-                        <div>
-                            Anexar Arquivo <small>(arquivos .gif .jpeg ou .png de até 100kb):</small>
+                        <div class="form-group row">
+                            <label for="txtName" class="col-sm-2 col-form-label">Razão Social</label>
+                            <div class="col-sm-10 col-md-10 col-lg-12">
+                                <%--<input type="text" class="form-control" id="inputName" placeholder="Nome registrado no CNPJ" required />--%>
+                                <asp:TextBox ID="txtName" class="form-control" runat="server" placeholder="Nome registrado no CNPJ" required></asp:TextBox>
+                            </div>
                         </div>
-                        <%-- FILE UPLOAD--%>
-                        <div class="input-group">
-                            <span class="input-group-btn">
-                                <label class="btn btn-default btn-sm btn-file">
-                                    Selecione
+
+                        <div class="form-group row">
+                            <label for="inputNomeComercial" class="col-sm-2 col-form-label">Nome Comercial</label>
+                            <div class="col-sm-10 col-md-10 col-lg-12">
+                                <%--<input type="text" class="form-control" id="inputNomeComercial" placeholder="Nome Comercial (Como é conhecido pelo público)" required/>--%>
+                                <asp:TextBox ID="txtFormalName" class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)" required></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputSite" class="col-sm-2 col-form-label">Site</label>
+                            <div class="col-sm-8 col-md-10 col-lg-12">
+                                <%--<input type="text" class="form-control" id="inputSite" placeholder="www.seusite.com" />--%>
+                                <asp:TextBox ID="txtSite" class="form-control" runat="server" placeholder="www.seusite.com"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputSite" class="col-sm-2 col-form-label">Telefone</label>
+                            <div class="col-sm-8 col-md-10 col-lg-12">
+                                <asp:TextBox ID="txtPhone" class="form-control" TextMode="Phone" runat="server" placeholder=""></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
+                            <div class="col-sm-8 col-md-10 col-lg-12">
+                                <%--<input type="email" class="form-control" id="inputEmail" placeholder="" required>--%>
+                                <asp:TextBox ID="txtEmail" class="form-control" TextMode="Email" runat="server" required></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="inputPassword" class="col-sm-2 col-form-label">Senha Administrador</label>
+                            <div class="col-sm-8 col-md-10 col-lg-12">
+                                <%--<input type="password" class="form-control" id="inputPassword" placeholder="" required />--%>
+                                <asp:TextBox ID="txtPassword" class="form-control" TextMode="Password" runat="server" required></asp:TextBox>
+                            </div>
+                        </div>
+                        <fieldset class="form-group row">
+                            <label for="inputLogo" class="col-sm-2 col-form-label">Seu Logo</label>
+                            <div class="col-sm-8 col-md-10 col-lg-12">
+                                <div>
+                                    Anexar Arquivo <small>(arquivos .gif .jpeg ou .png de até 100kb):</small>
+                                </div>
+                                <%-- FILE UPLOAD--%>
+                                <div class="input-group">
+                                    <span class="input-group-btn">
+                                        <label class="btn btn-default btn-sm btn-file">
+                                            Selecione
                                     <asp:FileUpload ID="fileUploadLogo" runat="server" Style="display: none;" />
-                                </label>
-                            </span>
-                            <asp:TextBox ID="txtFileName" class="form-control input-sm" Enabled="true" runat="server"></asp:TextBox>
-                            <span class="input-group-btn">
-                                <asp:Button ID="btnSaveFile" runat="server" class="btn btn-primary btn-sm" Text="Confirme" Enabled="true" OnClick="btnSaveFile_Click" Style="display: none" />
-                                <asp:Button ID="btnDelFile" runat="server" class="btn btn-danger btn-sm" Text="Cancele" Enabled="true" OnClick="btnDelFile_Click" CausesValidation="False" />
-                            </span>
+                                        </label>
+                                    </span>
+                                    <asp:TextBox ID="txtFileName" class="form-control input-sm" Enabled="true" runat="server"></asp:TextBox>
+                                    <span class="input-group-btn">
+                                        <asp:Button ID="btnSaveFile" runat="server" class="btn btn-primary btn-sm" Text="Confirme" Enabled="true" OnClick="btnSaveFile_Click" Style="display: none" />
+                                        <asp:Button ID="btnDelFile" runat="server" class="btn btn-danger btn-sm" Text="Cancele" Enabled="true" OnClick="btnDelFile_Click" CausesValidation="False" />
+                                    </span>
+                                </div>
+                                <%--!FILE UPLOAD--%>
+                            </div>
+                        </fieldset>
+                        <div class="form-group row">
                         </div>
-                        <%--!FILE UPLOAD--%>
-                    </div>
-                </fieldset>
-                <div class="form-group row">
-                </div>
-                <div class="form-group row">
-                    <div class="offset-sm-2 col-sm-10">
-                        <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" class="btn btn-success btn-lg" OnClick="btnRegistrar_Click" />
+                        <div class="form-group row">
+                            <div class="offset-sm-2 col-sm-10">
+                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" class="btn btn-success btn-lg" OnClick="btnRegistrar_Click" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

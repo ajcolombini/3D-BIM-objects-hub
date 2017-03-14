@@ -136,9 +136,8 @@
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Home.aspx" />
-    <Content Include="images\BIM.sphere.logo.png" />
-    <Content Include="images\BIM.sphere.png" />
-    <Content Include="images\BIMHub.PNG" />
+    <Content Include="images\LogicalBIM.Logo.png" />
+    <Content Include="images\LogicalBIM.png" />
     <Content Include="js\jquery-1.10.2.min.js" />
     <Content Include="ManufacturerRegister.aspx" />
     <Content Include="packages.config" />

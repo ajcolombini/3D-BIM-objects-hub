@@ -208,7 +208,7 @@ namespace UI
             var firebase = new FirebaseClient(FirebaseUrl);
             var _json = SerializeObjectJson(oModel);
 
-            await firebase.Child("manufacturers").PutAsync(oModel);
+            await firebase.Child("manufacturers").PostAsync(oModel);
 
         }
 

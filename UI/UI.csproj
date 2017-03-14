@@ -193,8 +193,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\BootmetroUI.dll" />
-    <Content Include="bin\BootmetroUI.pdb" />
     <Content Include="bootstrap-elements.html" />
     <Content Include="bootstrap-grid.html" />
     <Content Include="Login.aspx" />
@@ -265,6 +263,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="bin\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="tempFiles\" />
   </ItemGroup>

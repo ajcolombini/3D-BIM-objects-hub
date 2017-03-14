@@ -30,6 +30,7 @@ namespace UI
         public string phone { get; set; }
         public string eMail { get; set; }
         public string webSite { get; set; }
+        public string password { get; set; }
         public List<Product> products { get; set; }
 
         public Manufacturer() { this.products = new List<Product>(); }

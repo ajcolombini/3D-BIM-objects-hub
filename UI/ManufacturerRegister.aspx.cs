@@ -11,6 +11,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using FireSharp.Response;
 using System.Configuration;
+using Framework.Security;
 
 namespace UI
 {
@@ -31,13 +32,13 @@ namespace UI
         {
             Model _model = new Model();
 
-            _model.manufacturer.id = Guid.NewGuid().ToString();
+            //_model.manufacturer.id = Guid.NewGuid().ToString();
             _model.manufacturer.name = txtName.Text;
             _model.manufacturer.formalName = txtFormalName.Text;
             _model.manufacturer.phone = txtPhone.Text;
             _model.manufacturer.eMail = txtEmail.Text;
             _model.manufacturer.webSite = txtSite.Text;
-            #region ImageLogo
+             #region ImageLogo
             if (!string.IsNullOrEmpty(txtFileName.Text) && System.IO.File.Exists(Server.MapPath("~/tempfiles/") + txtFileName.Text))
             {
                 String filepath = Server.MapPath("~/tempfiles/") + txtFileName.Text;
@@ -50,7 +51,7 @@ namespace UI
                 _model.manufacturer.logo = _imgString; //save as base64 array
             }
             #endregion
-
+            _model.manufacturer.password = (new Framework.Security.clsCryptionUtil()).Encrypt(txtPassword.Text);
 
             try
             {

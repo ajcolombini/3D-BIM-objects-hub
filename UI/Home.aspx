@@ -40,5 +40,37 @@
         </div>
     </div>
     <!-- /.row -->
-
+     <div class="row">
+            <asp:Panel ID="pnlError" runat="server" Visible="false">
+                <div class="col-sm-8 col-md-10 col-lg-12">
+                    <div id="divError" class="alert alert-dismissable alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Atenção</strong>
+                        <asp:Label ID="lblErrorMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
+        <div class="row">
+            <asp:Panel ID="pnlInfo" runat="server" Visible="false">
+                <div class="col-sm-8 col-md-10 col-lg-12">
+                    <div id="divInfo" class="alert alert-dismissable alert-info">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Aviso</strong>
+                        <asp:Label ID="lblInfoMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
+        <div class="row">
+            <asp:Panel ID="pnlSuccess" runat="server" Visible="false">
+                <div class="col-sm-8 col-md-10 col-lg-12">
+                    <div id="divSuccess" class="alert alert-dismissable alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Aviso</strong>
+                        <asp:Label ID="lblSuccessMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
 </asp:Content>

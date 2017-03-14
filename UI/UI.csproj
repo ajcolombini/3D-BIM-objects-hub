@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AjaxControlToolkit, Version=3.5.51116.0, Culture=neutral, PublicKeyToken=28f01b0e84b6d53e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\AjaxControlToolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Firebase.Auth, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FirebaseAuthentication.net.2.2.0\lib\portable45-net45+win8+wpa81\Firebase.Auth.dll</HintPath>
       <Private>True</Private>
@@ -131,7 +135,12 @@
     <Content Include="css\local.css" />
     <Content Include="css\navigation.css" />
     <Content Include="Dashboard.aspx" />
-    <Content Include="FireBaseLogin.html" />
+    <Content Include="fancybox\jquery.easing-1.3.pack.js" />
+    <Content Include="fancybox\jquery.fancybox-buttons.js" />
+    <Content Include="fancybox\jquery.fancybox-thumbs.js" />
+    <Content Include="fancybox\jquery.fancybox.js" />
+    <Content Include="fancybox\jquery.fancybox.pack.js" />
+    <Content Include="fancybox\jquery.mousewheel-3.0.6.pack.js" />
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
@@ -139,7 +148,11 @@
     <Content Include="images\BIM.sphere.logo.png" />
     <Content Include="images\BIM.sphere.png" />
     <Content Include="images\BIMHub.PNG" />
+    <Content Include="images\circle_loader.gif" />
+    <Content Include="jquery.alerts.js" />
+    <Content Include="jquery.qtip.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
+    <Content Include="js\jquery.alerts.js" />
     <Content Include="ManufacturerRegister.aspx" />
     <Content Include="packages.config" />
     <Content Include="obj\Debug\BootmetroUI.csprojResolveAssemblyReference.cache" />
@@ -195,8 +208,6 @@
   <ItemGroup>
     <Content Include="bin\BootmetroUI.dll" />
     <Content Include="bin\BootmetroUI.pdb" />
-    <Content Include="bootstrap-elements.html" />
-    <Content Include="bootstrap-grid.html" />
     <Content Include="Login.aspx" />
     <Content Include="obj\Debug\BootmetroUI.csproj.FileListAbsolute.txt" />
     <Content Include="obj\Debug\BootmetroUI.dll" />
@@ -206,7 +217,8 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="clsConexaoComumDAL.cs" />
+    <Compile Include="clsAlerts.cs" />
+    <Compile Include="clsJQuery.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -214,7 +226,6 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="FireBaseHelper.cs" />
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -243,7 +254,6 @@
     <Compile Include="ManufacturerRegister.aspx.designer.cs">
       <DependentUpon>ManufacturerRegister.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Model.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
@@ -265,10 +275,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\fancybox\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="tempFiles\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BIM.BLL\BIM.BLL.csproj">
+      <Project>{b8278c6d-f163-4b47-b297-664677629df9}</Project>
+      <Name>BIM.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BIM.Model\BIM.Model.csproj">
+      <Project>{194c267d-9abc-4d78-829d-2c0c7f3c2b34}</Project>
+      <Name>BIM.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Framework.Security\Framework.Security.csproj">
       <Project>{C2853BA1-FE9A-4F1E-8F1F-5357B5E237F8}</Project>
       <Name>Framework.Security</Name>

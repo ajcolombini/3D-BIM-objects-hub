@@ -16,15 +16,23 @@ namespace UI
             get { return _apiKey; }
         }
 
+        public UpdatePanel updPnlMaster { get { return this.updPanelMain; } }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                FireBaseHelper _fb = new FireBaseHelper();
+                //FireBaseHelper _fb = new FireBaseHelper();
 
 
                 
             }
+        }
+
+        protected void ToolkitScriptManager1_AsyncPostBackError(object sender, AsyncPostBackErrorEventArgs e)
+        {
+            System.Web.UI.ScriptManager.RegisterStartupScript(this.updPanelMain, updPanelMain.GetType(), "HideLoader", "$('.centered_loader').hide();", true);
+            clsJQuery.jsAlert(e.Exception.ToString(), "ToolkitScriptManager1_AsyncPostBackError", jAlertType.Error, this.updPanelMain);
         }
     }
 }

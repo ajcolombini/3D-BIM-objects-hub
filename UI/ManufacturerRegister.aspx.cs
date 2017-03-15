@@ -44,9 +44,9 @@ namespace UI
             _manuf.eMail = txtEmail.Text;
             _manuf.webSite = txtSite.Text;
             #region ImageLogo
-            if (ViewState["FileName"] != null && !string.IsNullOrEmpty(ViewState["FileName"].ToString()) && System.IO.File.Exists(Server.MapPath("~/tempfiles/") + ViewState["FileName"].ToString()))
+            if ( !string.IsNullOrEmpty(lblFileName.Text) && System.IO.File.Exists(Server.MapPath("~/tempfiles/") + lblFileName.Text))
             {
-                String filepath = Server.MapPath("~/tempfiles/") + ViewState["FileName"].ToString();
+                String filepath = Server.MapPath("~/tempfiles/") + lblFileName.Text;
                 // convert to byte array
                 byte[] _imgArr = ImageToByteArray(filepath);
                 _manuf.logo = _imgArr; //save as base64 array
@@ -100,56 +100,13 @@ namespace UI
 
 
 
-        #region fileUpload Buttons
-        //protected void btnSaveFile_Click(object sender, EventArgs e)
-        //{
-        //    if (fileUploadLogo.HasFile)
-        //    {
-        //        try
-        //        {
-        //            if ((new string[] { "image/png", "image/jpg", "image/jpeg" }).Contains(fileUploadLogo.PostedFile.ContentType))
-        //            {
-        //                if (fileUploadLogo.PostedFile.ContentLength < 102400)
-        //                {
-        //                    string filename = Path.GetFileName(fileUploadLogo.FileName);
-        //                    fileUploadLogo.SaveAs(Server.MapPath("~/tempfiles/") + filename);
-        //                }
-        //                else
-        //                    lblErrorMsg.Text += "Aviso: Tamanho do arquivo deve ser até 100 kb.<br/>";
-        //            }
-        //            else
-        //                lblErrorMsg.Text += "Aviso: Extensão do arquivo inválida. Utilize apenas .png, .jpg ou .jpeg<br/>";
-
-        //        }
-        //        catch (Exception ex)
-        //        {
-        //            lblErrorMsg.Text += "Falha ao enviar arquivo:  " + ex.Message;
-        //        }
-
-        //        if (!string.IsNullOrEmpty(lblErrorMsg.Text))
-        //        {
-        //            clsAlerts.jsAlert(lblErrorMsg.Text, "Aviso", AlertType.Error, this.Page);
-        //            clsJQuery.jsAlert(lblErrorMsg.Text, "Aviso", jAlertType.Error, this.Page);
-        //        }
-
-
-        //        pnlError.Visible = !string.IsNullOrEmpty(lblErrorMsg.Text);
-        //    }
-        //}
-
-        //protected void btnDelFile_Click(object sender, EventArgs e)
-        //{
-        //    if (File.Exists(Server.MapPath("~/tempfiles/") + txtFileName.Text))
-        //        File.Delete(Server.MapPath("~/tempfiles/") + txtFileName.Text);
-
-        //    txtFileName.Text = string.Empty;
-        //}
-        #endregion
 
         #region AsyncFileUpload Buttons
             
         protected void AsyncFileUpload1_UploadedComplete(object sender, AsyncFileUploadEventArgs e)
         {
+            lblErrorMsg.Text = string.Empty;
+
             if (AsyncFileUpload1.HasFile)
             {
                 try
@@ -158,16 +115,16 @@ namespace UI
                     {
                         if (AsyncFileUpload1.PostedFile.ContentLength < 102400)
                         {
-                            ViewState["FileName"] = AsyncFileUpload1.FileName;
-                            lblFileName.Text = ViewState["FileName"].ToString();
-                            AsyncFileUpload1.PostedFile.SaveAs(Server.MapPath("~/tempfiles/") + ViewState["FileName"].ToString());
+                            //ViewState["FileName"] = AsyncFileUpload1.FileName;
+                            lblFileName.Text = AsyncFileUpload1.FileName;
+                            AsyncFileUpload1.PostedFile.SaveAs(Server.MapPath("~/tempfiles/") + lblFileName.Text);
 
                         }
                         else
-                            lblErrorMsg.Text += "Aviso: Tamanho do arquivo deve ser até 100 kb.<br/>";
+                            lblErrorMsg.Text = "Aviso: Tamanho do arquivo deve ser até 100 kb.<br/>";
                     }
                     else
-                        lblErrorMsg.Text += "Aviso: Extensão do arquivo inválida. Utilize apenas .png, .jpg ou .jpeg<br/>";
+                        lblErrorMsg.Text = "Aviso: Extensão do arquivo inválida. Utilize apenas .png, .jpg ou .jpeg<br/>";
 
 
                 }
@@ -180,15 +137,15 @@ namespace UI
                 {
                    // clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Aviso", AlertType.Error, this.Master.updPnlMaster);
                     this.Master.showMessage(lblErrorMsg.Text, "Atenção", AlertType.Warning);
-                    ViewState["FileName"] = null;
-                    ViewState["FileName"] = string.Empty;
+                    //ViewState["FileName"] = null;
+                    //ViewState["FileName"] = string.Empty;
                 }
                 pnlError.Visible = !string.IsNullOrEmpty(lblErrorMsg.Text);
 
             }
             else
             {
-                ViewState["FileName"] = null;
+                lblFileName.Text = null;
             }
 
         }

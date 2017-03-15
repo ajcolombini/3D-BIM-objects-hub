@@ -214,13 +214,13 @@ namespace UI
         //    }
         //}
 
-        protected void btnDelFile_Click(object sender, EventArgs e)
+        protected void btnCancel_Click(object sender, EventArgs e)
         {
-            if (ViewState["FileName"] != null && System.IO.File.Exists(Server.MapPath("~/tempfiles/") + ViewState["FileName"].ToString()))
+            if (lblFileName.Text!= null && System.IO.File.Exists(Server.MapPath("~/tempfiles/") + lblFileName.Text.ToString()))
             {
-                File.Delete(Server.MapPath("~/tempfiles/") + ViewState["FileName"].ToString());
+                File.Delete(Server.MapPath("~/tempfiles/") + lblFileName.Text.ToString());
             }
-            ViewState["FileName"] = null;
+            lblFileName.Text = string.Empty;
 
         }
         #endregion

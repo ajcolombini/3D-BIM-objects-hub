@@ -10,12 +10,7 @@ namespace UI
 {
     public partial class HUB : System.Web.UI.MasterPage
     {
-        private string _apiKey = ConfigurationManager.AppSettings["FireBaseToken"];
-        
-        public string ApiKey {
-            get { return _apiKey; }
-        }
-
+                
         public UpdatePanel updPnlMaster { get { return this.updPanelMain; } }
 
         protected void Page_Load(object sender, EventArgs e)

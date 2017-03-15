@@ -96,9 +96,9 @@
                                             OnUploadedFileError="AsyncFileUpload1_UploadedFileError" ClientIDMode="AutoID" />
                                         </label>
                                     </span>
-                                    <asp:TextBox ID="lblFileName" class="form-control input-sm" Enabled="true" runat="server"></asp:TextBox>
+                                    <asp:Label ID="lblFileName" class="form-control input-sm"  runat="server" Text=""></asp:Label>
                                     <span class="input-group-btn">
-                                        <asp:Button ID="btnCancel" runat="server" class="btn btn-danger btn-sm" OnClick="btnDelFile_Click"
+                                        <asp:Button ID="btnCancel" runat="server" class="btn btn-danger btn-sm" OnClick="btnCancel_Click"
                                             Text="Cancele" Enabled="true" />
                                     </span>
                                 </div>
@@ -163,18 +163,58 @@
             var input = $(this),
                 numFiles = input.get(0).files ? input.get(0).files.length : 1,
                 label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-            input.trigger('fileselect', [numFiles, label]);
+
+            //Mostra nome do arquivo no label
+            $('#<%=lblFileName.ClientID%>').val(label);
+
+
+            //PostBack para upload
+            __doPostBack('', '');
         });
+
+    </script>
+
+    <script>
 
         $(document).ready(function () {
-            $('#<%=AsyncFileUpload1.ClientID%>').on('fileselect', function (event, numFiles, label) {
-                $('#<%=lblFileName.ClientID%>').val(label);
+            $('.input-group input[required], .input-group textarea[required], .input-group select[required]').on('keyup change', function () {
+                var $form = $(this).closest('form'),
+            $group = $(this).closest('.input-group'),
+                        $addon = $group.find('.input-group-addon'),
+                        $icon = $addon.find('span'),
+                        state = false;
 
-                //PostBack clickEvent for btnSaveFile
-                __doPostBack('ctl00$ContentPlaceHolder1$btnSaveFile', '');
+                if (!$group.data('validate')) {
+                    state = $(this).val() ? true : false;
+                } else if ($group.data('validate') == "email") {
+                    state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())
+                } else if ($group.data('validate') == 'phone') {
+                    state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val())
+                } else if ($group.data('validate') == "length") {
+                    state = $(this).val().length >= $group.data('length') ? true : false;
+                } else if ($group.data('validate') == "number") {
+                    state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());
+                }
 
+                if (state) {
+                    $addon.removeClass('danger');
+                    $addon.addClass('success');
+                    $icon.attr('class', 'glyphicon glyphicon-ok');
+                } else {
+                    $addon.removeClass('success');
+                    $addon.addClass('danger');
+                    $icon.attr('class', 'glyphicon glyphicon-remove');
+                }
+
+                if ($form.find('.input-group-addon.danger').length == 0) {
+                    $form.find('[type="submit"]').prop('disabled', false);
+                } else {
+                    $form.find('[type="submit"]').prop('disabled', true);
+                }
             });
         });
+
     </script>
+
 
 </asp:Content>

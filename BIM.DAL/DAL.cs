@@ -21,67 +21,67 @@ namespace BIM.DAL
     public static class ManufacturerDAO
     {
         
-        public static List<Manufacturer> FindAll()
+        public static List<Fabricante> FindAll()
         {
-            return clsCrudGenericDAO.FindAll<Manufacturer>("[spGetFabricante]", null);
+            return clsCrudGenericDAO.FindAll<Fabricante>("[spGetFabricante]", null);
         }
 
-        public static List<Manufacturer> FindAny(Manufacturer oManufacturer)
+        public static List<Fabricante> FindAny(Fabricante oManufacturer)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
-                new SqlParameter("@Nome", oManufacturer.name),
-                new SqlParameter("@RazaoSocial", oManufacturer.formalName)
+                new SqlParameter("@Nome", oManufacturer.Nome),
+                new SqlParameter("@RazaoSocial", oManufacturer.RazaoSocial)
             };
 
-            return clsCrudGenericDAO.FindAny<Manufacturer>("[spGetFabricante]", _paramList);
+            return clsCrudGenericDAO.FindAny<Fabricante>("[spGetFabricante]", _paramList);
         }
 
-        public static Manufacturer FindId(Guid Id)
+        public static Fabricante FindId(Guid Id)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>() { (new SqlParameter("@Id", Id))};
-            return clsCrudGenericDAO.FindId<Manufacturer>("[spGetFabricante]", _paramList);
+            return clsCrudGenericDAO.FindId<Fabricante>("[spGetFabricante]", _paramList);
         }
 
-        public static Guid Insert(Manufacturer oManufacturer)
+        public static Guid Insert(Fabricante oManufacturer)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
                 new SqlParameter("OpType", (int)OperatinType.Insert),
-                new SqlParameter("@Nome", oManufacturer.name),
-                new SqlParameter("@RazaoSocial", oManufacturer.formalName),
-                new SqlParameter("@Telefone", oManufacturer.phone),
-                new SqlParameter("@Site", oManufacturer.webSite),
-                new SqlParameter("@Email", oManufacturer.eMail),
-                new SqlParameter("@Logo", oManufacturer.logo)
+                new SqlParameter("@Nome", oManufacturer.Nome),
+                new SqlParameter("@RazaoSocial", oManufacturer.RazaoSocial),
+                new SqlParameter("@Telefone", oManufacturer.Telefone),
+                new SqlParameter("@Site", oManufacturer.Site),
+                new SqlParameter("@Email", oManufacturer.Email),
+                new SqlParameter("@Logo", oManufacturer.Logo)
             };
 
             return clsCrudGenericDAO.InsertAndReturnGuid("[spSetFabricante]", _paramList);
         }
 
-        public static void Delete(Manufacturer oManufacturer)
+        public static void Delete(Fabricante oManufacturer)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
                 new SqlParameter("OpType", (int)OperatinType.Delete),
-                new SqlParameter("@Id", oManufacturer.id)
+                new SqlParameter("@Id", oManufacturer.Id)
             };
 
             clsCrudGenericDAO.Delete("[spSetFabricante]", _paramList);
         }
 
-        public static void Update(Manufacturer oManufacturer)
+        public static void Update(Fabricante oManufacturer)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
                 new SqlParameter("OpType", (int)OperatinType.Update),
-                new SqlParameter("@Id", oManufacturer.id),
-                new SqlParameter("@Nome", oManufacturer.name),
-                new SqlParameter("@RazaoSocial", oManufacturer.formalName),
-                new SqlParameter("@Telefone", oManufacturer.phone),
-                new SqlParameter("@Site", oManufacturer.webSite),
-                new SqlParameter("@Email", oManufacturer.eMail),
-                new SqlParameter("@Logo", oManufacturer.logo)
+                new SqlParameter("@Id", oManufacturer.Id),
+                new SqlParameter("@Nome", oManufacturer.Nome),
+                new SqlParameter("@RazaoSocial", oManufacturer.RazaoSocial),
+                new SqlParameter("@Telefone", oManufacturer.Telefone),
+                new SqlParameter("@Site", oManufacturer.Site),
+                new SqlParameter("@Email", oManufacturer.Email),
+                new SqlParameter("@Logo", oManufacturer.Logo)
             };
 
              clsCrudGenericDAO.Update("[spSetFabricante]", _paramList);
@@ -93,35 +93,35 @@ namespace BIM.DAL
     #region Produto
     public static class ProductDAO
     {
-        public static List<Product> FindAll()
+        public static List<Produto> FindAll()
         {
-            return clsCrudGenericDAO.FindAll<Product>("[spGetProduto]", null);
+            return clsCrudGenericDAO.FindAll<Produto>("[spGetProduto]", null);
         }
 
-        public static Product FindId(Guid Id)
+        public static Produto FindId(Guid Id)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>() { (new SqlParameter("@Id", Id)) };
-            return clsCrudGenericDAO.FindId<Product>("[spGetProduto]", _paramList);
+            return clsCrudGenericDAO.FindId<Produto>("[spGetProduto]", _paramList);
         }
 
-        public static List<Product> FindAny(Product oProduct)
+        public static List<Produto> FindAny(Produto oProduct)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
-                new SqlParameter("@Codigo", oProduct.code),
-                new SqlParameter("@Nome", oProduct.name),
-                new SqlParameter("@Descricao", oProduct.description),
-                new SqlParameter("@Dimensoes", oProduct.dimensions),
-                new SqlParameter("@Voltagem", oProduct.voltage),
-                new SqlParameter("@ClasseConsumo", oProduct.energyConsumpsionClass),
-                new SqlParameter("@Preco", oProduct.price),
-                new SqlParameter("@Status", oProduct.status)
+                new SqlParameter("@Codigo", oProduct.Codigo),
+                new SqlParameter("@Nome", oProduct.Nome),
+                new SqlParameter("@Descricao", oProduct.Descricao),
+                new SqlParameter("@Dimensoes", oProduct.Dimensoes),
+                new SqlParameter("@Voltagem", oProduct.Voltagem),
+                new SqlParameter("@ClasseConsumo", oProduct.ClasseConsumo),
+                new SqlParameter("@Preco", oProduct.Preco),
+                new SqlParameter("@Status", oProduct.Status)
             };
 
-            return clsCrudGenericDAO.FindAny<Product>("[spGetProduto]", _paramList);
+            return clsCrudGenericDAO.FindAny<Produto>("[spGetProduto]", _paramList);
         }
 
-        public static Guid Insert(Product oProduct)
+        public static Guid Insert(Produto oProduct)
         {
             /*@OpType int = null,
 								  @Id uniqueidentifier = null,
@@ -142,55 +142,55 @@ namespace BIM.DAL
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
                 new SqlParameter("OpType", (int)OperatinType.Insert),
-                new SqlParameter("@IdFabricante", oProduct.manufacturerId),
-                new SqlParameter("@Codigo", oProduct.code),
-                new SqlParameter("@Nome", oProduct.name),
-                new SqlParameter("@Descricao", oProduct.description),
-                new SqlParameter("@IdCategoria", oProduct.categoryId),
-                new SqlParameter("@IdFamilia", oProduct.familyId),
-                new SqlParameter("@IdSubtipo", oProduct.subTypeId),
-                new SqlParameter("@Dimensoes", oProduct.dimensions),
-                new SqlParameter("@Voltagem", oProduct.voltage),
-                new SqlParameter("@ClasseConsumo", oProduct.energyConsumpsionClass),
-                new SqlParameter("@Preco", oProduct.price),
-                new SqlParameter("@Status", oProduct.status),
-                new SqlParameter("@Imagem", oProduct.image)
+                new SqlParameter("@IdFabricante", oProduct.IdFabricante),
+                new SqlParameter("@Codigo", oProduct.Codigo),
+                new SqlParameter("@Nome", oProduct.Nome),
+                new SqlParameter("@Descricao", oProduct.Descricao),
+                new SqlParameter("@IdCategoria", oProduct.IdCategoria),
+                new SqlParameter("@IdFamilia", oProduct.IdFamilia),
+                new SqlParameter("@IdSubtipo", oProduct.IdSubtipo),
+                new SqlParameter("@Dimensoes", oProduct.Dimensoes),
+                new SqlParameter("@Voltagem", oProduct.Voltagem),
+                new SqlParameter("@ClasseConsumo", oProduct.ClasseConsumo),
+                new SqlParameter("@Preco", oProduct.Preco),
+                new SqlParameter("@Status", oProduct.Status),
+                new SqlParameter("@Imagem", oProduct.Imagem)
                 
             };
 
             return clsCrudGenericDAO.InsertAndReturnGuid("[spSetProducto]", _paramList);
         }
 
-        public static void Delete(Product oProduct)
+        public static void Delete(Produto oProduct)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
                 new SqlParameter("OpType", (int)OperatinType.Delete),
-                new SqlParameter("@Id", oProduct.id)
+                new SqlParameter("@Id", oProduct.Id)
             };
 
             clsCrudGenericDAO.Delete("[spSetProducto]", _paramList);
         }
 
-        public static void Update(Product oProduct)
+        public static void Update(Produto oProduct)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
                 new SqlParameter("OpType", (int)OperatinType.Update),
-                new SqlParameter("@Id", oProduct.id),
-                new SqlParameter("@IdFabricante", oProduct.manufacturerId),
-                new SqlParameter("@Codigo", oProduct.code),
-                new SqlParameter("@Nome", oProduct.name),
-                new SqlParameter("@Descricao", oProduct.description),
-                new SqlParameter("@IdCategoria", oProduct.categoryId),
-                new SqlParameter("@IdFamilia", oProduct.familyId),
-                new SqlParameter("@IdSubtipo", oProduct.subTypeId),
-                new SqlParameter("@Dimensoes", oProduct.dimensions),
-                new SqlParameter("@Voltagem", oProduct.voltage),
-                new SqlParameter("@ClasseConsumo", oProduct.energyConsumpsionClass),
-                new SqlParameter("@Preco", oProduct.price),
-                new SqlParameter("@Status", oProduct.status),
-                new SqlParameter("@Imagem", oProduct.image)
+                new SqlParameter("@Id", oProduct.Id),
+                new SqlParameter("@IdFabricante", oProduct.IdFabricante),
+                new SqlParameter("@Codigo", oProduct.Codigo),
+                new SqlParameter("@Nome", oProduct.Nome),
+                new SqlParameter("@Descricao", oProduct.Descricao),
+                new SqlParameter("@IdCategoria", oProduct.IdCategoria),
+                new SqlParameter("@IdFamilia", oProduct.IdFamilia),
+                new SqlParameter("@IdSubtipo", oProduct.IdSubtipo),
+                new SqlParameter("@Dimensoes", oProduct.Dimensoes),
+                new SqlParameter("@Voltagem", oProduct.Voltagem),
+                new SqlParameter("@ClasseConsumo", oProduct.ClasseConsumo),
+                new SqlParameter("@Preco", oProduct.Preco),
+                new SqlParameter("@Status", oProduct.Status),
+                new SqlParameter("@Imagem", oProduct.Imagem)
             };
 
             clsCrudGenericDAO.Update("[spSetProducto]", _paramList);
@@ -204,20 +204,20 @@ namespace BIM.DAL
     #region Documento
     public static class DocumentDAO
     {
-        public static List<Document> FindAll()
+        public static List<Documento> FindAll()
         { 
-            return clsCrudGenericDAO.FindAll<Document>("[spGetDocumento]", null);
+            return clsCrudGenericDAO.FindAll<Documento>("[spGetDocumento]", null);
         }
 
-        public static List<Document> FindAny(Document oDocument)
+        public static List<Documento> FindAny(Documento oDocument)
         {
             throw new NotImplementedException();
         }
 
-        public static Document FindId(Guid Id)
+        public static Documento FindId(Guid Id)
         {
             List<SqlParameter> _paramList = new List<SqlParameter>() { (new SqlParameter("@Id", Id)) };
-            return clsCrudGenericDAO.FindId<Document>("[spGetDocumento]", _paramList);
+            return clsCrudGenericDAO.FindId<Documento>("[spGetDocumento]", _paramList);
         }
 
         //public static Guid Insert(Document oDocument)

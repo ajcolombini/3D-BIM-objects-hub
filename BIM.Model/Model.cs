@@ -5,34 +5,21 @@ using System.Web;
 
 namespace BIM.Model
 {
-    //[Serializable]
-    //public class Model : IDisposable
-    //{
-    //    //public Manufacturer manufacturer { get; set; }
-    //    //public Model() { this.manufacturer = new Manufacturer(); }
-    //    //~Model() { }
 
-    //    //public void Dispose()
-    //    //{
-    //    //    this.manufacturer = null;
-    //    //}
-
-       
-    //}
 
     [Serializable]
-    public class Manufacturer : IDisposable
+    public class Fabricante : IDisposable
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string formalName { get; set; }
-        public string phone { get; set; }
-        public string eMail { get; set; }
-        public string webSite { get; set; }
-        public byte[] logo { get; set; }
-        public List<Product> products { get; set; }
+        public Guid Id { get; set; }
+        public string Nome { get; set; }
+        public string RazaoSocial { get; set; }
+        public string Telefone { get; set; }
+        public string Email { get; set; }
+        public string Site { get; set; }
+        public byte[] Logo { get; set; }
+        public List<Produto> products { get; set; }
 
-        public Manufacturer() { this.products = new List<Product>(); }
+        public Fabricante() { this.products = new List<Produto>(); }
 
         public void Dispose()
         {
@@ -41,24 +28,24 @@ namespace BIM.Model
     }
 
     [Serializable]
-    public class Product : IDisposable
+    public class Produto : IDisposable
     {
-        public string id { get; set; }
-        public string code { get; set; }
-        public int subTypeId { get; set; }
-        public int categoryId { get; set; }
-        public int manufacturerId { get; set; }
-        public int familyId { get; set; }
-        public string name { get; set; }
-        public string description { get; set; }
-        public string dimensions { get; set; }
-        public string voltage { get; set; }
-        public string energyConsumpsionClass { get; set; }
-        public string price { get; set; }
-        public string status { get; set; }
-        public byte[] image { get; set; }
-        public List<Document> docs { get; set; }
-        public Product() { this.docs = new List<Document>(); }
+        public Guid Id { get; set; }
+        public string Codigo { get; set; }
+        public int IdSubtipo { get; set; }
+        public int IdCategoria { get; set; }
+        public int IdFabricante { get; set; }
+        public int IdFamilia { get; set; }
+        public string Nome { get; set; }
+        public string Descricao { get; set; }
+        public string Dimensoes { get; set; }
+        public string Voltagem { get; set; }
+        public string ClasseConsumo { get; set; }
+        public string Preco { get; set; }
+        public string Status { get; set; }
+        public byte[] Imagem { get; set; }
+        public List<Documento> docs { get; set; }
+        public Produto() { this.docs = new List<Documento>(); }
 
         public void Dispose()
         {
@@ -67,13 +54,13 @@ namespace BIM.Model
     }
 
     [Serializable]
-    public class Document : IDisposable
+    public class Documento : IDisposable
     {
-        public string id { get; set; }
-        public string name { get; set; }
-        public string format { get; set; }
-        public string sizeKb { get; set; }
-        public byte[] docObject { get; set; }
+        public Guid Id { get; set; }
+        public string Titulo { get; set; }
+        public string Formato { get; set; }
+        public string TamanhoKb { get; set; }
+        public byte[] Objeto { get; set; }
 
         public void Dispose()
         {

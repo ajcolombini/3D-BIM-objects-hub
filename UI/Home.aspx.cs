@@ -22,11 +22,11 @@ namespace UI
             try
             {
                 
-                Manufacturer _fab = new Manufacturer();
-                _fab.name = txtBusca.Text;
-                _fab.formalName = txtBusca.Text;
+                Fabricante _fab = new Fabricante();
+                _fab.Nome = txtBusca.Text;
+                _fab.RazaoSocial = txtBusca.Text;
 
-                List<Manufacturer> _lstFabricantes = ManufacturerBLO.FindAny(_fab);
+                List<Fabricante> _lstFabricantes = ManufacturerBLO.FindAny(_fab);
 
                 //Product _prod = new Product();
                 //_prod.code = txtBusca.Text;

@@ -34,21 +34,21 @@ namespace UI
 
         protected void btnRegistrar_Click(object sender, EventArgs e)
         {
-            Manufacturer _manuf = new Manufacturer();
+            Fabricante _manuf = new Fabricante();
 
-            _manuf.id = Guid.NewGuid().ToString();
-            _manuf.name = txtName.Text;
-            _manuf.formalName = txtFormalName.Text;
-            _manuf.phone = txtPhone.Text;
-            _manuf.eMail = txtEmail.Text;
-            _manuf.webSite = txtSite.Text;
+            _manuf.Id = Guid.NewGuid();
+            _manuf.Nome = txtName.Text;
+            _manuf.RazaoSocial = txtFormalName.Text;
+            _manuf.Telefone = txtPhone.Text;
+            _manuf.Email = txtEmail.Text;
+            _manuf.Site = txtSite.Text;
             #region ImageLogo
             if ( !string.IsNullOrEmpty(lblFileName.Text) && System.IO.File.Exists(Server.MapPath("~/tempfiles/") + lblFileName.Text))
             {
                 String filepath = Server.MapPath("~/tempfiles/") + lblFileName.Text;
                 // convert to byte array
                 byte[] _imgArr = ImageToByteArray(filepath);
-                _manuf.logo = _imgArr; //save as base64 array
+                _manuf.Logo = _imgArr; //save as base64 array
             }
             #endregion
 

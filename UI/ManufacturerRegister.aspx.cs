@@ -180,8 +180,8 @@ namespace UI
 
                 if (!string.IsNullOrEmpty(lblErrorMsg.Text))
                 {
-                    //clsAlerts.jsAlert(lblErrorMsg.Text, "Aviso", AlertType.Error, this.Page);
-                    clsJQuery.jsAlert(lblErrorMsg.Text, "Aviso", jAlertType.Error, this.Master.updPnlMaster);
+                    clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Aviso", AlertType.Error, this.Page);
+                    //clsJQuery.jsAlert(lblErrorMsg.Text, "Aviso", jAlertType.Error, this.Master.updPnlMaster);
                     ViewState["FileName"] = null;
                     ViewState["FileName"] = string.Empty;
                 }

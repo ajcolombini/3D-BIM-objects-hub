@@ -125,13 +125,16 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bootstrap\css\bootstrap.3.3.6.css" />
     <Content Include="bootstrap\css\bootstrap.css" />
     <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="bootstrap\js\bootstrap.js" />
     <Content Include="bootstrap\js\bootstrap.min.js" />
-    <Content Include="css\bimsphere.css" />
+    <Content Include="bootstrap\js\plugins\bootbox.js" />
+    <Content Include="bootstrap\js\plugins\bootstrap-select.js" />
+    <Content Include="bootstrap\js\plugins\gridviewScroll.js" />
+    <Content Include="bootstrap\js\plugins\jquery.dropdown.min.js" />
+    <Content Include="bootstrap\js\plugins\jquery.mask.min.js" />
     <Content Include="css\local.css" />
     <Content Include="css\navigation.css" />
     <Content Include="Dashboard.aspx" />
@@ -149,10 +152,8 @@
     <Content Include="images\BIM.sphere.png" />
     <Content Include="images\BIMHub.PNG" />
     <Content Include="images\circle_loader.gif" />
-    <Content Include="jquery.alerts.js" />
-    <Content Include="jquery.qtip.js" />
+    <Content Include="js\jquery.qtip.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
-    <Content Include="js\jquery.alerts.js" />
     <Content Include="ManufacturerRegister.aspx" />
     <Content Include="packages.config" />
     <Content Include="obj\Debug\BootmetroUI.csprojResolveAssemblyReference.cache" />
@@ -218,7 +219,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsAlerts.cs" />
-    <Compile Include="clsJQuery.cs" />
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -1,4 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HUB.master.cs" Inherits="UI.HUB" %>
+
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 <!DOCTYPE html>
 
@@ -6,33 +7,18 @@
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>BIM Sphere</title>
+    <title></title>
 
-   <%-- <script src="https://www.gstatic.com/firebasejs/3.7.0/firebase.js"></script>--%>
-    <%-- <script>
-        // Initialize Firebase
-        var config = {
-            apiKey: "AIzaSyA3LGLgBNc9mxQEPDqSg9GzqKhsIUtW0lI",
-            authDomain: "dhub-4bd37.firebaseapp.com",
-            databaseURL: "https://dhub-4bd37.firebaseio.com",
-            storageBucket: "dhub-4bd37.appspot.com",
-            messagingSenderId: "495659137905"
-        };
-        firebase.initializeApp(config);
-    </script>--%>
-    <link href="bootstrap/css/bootstrap.3.3.6.css" rel="stylesheet" />
+
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
     <link rel="stylesheet" type="text/css" href="css/local.css" />
-    <%--<link href="css/bimsphere.css" rel="stylesheet" />--%>
+
 
     <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
     <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/plugins/bootbox.js"></script>
 
-    <!-- you need to include the shieldui css and js assets in order for the charts to work - DEMO VERSION -->
-    <link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light-bootstrap/all.min.css" />
-    <script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
-    <script type="text/javascript" src="http://www.prepbootstrap.com/Content/js/gridData.js"></script>
     <style>
         .post-container {
             overflow: auto;
@@ -73,19 +59,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-            <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" LoadScriptsBeforeUI="true" AsyncPostBackTimeout="360" EnableScriptGlobalization="true" EnableScriptLocalization="true" OnAsyncPostBackError="ToolkitScriptManager1_AsyncPostBackError">
-    </asp:ToolkitScriptManager>
-    <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="updPanelMain">
-        <ProgressTemplate>
-            <div id="divLoader">
-                <img alt="loader" class="centered_loader" src="images/circle_loader.gif" id="loading-indicator" />
-            </div>
-        </ProgressTemplate>
-    </asp:UpdateProgress>
-    <asp:UpdatePanel ID="updPanelMain" runat="server" UpdateMode="Always">
-        
-            <ContentTemplate>
-                <div id="wrapper">
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" LoadScriptsBeforeUI="true" AsyncPostBackTimeout="360" EnableScriptGlobalization="true" EnableScriptLocalization="true" OnAsyncPostBackError="ToolkitScriptManager1_AsyncPostBackError">
+        </asp:ToolkitScriptManager>
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="updPanelMain">
+            <ProgressTemplate>
+                <div id="divLoader" style="display: block">
+                    <img alt="loader" class="centered_loader" src="images/circle_loader.gif" id="loading-indicator" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+
+        <div id="wrapper">
+            <asp:UpdatePanel ID="updPanelMain" runat="server" UpdateMode="Always">
+                <ContentTemplate>
                     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
@@ -98,7 +84,7 @@
                                 <div class="post-thumb">
                                     <%--<img alt="logo" src="images/BIM.Sphere.Logo.PNG" style="width: 55px; height: auto; border: 0px" />--%>
                                 </div>
-                                <h3 class="post-title">&nbsp;Logical BIM</h3>
+                                <h3 class="post-title">&nbsp;</h3>
                             </div>
                         </div>
                         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -110,27 +96,6 @@
                                 <li><a href="ProductRegister.aspx"><i class="fa fa-cube"></i>&nbsp;Registrar Produto</a></li>
                             </ul>
                             <ul class="nav navbar-nav navbar-right navbar-user">
-                                <%-- <li class="dropdown messages-dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i>&nbsp;Messages <span class="badge">2</span> <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li class="dropdown-header">2 New Messages</li>
-                                <li class="message-preview">
-                                    <a href="#">
-                                        <span class="avatar"><i class="fa fa-bell"></i>&nbsp;</span>
-                                        <span class="message">Security alert</span>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li class="message-preview">
-                                    <a href="#">
-                                        <span class="avatar"><i class="fa fa-bell"></i>&nbsp;</span>
-                                        <span class="message">Security alert</span>
-                                    </a>
-                                </li>
-                                <li class="divider"></li>
-                                <li><a href="#">Go to Inbox <span class="badge">2</span></a></li>
-                            </ul>
-                        </li>--%>
                                 <li class="dropdown user-dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;<asp:Label ID="lblUser" runat="server" Text=""></asp:Label><b class="caret"></b></a>
                                     <ul class="dropdown-menu">
@@ -143,140 +108,33 @@
                             </ul>
                         </div>
                     </nav>
+                    <!-- /#navbar-menu -->
                     <div id="page-wrapper">
                         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
                         </asp:ContentPlaceHolder>
                     </div>
                     <!-- /#page-wrapper -->
-                </div>
-                <!-- /#wrapper -->
-            </ContentTemplate>
-        </asp:UpdatePanel>
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+        </div>
+        <!-- /#wrapper -->
     </form>
-    <!--
-        This section initializes the chart widgets and a grid component, 
-        which visualize records and allow sorting and paging. 
-        For more information visit: 
-        http://www.shieldui.com/documentation/javascript.chart/getting.started
-        http://www.shieldui.com/documentation/grid/javascript/getting.started
-        http://www.shieldui.com/documentation/datasource/javascript/getting.started
-    -->
-    <script type="text/javascript">
-        jQuery(function ($) {
-            var performance = [12, 43, 34, 22, 12, 33, 4, 17, 22, 34, 54, 67],
-                visits = [123, 323, 443, 32],
-                budget = [23, 19, 11, 134, 242, 352, 435, 22, 637, 445, 555, 57],
-                sales = [11, 9, 31, 34, 42, 52, 35, 22, 37, 45, 55, 57];
-
-            $("#shieldui-chart1").shieldChart({
-                primaryHeader: {
-                    text: "Visitors"
-                },
-                exportOptions: {
-                    image: false,
-                    print: false
-                },
-                dataSeries: [{
-                    seriesType: "area",
-                    collectionAlias: "Q Data",
-                    data: performance
-                }]
-            });
-
-            $("#shieldui-chart2").shieldChart({
-                primaryHeader: {
-                    text: "Logins Per week"
-                },
-                exportOptions: {
-                    image: false,
-                    print: false
-                },
-                seriesSettings: {
-                    donut: {
-                        enablePointSelection: true
-                    }
-                },
-                dataSeries: [{
-                    seriesType: "donut",
-                    collectionAlias: "logins",
-                    data: visits
-                }]
-            });
-
-            $("#shieldui-chart3").shieldChart({
-                primaryHeader: {
-                    text: "Budget"
-                },
-                dataSeries: [{
-                    seriesType: "line",
-                    collectionAlias: "Budget",
-                    data: budget
-                }]
-            });
-
-            $("#shieldui-chart4").shieldChart({
-                primaryHeader: {
-                    text: "Sales"
-                },
-                dataSeries: [{
-                    seriesType: "bar",
-                    collectionAlias: "sales",
-                    data: sales
-                }]
-            });
-
-            $("#shieldui-grid1").shieldGrid({
-                dataSource: {
-                    data: gridData
-                },
-                sorting: {
-                    multiple: true
-                },
-                paging: {
-                    pageSize: 12,
-                    pageLinksCount: 4
-                },
-                selection: {
-                    type: "row",
-                    multiple: true,
-                    toggle: false
-                },
-                columns: [
-                    { field: "id", width: "70px", title: "ID" },
-                    { field: "name", title: "Person Name" },
-                    { field: "company", title: "Company Name" },
-                    { field: "email", title: "Email Address", width: "270px" }
-                ]
-            });
-        });
-    </script>
-    <%-- <script>
-        firebase.auth().onAuthStateChanged(function (user) {
-            if (user) {
-                // User is signed in.
-                $('#<%=lblUser%>').val(user.name);
-            }
-            else {
-                // No user is signed in.
-                $('#<%=lblUser%>').val('Anônimo');
-            }
-        });
-    </script>--%>
 
     <script type="text/javascript">
-        ///* Bind asyc postbacks - Para quem usa ToolKit*/
-        //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
-        //Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+        /* Bind asyc postbacks - Para quem usa ToolKit*/
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+        Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
 
-        //// BEFORE POST BACK //
-        //function BeginRequestHandler(sender, args) {
-        //    $('.centered_loader').show();
-        //}
+        // BEFORE POST BACK //
+        function BeginRequestHandler(sender, args) {
+            $('.centered_loader').show();
+        }
 
-        //// AFTER POST BACK //    
-        //function EndRequestHandler(sender, args) {
-        //    $('.centered_loader').hide();
-        //}
+        // AFTER POST BACK //    
+        function EndRequestHandler(sender, args) {
+            $('.centered_loader').hide();
+        }
     </script>
 </body>
 </html>

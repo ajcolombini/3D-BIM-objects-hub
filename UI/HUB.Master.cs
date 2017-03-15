@@ -22,17 +22,32 @@ namespace UI
         {
             if (!IsPostBack)
             {
-                //FireBaseHelper _fb = new FireBaseHelper();
-
-
+                
                 
             }
         }
 
+
+        public void showMessage(string message, string title, AlertType type)
+        {
+            clsAlerts.bootstrapAlert(message, title, type, this.updPanelMain);
+        }
+
+        public void showConfirm(string message, string title)
+        {
+            clsAlerts.bootstrapConfirm(message, title, true, this.updPanelMain);
+        }
+
+        public void showConfirm(string message, string title, string callbackfunc)
+        {
+            clsAlerts.bootstrapConfirm(message, title, callbackfunc, this.updPanelMain);
+        }
+
+
         protected void ToolkitScriptManager1_AsyncPostBackError(object sender, AsyncPostBackErrorEventArgs e)
         {
             System.Web.UI.ScriptManager.RegisterStartupScript(this.updPanelMain, updPanelMain.GetType(), "HideLoader", "$('.centered_loader').hide();", true);
-            clsJQuery.jsAlert(e.Exception.ToString(), "ToolkitScriptManager1_AsyncPostBackError", jAlertType.Error, this.updPanelMain);
+            showMessage(e.Exception.ToString(), "ToolkitScriptManager1_AsyncPostBackError", AlertType.Error);
         }
     }
 }

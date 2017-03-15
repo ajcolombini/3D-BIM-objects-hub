@@ -88,7 +88,6 @@
     <Compile Include="clsFormPageUtil.cs" />
     <Compile Include="clsFTP.cs" />
     <Compile Include="clsHttpRequest.cs" />
-    <Compile Include="clsJQuery.cs" />
     <Compile Include="clsRegExValidateUtil.cs" />
     <Compile Include="clsTextUtil.cs" />
     <Compile Include="clsWebRequest.cs" />

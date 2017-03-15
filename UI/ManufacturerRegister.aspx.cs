@@ -28,8 +28,7 @@ namespace UI
 
             if (!IsPostBack)
             {
-                //this.Master.showMessage("TESTE", "Atenção", AlertType.Warning); 
-                //clsAlerts.bootstrapAlert("TESTE", "Aviso", AlertType.Error, this.Master.updPnlMaster);
+                
             }
         }
 
@@ -115,18 +114,14 @@ namespace UI
                     {
                         if (AsyncFileUpload1.PostedFile.ContentLength < 102400)
                         {
-                            //ViewState["FileName"] = AsyncFileUpload1.FileName;
                             lblFileName.Text = AsyncFileUpload1.FileName;
                             AsyncFileUpload1.PostedFile.SaveAs(Server.MapPath("~/tempfiles/") + lblFileName.Text);
-
                         }
                         else
                             lblErrorMsg.Text = "Aviso: Tamanho do arquivo deve ser até 100 kb.<br/>";
                     }
                     else
                         lblErrorMsg.Text = "Aviso: Extensão do arquivo inválida. Utilize apenas .png, .jpg ou .jpeg<br/>";
-
-
                 }
                 catch (Exception ex)
                 {
@@ -135,10 +130,7 @@ namespace UI
 
                 if (!string.IsNullOrEmpty(lblErrorMsg.Text))
                 {
-                   // clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Aviso", AlertType.Error, this.Master.updPnlMaster);
                     this.Master.showMessage(lblErrorMsg.Text, "Atenção", AlertType.Warning);
-                    //ViewState["FileName"] = null;
-                    //ViewState["FileName"] = string.Empty;
                 }
                 pnlError.Visible = !string.IsNullOrEmpty(lblErrorMsg.Text);
 
@@ -162,14 +154,6 @@ namespace UI
                 pnlError.Visible = true;
             }
         }
-
-        //protected void btnSaveFile_Click(object sender, EventArgs e)
-        //{
-        //    if (ViewState["FileName"]!=null)
-        //    {
-        //        txtFileName.Text = ViewState["FileName"].ToString();
-        //    }
-        //}
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {

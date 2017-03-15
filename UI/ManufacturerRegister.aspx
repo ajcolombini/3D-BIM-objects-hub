@@ -40,13 +40,12 @@
                         <div class="form-group row">
                             <label for="txtName" class="col-sm-2 col-form-label">Razão Social</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
-
-                                <asp:TextBox ID="txtName" class="form-control" runat="server" placeholder="Nome registrado no CNPJ"></asp:TextBox>
+                                <asp:TextBox ID="txtName" class="form-control" runat="server" placeholder="Nome registrado no CNPJ" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputNomeComercial" class="col-sm-2 col-form-label">Nome Comercial</label>
+                            <label for="txtFormalName" class="col-sm-2 col-form-label">Nome Comercial</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
 
                                 <asp:TextBox ID="txtFormalName" class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)"></asp:TextBox>
@@ -54,7 +53,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputSite" class="col-sm-2 col-form-label">Site</label>
+                            <label for="txtSite" class="col-sm-2 col-form-label">Site</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
 
                                 <asp:TextBox ID="txtSite" class="form-control" runat="server" placeholder="www.seusite.com"></asp:TextBox>
@@ -62,30 +61,29 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputSite" class="col-sm-2 col-form-label">Telefone</label>
+                            <label for="txtPhone" class="col-sm-2 col-form-label">Telefone</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
                                 <asp:TextBox ID="txtPhone" class="form-control" TextMode="Phone" runat="server" placeholder=""></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
+                            <label for="txtEmail" class="col-sm-2 col-form-label" >E-mail</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
 
-                                <asp:TextBox ID="txtEmail" class="form-control" TextMode="Email" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtEmail" class="form-control" TextMode="Email" runat="server" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Senha Administrador</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
-
-                                <asp:TextBox ID="txtPassword" class="form-control" TextMode="Password" runat="server"></asp:TextBox>
+                                <asp:TextBox ID="txtPassword" class="form-control" TextMode="Password" runat="server" required></asp:TextBox>
                             </div>
                         </div>
 
                         <fieldset class="form-group row">
-                            <label for="inputLogo" class="col-sm-2 col-form-label">Seu Logo</label>
+                            <label for="AsyncFileUpload1" class="col-sm-2 col-form-label">Seu Logo</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
                                 <%-- FILE UPLOAD--%>
                                 <div class="input-group">
@@ -174,47 +172,7 @@
 
     </script>
 
-    <script>
-
-        $(document).ready(function () {
-            $('.input-group input[required], .input-group textarea[required], .input-group select[required]').on('keyup change', function () {
-                var $form = $(this).closest('form'),
-            $group = $(this).closest('.input-group'),
-                        $addon = $group.find('.input-group-addon'),
-                        $icon = $addon.find('span'),
-                        state = false;
-
-                if (!$group.data('validate')) {
-                    state = $(this).val() ? true : false;
-                } else if ($group.data('validate') == "email") {
-                    state = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/.test($(this).val())
-                } else if ($group.data('validate') == 'phone') {
-                    state = /^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/.test($(this).val())
-                } else if ($group.data('validate') == "length") {
-                    state = $(this).val().length >= $group.data('length') ? true : false;
-                } else if ($group.data('validate') == "number") {
-                    state = !isNaN(parseFloat($(this).val())) && isFinite($(this).val());
-                }
-
-                if (state) {
-                    $addon.removeClass('danger');
-                    $addon.addClass('success');
-                    $icon.attr('class', 'glyphicon glyphicon-ok');
-                } else {
-                    $addon.removeClass('success');
-                    $addon.addClass('danger');
-                    $icon.attr('class', 'glyphicon glyphicon-remove');
-                }
-
-                if ($form.find('.input-group-addon.danger').length == 0) {
-                    $form.find('[type="submit"]').prop('disabled', false);
-                } else {
-                    $form.find('[type="submit"]').prop('disabled', true);
-                }
-            });
-        });
-
-    </script>
+    
 
 
 </asp:Content>

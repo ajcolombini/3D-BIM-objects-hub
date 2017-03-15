@@ -55,7 +55,7 @@
 
                         <div class="form-group row">
                             <label for="inputSite" class="col-sm-2 col-form-label">Site</label>
-                            <div class="col-sm-8 col-md-10 col-lg-12">
+                            <div class="col-sm-10 col-md-10 col-lg-12">
 
                                 <asp:TextBox ID="txtSite" class="form-control" runat="server" placeholder="www.seusite.com"></asp:TextBox>
                             </div>
@@ -63,14 +63,14 @@
 
                         <div class="form-group row">
                             <label for="inputSite" class="col-sm-2 col-form-label">Telefone</label>
-                            <div class="col-sm-8 col-md-10 col-lg-12">
+                            <div class="col-sm-10 col-md-10 col-lg-12">
                                 <asp:TextBox ID="txtPhone" class="form-control" TextMode="Phone" runat="server" placeholder=""></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
-                            <div class="col-sm-8 col-md-10 col-lg-12">
+                            <div class="col-sm-10 col-md-10 col-lg-12">
 
                                 <asp:TextBox ID="txtEmail" class="form-control" TextMode="Email" runat="server"></asp:TextBox>
                             </div>
@@ -78,7 +78,7 @@
 
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Senha Administrador</label>
-                            <div class="col-sm-8 col-md-10 col-lg-12">
+                            <div class="col-sm-10 col-md-10 col-lg-12">
 
                                 <asp:TextBox ID="txtPassword" class="form-control" TextMode="Password" runat="server"></asp:TextBox>
                             </div>
@@ -86,7 +86,7 @@
 
                         <fieldset class="form-group row">
                             <label for="inputLogo" class="col-sm-2 col-form-label">Seu Logo</label>
-                            <div class="col-sm-8 col-md-10 col-lg-12">
+                            <div class="col-sm-10 col-md-10 col-lg-12">
                                 <%-- FILE UPLOAD--%>
                                 <div class="input-group">
                                     <span class="input-group-btn">
@@ -124,7 +124,7 @@
         </div>
         <div class="row">
             <asp:Panel ID="pnlError" runat="server" Visible="false">
-                <div class="col-sm-8 col-md-10 col-lg-12">
+                <div class="col-sm-12 col-md-10 col-lg-8">
                     <div id="divError" class="alert alert-dismissable alert-danger">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Atenção</strong>
@@ -135,7 +135,7 @@
         </div>
         <div class="row">
             <asp:Panel ID="pnlInfo" runat="server" Visible="false">
-                <div class="col-sm-8 col-md-10 col-lg-12">
+                <div class="col-sm-12 col-md-10 col-lg-8">
                     <div id="divInfo" class="alert alert-dismissable alert-info">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Aviso</strong>
@@ -146,7 +146,7 @@
         </div>
         <div class="row">
             <asp:Panel ID="pnlSuccess" runat="server" Visible="false">
-                <div class="col-sm-8 col-md-10 col-lg-12">
+                <div class="col-sm-12 col-md-10 col-lg-8">
                     <div id="divSuccess" class="alert alert-dismissable alert-success">
                         <button type="button" class="close" data-dismiss="alert">&times;</button>
                         <strong>Aviso</strong>

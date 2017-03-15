@@ -296,6 +296,10 @@
       <Project>{C2853BA1-FE9A-4F1E-8F1F-5357B5E237F8}</Project>
       <Name>Framework.Security</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Framework.Util\Framework.Util.csproj">
+      <Project>{316C31A0-0E22-4D81-A327-D075FDAB1BDF}</Project>
+      <Name>Framework.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

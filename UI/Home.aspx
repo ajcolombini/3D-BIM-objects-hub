@@ -16,61 +16,64 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="input-group input-group-lg">
-                <asp:TextBox ID="txtBusca" cssClass="form-control" type="text" placeholder="Fabricante, Modelo, Código ..." runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtBusca" CssClass="form-control" type="text" placeholder="Fabricante, Modelo, Código ..." runat="server"></asp:TextBox>
                 <span class="input-group-btn">
-                    <asp:Button ID="btnBuscar" cssClass="btn btn-success" runat="server"  Text="Buscar" OnClick="btnBuscar_Click" />
+                    <asp:Button ID="btnBuscar" CssClass="btn btn-success" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
                 </span>
             </div>
             <!-- /input-group -->
         </div>
     </div>
-    <br/>
+    <br />
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                    <h3 class="panel-title"><i class="fa fa-bar-chart-o"></i>Resultados</h3>
-                </div>
-                <div class="panel-body">
+            <asp:Panel ID="pnlResults" runat="server" Visible="false">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><i class="fa fa-grid"></i>Resultados</h3>
+                    </div>
                     <!-- Table -->
-                    <asp:GridView ID="gvwResults" runat="server" class="table table-responsive"></asp:GridView>
+                    <div class="panel-body">
+                        <asp:GridView ID="gvwResults" runat="server" class="table table-responsive table-hover"></asp:GridView>
+                    </div>
+
                 </div>
-            </div>
+            </asp:Panel>
         </div>
     </div>
     <!-- /.row -->
-     <div class="row">
-            <asp:Panel ID="pnlError" runat="server" Visible="false">
-                <div class="col-sm-8 col-md-10 col-lg-12">
-                    <div id="divError" class="alert alert-dismissable alert-danger">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Atenção</strong>
-                        <asp:Label ID="lblErrorMsg" runat="server" Text=""></asp:Label>
-                    </div>
+    <div class="row">
+        <asp:Panel ID="pnlError" runat="server" Visible="false">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div id="divError" class="alert alert-dismissable alert-danger">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Atenção</strong>
+                    <asp:Label ID="lblErrorMsg" runat="server" Text=""></asp:Label>
                 </div>
-            </asp:Panel>
-        </div>
-        <div class="row">
-            <asp:Panel ID="pnlInfo" runat="server" Visible="false">
-                <div class="col-sm-8 col-md-10 col-lg-12">
-                    <div id="divInfo" class="alert alert-dismissable alert-info">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Aviso</strong>
-                        <asp:Label ID="lblInfoMsg" runat="server" Text=""></asp:Label>
-                    </div>
+            </div>
+        </asp:Panel>
+    </div>
+    <div class="row">
+        <asp:Panel ID="pnlInfo" runat="server" Visible="false">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div id="divInfo" class="alert alert-dismissable alert-info">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Aviso</strong>
+                    <asp:Label ID="lblInfoMsg" runat="server" Text=""></asp:Label>
                 </div>
-            </asp:Panel>
-        </div>
-        <div class="row">
-            <asp:Panel ID="pnlSuccess" runat="server" Visible="false">
-                <div class="col-sm-8 col-md-10 col-lg-12">
-                    <div id="divSuccess" class="alert alert-dismissable alert-success">
-                        <button type="button" class="close" data-dismiss="alert">&times;</button>
-                        <strong>Aviso</strong>
-                        <asp:Label ID="lblSuccessMsg" runat="server" Text=""></asp:Label>
-                    </div>
+            </div>
+        </asp:Panel>
+    </div>
+    <div class="row">
+        <asp:Panel ID="pnlSuccess" runat="server" Visible="false">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+                <div id="divSuccess" class="alert alert-dismissable alert-success">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong>Aviso</strong>
+                    <asp:Label ID="lblSuccessMsg" runat="server" Text=""></asp:Label>
                 </div>
-            </asp:Panel>
-        </div>
+            </div>
+        </asp:Panel>
+    </div>
 </asp:Content>

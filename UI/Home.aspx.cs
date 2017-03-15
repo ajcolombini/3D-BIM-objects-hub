@@ -38,6 +38,17 @@ namespace UI
 
                 gvwResults.DataSource = _lstFabricantes;
                 gvwResults.DataBind();
+                pnlResults.Visible = _lstFabricantes.Count > 0;
+
+                if(_lstFabricantes.Count == 0)
+                {
+                    lblInfoMsg.Text = "Sem Resultados para a Busca.";
+                    pnlInfo.Visible = true;
+                }else
+                {
+                    lblInfoMsg.Text = string.Empty;
+                    pnlInfo.Visible = false;
+                }
                 
             }
             catch (AggregateException aEx)

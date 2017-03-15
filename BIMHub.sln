@@ -21,8 +21,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIM.BLL", "BIM.BLL\BIM.BLL.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIM.DAL", "BIM.DAL\BIM.DAL.csproj", "{2ED07E57-CAEE-4140-B6DA-972259097072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BIM.Util", "BIM.Util\BIM.Util.csproj", "{64BB77EF-E478-4EAC-A8AA-6BAD8BDED723}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,10 +63,6 @@ Global
 		{2ED07E57-CAEE-4140-B6DA-972259097072}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2ED07E57-CAEE-4140-B6DA-972259097072}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2ED07E57-CAEE-4140-B6DA-972259097072}.Release|Any CPU.Build.0 = Release|Any CPU
-		{64BB77EF-E478-4EAC-A8AA-6BAD8BDED723}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{64BB77EF-E478-4EAC-A8AA-6BAD8BDED723}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{64BB77EF-E478-4EAC-A8AA-6BAD8BDED723}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{64BB77EF-E478-4EAC-A8AA-6BAD8BDED723}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -27,20 +27,20 @@
     </style>
     <div class="float-container">
         <div class="row">
-            <div class="row">
-                <div class="col-lg-12">
-                    <h3>Fabricantes </h3>
-                </div>
+            <div class="col-lg-12">
+                <h3>Fabricantes </h3>
             </div>
+        </div>
+        <div class="row">
             <div class="col-sm-12 col-md-10 col-lg-8">
                 <div class="panel panel-default">
-                  
+
                     <div class="panel-body">
 
                         <div class="form-group row">
                             <label for="txtName" class="col-sm-2 col-form-label">Razão Social</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
-                              
+
                                 <asp:TextBox ID="txtName" class="form-control" runat="server" placeholder="Nome registrado no CNPJ"></asp:TextBox>
                             </div>
                         </div>
@@ -48,7 +48,7 @@
                         <div class="form-group row">
                             <label for="inputNomeComercial" class="col-sm-2 col-form-label">Nome Comercial</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
-                              
+
                                 <asp:TextBox ID="txtFormalName" class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)"></asp:TextBox>
                             </div>
                         </div>
@@ -56,7 +56,7 @@
                         <div class="form-group row">
                             <label for="inputSite" class="col-sm-2 col-form-label">Site</label>
                             <div class="col-sm-8 col-md-10 col-lg-12">
-                               
+
                                 <asp:TextBox ID="txtSite" class="form-control" runat="server" placeholder="www.seusite.com"></asp:TextBox>
                             </div>
                         </div>
@@ -71,7 +71,7 @@
                         <div class="form-group row">
                             <label for="inputEmail" class="col-sm-2 col-form-label">E-mail</label>
                             <div class="col-sm-8 col-md-10 col-lg-12">
-                              
+
                                 <asp:TextBox ID="txtEmail" class="form-control" TextMode="Email" runat="server"></asp:TextBox>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Senha Administrador</label>
                             <div class="col-sm-8 col-md-10 col-lg-12">
-                              
+
                                 <asp:TextBox ID="txtPassword" class="form-control" TextMode="Password" runat="server"></asp:TextBox>
                             </div>
                         </div>
@@ -93,10 +93,10 @@
                                         <label class="btn btn-default btn-sm btn-file">
                                             Selecione
                                         <asp:AsyncFileUpload runat="server" ID="AsyncFileUpload1" OnUploadedComplete="AsyncFileUpload1_UploadedComplete"
-                                            OnUploadedFileError="AsyncFileUpload1_UploadedFileError"  ClientIDMode="AutoID" />
+                                            OnUploadedFileError="AsyncFileUpload1_UploadedFileError" ClientIDMode="AutoID" />
                                         </label>
                                     </span>
-                                    <asp:TextBox ID="lblFileName" class="form-control input-sm" Enabled="true" runat="server" ></asp:TextBox>
+                                    <asp:TextBox ID="lblFileName" class="form-control input-sm" Enabled="true" runat="server"></asp:TextBox>
                                     <span class="input-group-btn">
                                         <asp:Button ID="btnCancel" runat="server" class="btn btn-danger btn-sm" OnClick="btnDelFile_Click"
                                             Text="Cancele" Enabled="true" />
@@ -107,11 +107,10 @@
                                     Anexar Arquivo <small>(arquivos .gif .jpeg ou .png de até 100kb):</small>
                                 </div>
                             </div>
-                            
+
                         </fieldset>
 
                         <div class="form-group row">
-                            
                         </div>
 
                         <div class="form-group row">
@@ -159,7 +158,7 @@
     </div>
     <script>
 
-        <%-- //Mostra arquivo uploaded
+        <%-- //Mostra arquivo uploaded--%>
         $(document).on('change', ":file", function () {
             var input = $(this),
                 numFiles = input.get(0).files ? input.get(0).files.length : 1,
@@ -168,35 +167,14 @@
         });
 
         $(document).ready(function () {
-            $('#<%=fileUploadLogo.ClientID%>').on('fileselect', function (event, numFiles, label) {
-                $('#<%=txtFileName.ClientID%>').val(label);
-
-                //PostBack clickEvent for btnSaveFile
-                <%= ClientScript.GetPostBackEventReference(btnSaveFile, string.Empty) %>;
-            });
-        });--%>
-    </script>
-    <script type="text/javascript">
-        /* Bind asyc postbacks - Para quem usa ToolKit*/
-        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
-        Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
-
-        // BEFORE POST BACK //
-        function BeginRequestHandler(sender, args) {
-            $('.centered_loader').show();
-        }
-
-        // AFTER POST BACK //    
-        function EndRequestHandler(sender, args) {
-            $('.centered_loader').hide();
-
-            $('#ContentPlaceHolder1_fileUploadLogo').on('fileselect', function (event, numFiles, label) {
-                $('#ContentPlaceHolder1_txtFileName').val(label);
+            $('#<%=AsyncFileUpload1.ClientID%>').on('fileselect', function (event, numFiles, label) {
+                $('#<%=lblFileName.ClientID%>').val(label);
 
                 //PostBack clickEvent for btnSaveFile
                 __doPostBack('ctl00$ContentPlaceHolder1$btnSaveFile', '');
+
             });
-        }
+        });
     </script>
 
 </asp:Content>

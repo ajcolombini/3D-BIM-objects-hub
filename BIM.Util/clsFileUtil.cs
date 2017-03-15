@@ -151,6 +151,31 @@ namespace ACE.Util
             }
         }
 
+
+        /// <summary>
+        /// MoveFiles [OVERLOADED] - Moves files to 'targetPath' (Exclude from 'sourcePath')
+        /// </summary>
+        /// <param name="fileName">File Name</param>
+        /// <param name="targetPath">Destination Path</param>
+        /// <param name="sourcePath">Source Path</param>
+        public static void MoveFilesX(string fileName, string targetPath, string sourcePath)
+        {
+            try
+            {
+                if (Directory.Exists(targetPath) && Directory.Exists(sourcePath))
+                {
+                    // Use Path class to manipulate file and directory paths.
+                    string sourceFile = System.IO.Path.Combine(sourcePath, fileName);
+                    string destFile = System.IO.Path.Combine(targetPath, fileName);
+                    // To copy a file to another location and 
+                    // overwrite the destination file if it already exists.
+                    File.Copy(sourceFile, destFile, true);
+                    File.Delete(sourceFile);
+                }
+            }
+            catch (Exception ex) { throw new Exception(ex.Message); }
+        }
+
         /// <summary>
         /// Renames a file and moves it to another directory
         /// </summary>
@@ -280,6 +305,28 @@ namespace ACE.Util
                 validatedName += _extension;
             }
             return validatedName;
+        }
+
+        /// <summary>
+        /// DownloadFile - Para Arquivos Web
+        /// </summary>
+        /// <param name="Arquivo">string com caminho do arquivo.</param>
+        public static void DownloadFileForWeb(string Arquivo)
+        {
+            HttpContext.Current.Response.Clear();
+            HttpContext.Current.Response.Charset = "iso-8859-1";
+            HttpContext.Current.Response.ContentEncoding = System.Text.Encoding.GetEncoding("iso-8859-1");
+            HttpContext.Current.Response.HeaderEncoding = System.Text.Encoding.GetEncoding("iso-8859-1");
+            HttpContext.Current.Response.AppendHeader("content-disposition", "attachment; filename=" + System.IO.Path.GetFileName(Arquivo.Replace(" ", "")));
+            HttpContext.Current.Response.ContentType = "application/octet-stream";
+
+
+            if (File.Exists(Arquivo))
+            {
+                HttpContext.Current.Response.WriteFile(Arquivo);
+                HttpContext.Current.Response.End();
+            }
+
         }
     }
 }

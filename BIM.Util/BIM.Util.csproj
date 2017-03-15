@@ -83,10 +83,8 @@
   <ItemGroup>
     <Compile Include="clsControlsUtil.cs" />
     <Compile Include="clsCryptionUtil.cs" />
-    <Compile Include="clsEMail.cs" />
     <Compile Include="clsFileUtil.cs" />
     <Compile Include="clsFormPageUtil.cs" />
-    <Compile Include="clsFTP.cs" />
     <Compile Include="clsHttpRequest.cs" />
     <Compile Include="clsRegExValidateUtil.cs" />
     <Compile Include="clsTextUtil.cs" />

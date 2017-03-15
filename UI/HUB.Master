@@ -63,8 +63,8 @@
         </asp:ToolkitScriptManager>
         <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="updPanelMain">
             <ProgressTemplate>
-                <div id="divLoader" style="display: block">
-                    <img alt="loader" class="centered_loader" src="images/circle_loader.gif" id="loading-indicator" />
+                <div id="divLoader">
+                    <img alt="loader" class="centered_loader" src="images/circle_loader1.gif" id="loading-indicator" />
                 </div>
             </ProgressTemplate>
         </asp:UpdateProgress>

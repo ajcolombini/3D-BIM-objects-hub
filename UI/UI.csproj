@@ -152,6 +152,11 @@
     <Content Include="images\BIM.sphere.png" />
     <Content Include="images\BIMHub.PNG" />
     <Content Include="images\circle_loader.gif" />
+    <Content Include="images\circle_loader1.gif" />
+    <Content Include="images\fancybox\blank.gif" />
+    <Content Include="images\fancybox\fancybox_buttons.png" />
+    <Content Include="images\fancybox\fancybox_loading.gif" />
+    <Content Include="images\fancybox\fancybox_sprite.png" />
     <Content Include="js\jquery.qtip.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
     <Content Include="ManufacturerRegister.aspx" />
@@ -275,7 +280,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="images\fancybox\" />
     <Folder Include="obj\Debug\TempPE\" />
     <Folder Include="tempFiles\" />
   </ItemGroup>

@@ -1,10 +1,11 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HUB.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="UI.Dashboard" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
-        <div class="row">
+    <div class="row">
         <div class="col-lg-12">
             <h1>Painel Controle <small>Administração</small></h1>
-            
+
         </div>
     </div>
     <div class="row">

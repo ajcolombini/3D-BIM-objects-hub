@@ -69,13 +69,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsControlsUtil.cs" />
+    <Compile Include="clsCryptionUtil.cs" />
     <Compile Include="clsEmailUtil.cs" />
+    <Compile Include="clsFileUtil.cs" />
+    <Compile Include="clsFormPageUtil.cs" />
     <Compile Include="clsFTPUtil.cs" />
+    <Compile Include="clsHttpRequest.cs" />
     <Compile Include="clsImageUtil.cs" />
     <Compile Include="clsRegExValidateUtil.cs" />
-    <Compile Include="clsFileUtil.cs" />
     <Compile Include="clsTextoUtil.cs" />
+    <Compile Include="clsTextUtil.cs" />
     <Compile Include="clsValidationUtil.cs" />
+    <Compile Include="clsWebRequest.cs" />
     <Compile Include="clsXMLUtil.cs" />
     <Compile Include="Enumeradores.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

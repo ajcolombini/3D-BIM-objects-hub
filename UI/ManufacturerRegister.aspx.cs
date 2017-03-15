@@ -28,8 +28,8 @@ namespace UI
 
             if (!IsPostBack)
             {
-
-
+                //this.Master.showMessage("TESTE", "Atenção", AlertType.Warning); 
+                //clsAlerts.bootstrapAlert("TESTE", "Aviso", AlertType.Error, this.Master.updPnlMaster);
             }
         }
 
@@ -147,9 +147,7 @@ namespace UI
         #endregion
 
         #region AsyncFileUpload Buttons
-
-
-
+            
         protected void AsyncFileUpload1_UploadedComplete(object sender, AsyncFileUploadEventArgs e)
         {
             if (AsyncFileUpload1.HasFile)
@@ -180,8 +178,8 @@ namespace UI
 
                 if (!string.IsNullOrEmpty(lblErrorMsg.Text))
                 {
-                    clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Aviso", AlertType.Error, this.Page);
-                    //clsJQuery.jsAlert(lblErrorMsg.Text, "Aviso", jAlertType.Error, this.Master.updPnlMaster);
+                   // clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Aviso", AlertType.Error, this.Master.updPnlMaster);
+                    this.Master.showMessage(lblErrorMsg.Text, "Atenção", AlertType.Warning);
                     ViewState["FileName"] = null;
                     ViewState["FileName"] = string.Empty;
                 }

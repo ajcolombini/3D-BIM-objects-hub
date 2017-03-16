@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BIM.Model;
+using BIM.BLL;
 
 namespace UI
 {
@@ -11,7 +13,16 @@ namespace UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                CarregaFamilias();
+                
+            }
+        }
 
+        private void CarregaFamilias()
+        {
+            
         }
     }
 }

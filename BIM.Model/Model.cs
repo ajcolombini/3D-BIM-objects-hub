@@ -67,6 +67,32 @@ namespace BIM.Model
         }
     }
 
-   
+
+    [Serializable]
+    public class Familia : IDisposable
+    {
+        public int Id { get; set; }
+        public string Descricao { get; set; }
+        public bool Ativo { get; set; }
+
+        public void Dispose()
+        {
+        }
+    }
+
+
+    [Serializable]
+    public class Subtipo : IDisposable
+    {
+        public int Id { get; set; }
+        public string Descricao { get; set; }
+        public bool Ativo { get; set; }
+
+        public void Dispose()
+        {
+        }
+    }
+
+
 
 }

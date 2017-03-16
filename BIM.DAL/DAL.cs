@@ -18,7 +18,7 @@ namespace BIM.DAL
     }
 
     #region Fabricante
-    public static class ManufacturerDAO
+    public static class FabricanteDAO
     {
         
         public static List<Fabricante> FindAll()
@@ -91,7 +91,7 @@ namespace BIM.DAL
     #endregion
 
     #region Produto
-    public static class ProductDAO
+    public static class ProdutoDAO
     {
         public static List<Produto> FindAll()
         {
@@ -199,10 +199,9 @@ namespace BIM.DAL
       
     }
     #endregion
-
-
+    
     #region Documento
-    public static class DocumentDAO
+    public static class DocumentoDAO
     {
         public static List<Documento> FindAll()
         { 
@@ -279,6 +278,133 @@ namespace BIM.DAL
 
         //    clsCrudGenericDAO.Update("[spSetDocumento]", _paramList);
         //}
+    }
+    #endregion
+
+    #region Familia
+    public static class FamiliaDAO
+    {
+        public static List<Familia> FindAll()
+        {
+            return clsCrudGenericDAO.FindAll<Familia>("[spGetFamilia]", null);
+        }
+
+        public static List<Familia> FindAny(Familia oFamilia)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("@Nome", oFamilia.Descricao),
+                new SqlParameter("@Ativo", oFamilia.Ativo)
+            };
+
+            return clsCrudGenericDAO.FindAny<Familia>("[spGetFamilia]", _paramList);
+        }
+
+        public static Familia FindId(Guid Id)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>() { (new SqlParameter("@Id", Id)) };
+            return clsCrudGenericDAO.FindId<Familia>("[spGetFamilia]", _paramList);
+        }
+
+        public static Guid Insert(Familia oFamilia)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("@Descricao", oFamilia.Descricao),
+                new SqlParameter("@Ativo", oFamilia.Ativo)
+            };
+
+            return clsCrudGenericDAO.InsertAndReturnGuid("[spSetFamilia]", _paramList);
+        }
+
+        public static void Delete(Familia oFamilia)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("OpType", (int)OperatinType.Delete),
+                new SqlParameter("@Id", oFamilia.Id)
+            };
+
+            clsCrudGenericDAO.Delete("[spSetFamilia]", _paramList);
+        }
+
+        public static void Update(Familia oFamilia)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("OpType", (int)OperatinType.Update),
+                new SqlParameter("@Id", oFamilia.Id),
+                new SqlParameter("@Nome", oFamilia.Descricao),
+                new SqlParameter("@Ativo", oFamilia.Ativo)
+            };
+
+            clsCrudGenericDAO.Update("[spSetFamilia]", _paramList);
+        }
+
+    }
+    #endregion
+
+
+    #region Subtipo
+    public static class SubtipoDAO
+    {
+        public static List<Subtipo> FindAll()
+        {
+            return clsCrudGenericDAO.FindAll<Subtipo>("[spGetSubtipo]", null);
+        }
+
+        public static List<Subtipo> FindAny(Subtipo oSubtipo)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("@Nome", oSubtipo.Descricao),
+                new SqlParameter("@Ativo", oSubtipo.Ativo)
+            };
+
+            return clsCrudGenericDAO.FindAny<Subtipo>("[spGetSubtipo]", _paramList);
+        }
+
+        public static Subtipo FindId(Guid Id)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>() { (new SqlParameter("@Id", Id)) };
+            return clsCrudGenericDAO.FindId<Subtipo>("[spGetSubtipo]", _paramList);
+        }
+
+        public static Guid Insert(Subtipo oSubtipo)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("@Descricao", oSubtipo.Descricao),
+                new SqlParameter("@Ativo", oSubtipo.Ativo)
+            };
+
+            return clsCrudGenericDAO.InsertAndReturnGuid("[spSetSubtipo]", _paramList);
+        }
+
+        public static void Delete(Subtipo oSubtipo)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("OpType", (int)OperatinType.Delete),
+                new SqlParameter("@Id", oSubtipo.Id)
+            };
+
+            clsCrudGenericDAO.Delete("[spSetSubtipo]", _paramList);
+        }
+
+        public static void Update(Subtipo oSubtipo)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("OpType", (int)OperatinType.Update),
+                new SqlParameter("@Id", oSubtipo.Id),
+                new SqlParameter("@Nome", oSubtipo.Descricao),
+                new SqlParameter("@Ativo", oSubtipo.Ativo)
+            };
+
+            clsCrudGenericDAO.Update("[spSetSubtipo]", _paramList);
+        }
+
     }
     #endregion
 

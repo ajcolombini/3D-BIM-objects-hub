@@ -12,64 +12,64 @@ namespace BIM.BLL
     {
         public static List<Fabricante> FindAll()
         {
-            return ManufacturerDAO.FindAll();
+            return FabricanteDAO.FindAll();
         }
 
         public static List<Fabricante> FindAny(Fabricante oManufacturer)
         {
-            return ManufacturerDAO.FindAny(oManufacturer);
+            return FabricanteDAO.FindAny(oManufacturer);
         }
 
         public static Fabricante FindId(Guid Id)
         {
-            return ManufacturerDAO.FindId(Id);
+            return FabricanteDAO.FindId(Id);
         }
 
         public static Guid Insert(Fabricante oManufacturer)
         {
-           return ManufacturerDAO.Insert(oManufacturer);
+           return FabricanteDAO.Insert(oManufacturer);
         }
 
         public static void Delete(Fabricante oManufacturer)
         {
-            ManufacturerDAO.Delete(oManufacturer);
+            FabricanteDAO.Delete(oManufacturer);
         }
 
         public static void Update(Fabricante oManufacturer)
         {
-            ManufacturerDAO.Update(oManufacturer);
+            FabricanteDAO.Update(oManufacturer);
         }
     }
 
     public static class ProductBLO {
         public static List<Produto> FindAll()
         {
-            return ProductDAO.FindAll();
+            return ProdutoDAO.FindAll();
         }
 
         public static List<Produto> FindAny(Produto oProduct)
         {
-            return ProductDAO.FindAny(oProduct);
+            return ProdutoDAO.FindAny(oProduct);
         }
 
         public static Produto FindId(Guid Id)
         {
-            return ProductDAO.FindId(Id);
+            return ProdutoDAO.FindId(Id);
         }
 
         public static Guid Insert(Produto oProduct)
         {
-            return ProductDAO.Insert(oProduct);
+            return ProdutoDAO.Insert(oProduct);
         }
 
         public static void Delete(Produto oProduct)
         {
-            ProductDAO.Delete(oProduct);
+            ProdutoDAO.Delete(oProduct);
         }
 
         public static void Update(Produto oProduct)
         {
-            ProductDAO.Update(oProduct);
+            ProdutoDAO.Update(oProduct);
         }
 
     }
@@ -78,17 +78,17 @@ namespace BIM.BLL
 
         public static List<Documento> FindAll()
         {
-            return DocumentDAO.FindAll();
+            return DocumentoDAO.FindAll();
         }
 
         public static List<Documento> FindAny(Documento oDocument)
         {
-            return DocumentDAO.FindAny(oDocument);
+            return DocumentoDAO.FindAny(oDocument);
         }
 
         public static Documento FindId(Guid Id)
         {
-            return DocumentDAO.FindId(Id);
+            return DocumentoDAO.FindId(Id);
         }
 
         //public static Guid Insert(Document oDocument)

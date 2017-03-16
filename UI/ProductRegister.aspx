@@ -8,6 +8,9 @@
     <script src="bootstrap/js/plugins/fileinput.js"></script>
     <script src="bootstrap/js/plugins/locales/pt-BR.js"></script>
     <link href="css/fileinput.min.css" rel="stylesheet" />
+    <%--Tema--%>
+    <link href="bootstrap/js/themes/explorer/theme.css" rel="stylesheet" />
+    <script src="bootstrap/js/themes/explorer/theme.js"></script>
     <!-- /FILEUPLOAD: load the JS files in the right order -->
 
     <div class="float-container">
@@ -161,6 +164,7 @@
                             <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
                             <label class="control-label">Selecione o(s) Arquivo(s)</label>
                             <input id="input-pt-br" name="inputptbr[]" type="file" multiple class="file-loading">
+                            <div><small>Máximo 5 arquivos por vez.</small></div>
                         </div>
 
 
@@ -219,7 +223,10 @@
     <script>
         $("#input-pt-br").fileinput({
             language: "pt-BR",
-            uploadAsync: false,
+            theme: "explorer",
+            fileTypeSettings:["object"],
+            uploadAsync: true,
+            initialPreviewAsData: true,
             minFileCount: 1,
             maxFileCount: 5,
             uploadUrl: "FileUploadReceiver.ashx",

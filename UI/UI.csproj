@@ -140,6 +140,18 @@
     <Content Include="bootstrap\js\plugins\gridviewScroll.js" />
     <Content Include="bootstrap\js\plugins\jquery.dropdown.min.js" />
     <Content Include="bootstrap\js\plugins\jquery.mask.min.js" />
+    <Content Include="bootstrap\js\plugins\locales\pt-BR.js" />
+    <Content Include="bootstrap\js\plugins\plugins\canvas-to-blob.js" />
+    <Content Include="bootstrap\js\plugins\plugins\canvas-to-blob.min.js" />
+    <Content Include="bootstrap\js\plugins\plugins\purify.js" />
+    <Content Include="bootstrap\js\plugins\plugins\purify.min.js" />
+    <Content Include="bootstrap\js\plugins\plugins\sortable.js" />
+    <Content Include="bootstrap\js\plugins\plugins\sortable.min.js" />
+    <Content Include="bootstrap\js\themes\explorer\theme.css" />
+    <Content Include="bootstrap\js\themes\explorer\theme.js" />
+    <Content Include="bootstrap\js\themes\fa\theme.js" />
+    <Content Include="bootstrap\js\themes\gly\theme.js" />
+    <Content Include="css\fileinput.min.css" />
     <Content Include="css\local.css" />
     <Content Include="css\navigation.css" />
     <Content Include="Dashboard.aspx" />
@@ -162,7 +174,10 @@
     <Content Include="images\fancybox\fancybox_buttons.png" />
     <Content Include="images\fancybox\fancybox_loading.gif" />
     <Content Include="images\fancybox\fancybox_sprite.png" />
-    <Content Include="js\jquery.qtip.js" />
+    <Content Include="images\loading-sm.gif" />
+    <Content Include="images\loading.gif" />
+    <Content Include="bootstrap\js\plugins\fileinput.js" />
+    <Content Include="bootstrap\js\plugins\jquery.qtip.js" />
     <Content Include="js\jquery-1.10.2.min.js" />
     <Content Include="ManufacturerRegister.aspx" />
     <Content Include="packages.config" />
@@ -209,6 +224,7 @@
     <Content Include="font-awesome\scss\_spinning.scss" />
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
+    <Content Include="FileUploadReceiver.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -235,6 +251,9 @@
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FileUploadReceiver.ashx.cs">
+      <DependentUpon>FileUploadReceiver.ashx</DependentUpon>
     </Compile>
     <Compile Include="Home.aspx.cs">
       <DependentUpon>Home.aspx</DependentUpon>
@@ -286,7 +305,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="tempFiles\" />
+    <Folder Include="tempFiles\Families\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BIM.BLL\BIM.BLL.csproj">

@@ -4,7 +4,11 @@
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-
+    <!-- FILEUPLOAD: load the JS files in the right order -->
+    <script src="bootstrap/js/plugins/fileinput.js"></script>
+    <script src="bootstrap/js/plugins/locales/pt-BR.js"></script>
+    <link href="css/fileinput.min.css" rel="stylesheet" />
+    <!-- /FILEUPLOAD: load the JS files in the right order -->
 
     <div class="float-container">
         <div class="row">
@@ -60,12 +64,12 @@
                             </div>
                         </div>
 
-                        <div class="form-group row">
+                        <%--<div class="form-group row">
                             <label for="ddlCategoria" class="col-sm-2 col-form-label">Categoria</label>
                             <div class="col-sm-8 col-md-6 col-lg-6">
                                 <asp:DropDownList ID="ddlCategoria" runat="server" CssClass="form-control"></asp:DropDownList>
                             </div>
-                        </div>
+                        </div>--%>
 
                         <div class="form-group row">
                             <label for="inputPassword" class="col-sm-2 col-form-label">Subgrupo</label>
@@ -79,6 +83,7 @@
                             <div class="col-sm-8 col-md-6 col-lg-4">
                                 <div class="dropdown">
                                     <asp:DropDownList ID="ddlVoltagem" runat="server" CssClass="form-control">
+                                        <asp:ListItem Text="N/A" Value="0"></asp:ListItem>
                                         <asp:ListItem Text="110 V" Value="110"></asp:ListItem>
                                         <asp:ListItem Text="220 V" Value="220"></asp:ListItem>
                                     </asp:DropDownList>
@@ -90,6 +95,7 @@
                             <label for="ddlClasseConsumo" class="col-sm-2 col-form-label">Classificação Consumo PROCEL</label>
                             <div class="col-sm-8 col-md-6 col-lg-4">
                                 <asp:DropDownList ID="ddlClasseConsumo" runat="server" CssClass="form-control">
+                                    <asp:ListItem Text="N/A" Value=""></asp:ListItem>
                                     <asp:ListItem Text="Classe A" Value="A"></asp:ListItem>
                                     <asp:ListItem Text="Classe B" Value="B"></asp:ListItem>
                                     <asp:ListItem Text="Classe C" Value="C"></asp:ListItem>
@@ -151,31 +157,12 @@
                             </div>
                         </div>
 
-                        <%--<fieldset class="form-group row">
-                            <label for="AsyncFileUpload1" class="col-sm-2 col-form-label">Seu Logo</label>
-                            <div class="col-sm-10 col-md-10 col-lg-12">
-                               
-                                <div class="input-group">
-                                    <span class="input-group-btn">
-                                        <label class="btn btn-default btn-sm btn-file">
-                                            Selecione
-                                        <asp:AsyncFileUpload runat="server" ID="AsyncFileUpload1" OnUploadedComplete="AsyncFileUpload1_UploadedComplete"
-                                            OnUploadedFileError="AsyncFileUpload1_UploadedFileError" ClientIDMode="AutoID" />
-                                        </label>
-                                    </span>
-                                    <asp:Label ID="lblFileName" class="form-control input-sm" runat="server" Text=""></asp:Label>
-                                    <span class="input-group-btn">
-                                        <asp:Button ID="btnCancel" runat="server" class="btn btn-danger btn-sm" OnClick="btnCancel_Click"
-                                            Text="Cancele" Enabled="true" />
-                                    </span>
-                                </div>
-                              
-                                <div class="small">
-                                    Anexar Arquivo <small>(arquivos .gif .jpeg ou .png de até 100kb):</small>
-                                </div>
-                            </div>
+                        <div class="form-group row">
+                            <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
+                            <label class="control-label">Selecione o(s) Arquivo(s)</label>
+                            <input id="input-pt-br" name="inputptbr[]" type="file" multiple class="file-loading">
+                        </div>
 
-                        </fieldset>--%>
 
                         <div class="form-group row">
                             <div class="col-sm-4 col-md-4 col-lg-2">
@@ -188,6 +175,7 @@
                                 <asp:LinkButton ID="lnkExcluir" runat="server" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">&nbsp;</i>Excluir</asp:LinkButton>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -226,5 +214,16 @@
             </div>
         </asp:Panel>
     </div>
-    </div>
+
+    <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
+    <script>
+        $("#input-pt-br").fileinput({
+            language: "pt-BR",
+            uploadAsync: false,
+            minFileCount: 1,
+            maxFileCount: 5,
+            uploadUrl: "FileUploadReceiver.ashx",
+            allowedFileExtensions: ["rvt", "rfa", "pla", "skp", "pln", "gsm"]
+        });
+    </script>
 </asp:Content>

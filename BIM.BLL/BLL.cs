@@ -8,7 +8,7 @@ using BIM.DAL;
 
 namespace BIM.BLL
 {
-    public class ManufacturerBLO
+    public class FabricanteBLO
     {
         public static List<Fabricante> FindAll()
         {
@@ -41,7 +41,7 @@ namespace BIM.BLL
         }
     }
 
-    public static class ProductBLO {
+    public static class ProdutoBLO {
         public static List<Produto> FindAll()
         {
             return ProdutoDAO.FindAll();
@@ -105,6 +105,78 @@ namespace BIM.BLL
         //{
         //    DocumentDAO.Update(oDocument);
         //}
+    }
+
+
+
+    public static class FamiliaBLO
+    {
+        public static List<Familia> FindAll()
+        {
+            return FamiliaDAO.FindAll();
+        }
+
+        public static List<Familia> FindAny(Familia oFamilia)
+        {
+            return FamiliaDAO.FindAny(oFamilia);
+        }
+
+        public static Familia FindId(Guid Id)
+        {
+            return FamiliaDAO.FindId(Id);
+        }
+
+        public static Guid Insert(Familia oFamilia)
+        {
+            return FamiliaDAO.Insert(oFamilia);
+        }
+
+        public static void Delete(Familia oFamilia)
+        {
+            FamiliaDAO.Delete(oFamilia);
+        }
+
+        public static void Update(Familia oFamilia)
+        {
+            FamiliaDAO.Update(oFamilia);
+        }
+
+    }
+
+
+
+    public static class SubtipoBLO
+    {
+        public static List<Subtipo> FindAll()
+        {
+            return SubtipoDAO.FindAll();
+        }
+
+        public static List<Subtipo> FindAny(Subtipo oSubtipo)
+        {
+            return SubtipoDAO.FindAny(oSubtipo);
+        }
+
+        public static Subtipo FindId(Guid Id)
+        {
+            return SubtipoDAO.FindId(Id);
+        }
+
+        public static Guid Insert(Subtipo oSubtipo)
+        {
+            return SubtipoDAO.Insert(oSubtipo);
+        }
+
+        public static void Delete(Subtipo oSubtipo)
+        {
+            SubtipoDAO.Delete(oSubtipo);
+        }
+
+        public static void Update(Subtipo oSubtipo)
+        {
+            SubtipoDAO.Update(oSubtipo);
+        }
+
     }
 
 }

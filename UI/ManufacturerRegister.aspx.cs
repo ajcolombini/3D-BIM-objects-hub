@@ -57,7 +57,7 @@ namespace UI
             try
             {
 
-                Guid _newId = ManufacturerBLO.Insert(_manuf);
+                Guid _newId = FabricanteBLO.Insert(_manuf);
                 if (_newId != Guid.Empty)
                 {
                     lblSuccessMsg.Text = "Fabricante incluído com Sucesso";

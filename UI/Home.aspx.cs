@@ -26,7 +26,7 @@ namespace UI
                 _fab.Nome = txtBusca.Text;
                 _fab.RazaoSocial = txtBusca.Text;
 
-                List<Fabricante> _lstFabricantes = ManufacturerBLO.FindAny(_fab);
+                List<Fabricante> _lstFabricantes = FabricanteBLO.FindAny(_fab);
 
                 //Product _prod = new Product();
                 //_prod.code = txtBusca.Text;

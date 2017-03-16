@@ -148,40 +148,31 @@ namespace UI {
         protected global::System.Web.UI.WebControls.Image imgProduto;
         
         /// <summary>
-        /// btnRegistrar control.
+        /// lnkRegistrar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRegistrar;
+        protected global::System.Web.UI.WebControls.LinkButton lnkRegistrar;
         
         /// <summary>
-        /// pnlAdmin control.
+        /// lnkEditar control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlAdmin;
+        protected global::System.Web.UI.WebControls.LinkButton lnkEditar;
         
         /// <summary>
-        /// btnEditar control.
+        /// lnkExcluir control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditar;
-        
-        /// <summary>
-        /// btnExcluir control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnExcluir;
+        protected global::System.Web.UI.WebControls.LinkButton lnkExcluir;
         
         /// <summary>
         /// pnlError control.

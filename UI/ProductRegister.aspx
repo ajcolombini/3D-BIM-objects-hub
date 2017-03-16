@@ -226,11 +226,21 @@
             theme: "explorer",
             fileTypeSettings:["object"],
             uploadAsync: true,
-            initialPreviewAsData: true,
+            allowedPreviewTypes: false, // set to empty, null or false to disable preview for all types
+            previewFileIcon: '<i class="fa fa-file"></i>',
+            //initialPreviewAsData: false, // defaults markup  
+            previewFileIconSettings: {
+                'rvt': '<i class="fa fa-cubes-o text-primary"></i>',
+                'rfa': '<i class="fa fa-cubes text-success"></i>',
+                'skp': '<i class="fa fa-cubes text-danger"></i>',
+                'pla': '<i class="fa fa-cubes text-warning"></i>',
+                'gsm': '<i class="fa fa-cubes text-info"></i>',
+                'dwg': '<i class="fa fa-cubes text-default"></i>',
+            },
             minFileCount: 1,
             maxFileCount: 5,
             uploadUrl: "FileUploadReceiver.ashx",
-            allowedFileExtensions: ["rvt", "rfa", "pla", "skp", "pln", "gsm"]
+            allowedFileExtensions: ["rvt", "rfa", "pla", "skp", "pln", "gsm", "dwg"]
         });
     </script>
 </asp:Content>

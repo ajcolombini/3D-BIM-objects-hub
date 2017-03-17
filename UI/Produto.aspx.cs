@@ -11,10 +11,16 @@ namespace UI
 {
     public partial class Register : System.Web.UI.Page
     {
+
+        public Guid newProdId { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                newProdId = Guid.NewGuid();
+                hdnProdutoId.Value = newProdId.ToString();
+
                 CarregaFamilias();
                 CarregaSubtipos();
             }
@@ -51,10 +57,9 @@ namespace UI
         {
             if(ValidaForm())
             {
-                Guid _newId = new Guid();
-
+               
                 BIM.Model.Produto _prod = new Produto();
-                _prod.Id = _newId;
+                _prod.Id = newProdId;
                 _prod.ClasseConsumo = ddlClasseConsumo.SelectedValue;
                 _prod.Codigo = txtCodigo.Text;
                 _prod.Descricao = txtDescricao.Text;
@@ -70,9 +75,9 @@ namespace UI
 
                 //_prod.docs = RecuperaDocumentos();
 
-                Guid _newProdId = BIM.BLL.ProdutoBLO.Insert(_prod);
+                Guid _retProdId = BIM.BLL.ProdutoBLO.Insert(_prod);
 
-                if (_newProdId == _newId)
+                if (_retProdId == newProdId)
                 {
                     //Salva documentos
                     foreach (BIM.Model.Documento _doc in _prod.docs)
@@ -103,6 +108,11 @@ namespace UI
 
         public bool ValidaForm()
         {
+
+
+
+
+          
 
             return true;
         }

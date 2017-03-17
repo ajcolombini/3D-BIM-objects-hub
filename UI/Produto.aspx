@@ -186,8 +186,9 @@
                              <div><small>Extensões aceitas: jpg", "png", "jpeg", "bmp"</small></div>
                             <input id="imgProdUpload" type="file" class="file-loading" accept="image/*" />
                             <script>
-                                var newImageId = newGuid(); //new guid for docs and images: use it to the database too.
-                                __doPostBack('<%=hdnProdutoId.ClientID%>', newGuid);
+                                
+                                var newImageId = $('#<%=hdnProdutoId.ClientID%>').val();
+                                alert('newImageId:' + newImageId);
 
                                 $(document).on('ready', function () {
 

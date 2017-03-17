@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HUB.Master" AutoEventWireup="true" CodeBehind="ProductRegister.aspx.cs" Inherits="UI.Register" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/HUB.Master" AutoEventWireup="true" CodeBehind="Produto.aspx.cs" Inherits="UI.Register" %>
 
 <%@ MasterType VirtualPath="~/HUB.Master" %>
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
@@ -138,52 +138,55 @@
                         <div class="form-group row">
                             <label for="txtPreco" class="col-sm-2 col-form-label">Preço Sugerido</label>
                             <div class="col-sm-8 col-md-6 col-lg-4">
-                                <asp:TextBox ID="txtPreco" class="form-control" runat="server" placeholder=""></asp:TextBox>
+                                <div class="input-group">
+                                    <span class="input-group-addon" id="basic-addon1">R$</span>
+                                    <asp:TextBox ID="txtPreco" class="form-control" runat="server" placeholder=""></asp:TextBox>
+                                </div>
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="ddlStatus" class="col-sm-2 col-form-label">Status</label>
-                            <div class="col-sm-8 col-md-6 col-lg-4">
-                                <asp:DropDownList ID="ddlStatus" runat="server" Enabled="false" CssClass="form-control">
-                                    <asp:ListItem Text="Ativo" Value="1"></asp:ListItem>
-                                    <asp:ListItem Text="Inativo" Value="0"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <label for="imgProduto" class="col-sm-2 col-form-label">Imagem</label>
-                            <div class="col-sm-8 col-md-6 col-lg-4">
-                                <asp:Image ID="imgProduto" runat="server" />
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
-                            <label class="control-label">Selecione o(s) Arquivo(s)</label>
-                            <input id="input-pt-br" name="inputptbr[]" type="file" multiple class="file-loading">
-                            <div><small>Máximo 5 arquivos por vez.</small></div>
-                        </div>
-
-
-                        <div class="form-group row">
-                            <div class="col-sm-4 col-md-4 col-lg-2">
-                                <asp:LinkButton ID="lnkRegistrar" runat="server" class="btn btn-success btn-lg"><i class="fa fa-check">&nbsp;</i>Registrar</asp:LinkButton>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-2">
-                                <asp:LinkButton ID="lnkEditar" runat="server" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o">&nbsp;</i>Editar</asp:LinkButton>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-2">
-                                <asp:LinkButton ID="lnkExcluir" runat="server" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">&nbsp;</i>Excluir</asp:LinkButton>
-                            </div>
-                        </div>
-
                     </div>
+
+                    <div class="form-group row">
+                        <label for="ddlStatus" class="col-sm-2 col-form-label">Status</label>
+                        <div class="col-sm-8 col-md-6 col-lg-4">
+                            <asp:DropDownList ID="ddlStatus" runat="server" Enabled="false" CssClass="form-control">
+                                <asp:ListItem Text="Ativo" Value="1"></asp:ListItem>
+                                <asp:ListItem Text="Inativo" Value="0"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <label for="imgProduto" class="col-sm-2 col-form-label">Imagem</label>
+                        <div class="col-sm-8 col-md-6 col-lg-4">
+                            <asp:Image ID="imgProduto" runat="server" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
+                        <label class="control-label">Selecione o(s) Arquivo(s)</label>
+                        <input id="input-pt-br" name="inputptbr[]" type="file" multiple class="file-loading">
+                        <div><small>Máximo 5 arquivos por vez.</small></div>
+                    </div>
+
+
+                    <div class="form-group row">
+                        <div class="col-sm-4 col-md-4 col-lg-2">
+                            <asp:LinkButton ID="lnkRegistrar" runat="server" class="btn btn-success btn-lg"><i class="fa fa-check">&nbsp;</i>Registrar</asp:LinkButton>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-lg-2">
+                            <asp:LinkButton ID="lnkEditar" runat="server" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o">&nbsp;</i>Editar</asp:LinkButton>
+                        </div>
+                        <div class="col-sm-4 col-md-4 col-lg-2">
+                            <asp:LinkButton ID="lnkExcluir" runat="server" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">&nbsp;</i>Excluir</asp:LinkButton>
+                        </div>
+                    </div>
+
                 </div>
             </div>
         </div>
+    </div>
     </div>
     <div class="row">
         <asp:Panel ID="pnlError" runat="server" Visible="false">
@@ -224,7 +227,7 @@
         $("#input-pt-br").fileinput({
             language: "pt-BR",
             theme: "explorer",
-            fileTypeSettings:["object"],
+            fileTypeSettings: ["object"],
             uploadAsync: true,
             allowedPreviewTypes: false, // set to empty, null or false to disable preview for all types
             previewFileIcon: '<i class="fa fa-file"></i>',

@@ -51,8 +51,10 @@ namespace UI
         {
             if(ValidaForm())
             {
-                BIM.Model.Produto _prod = new Produto();
+                Guid _newId = new Guid();
 
+                BIM.Model.Produto _prod = new Produto();
+                _prod.Id = _newId;
                 _prod.ClasseConsumo = ddlClasseConsumo.SelectedValue;
                 _prod.Codigo = txtCodigo.Text;
                 _prod.Descricao = txtDescricao.Text;
@@ -60,16 +62,17 @@ namespace UI
                 _prod.IdFabricante = int.Parse(hdnFabricanteId.Value);
                 _prod.IdFamilia = int.Parse(ddlFamilia.SelectedValue);
                 _prod.IdSubtipo = int.Parse(ddlSubgrupo.SelectedValue);
-                _prod.Imagem = RecuperaImagem();
                 _prod.Nome = txtName.Text;
                 _prod.Preco = decimal.Parse(txtPreco.Text);
                 _prod.Status = ddlStatus.SelectedValue;
                 _prod.Voltagem = ddlVoltagem.SelectedValue;
-                _prod.docs = RecuperaDocumentos();
-                
+                _prod.Imagem = RecuperaImagem();
+
+                //_prod.docs = RecuperaDocumentos();
+
                 Guid _newProdId = BIM.BLL.ProdutoBLO.Insert(_prod);
 
-                if (_newProdId != Guid.Empty)
+                if (_newProdId == _newId)
                 {
                     //Salva documentos
                     foreach (BIM.Model.Documento _doc in _prod.docs)
@@ -77,15 +80,19 @@ namespace UI
                         DocumentBLO.Insert(_doc);
                     }
                 }
+                else
+                {
+                    this.Master.showMessage("Erro ao salvar Produto.", "Erro", AlertType.Error);
+                }
             }
         }
 
-        private List<Documento> RecuperaDocumentos()
-        {
-            List<Documento> _lstDocs = new List<Documento>();
+        //private List<Documento> RecuperaDocumentos()
+        //{
+        //    List<Documento> _lstDocs = new List<Documento>();
 
-            return _lstDocs;
-        }
+        //    return _lstDocs;
+        //}
 
         private byte[] RecuperaImagem()
         {
@@ -98,6 +105,11 @@ namespace UI
         {
 
             return true;
+        }
+
+        protected void hdnProdutoId_ValueChanged(object sender, EventArgs e)
+        {
+            ViewState["IdProduto"] = hdnProdutoId.Value;
         }
     }
 }

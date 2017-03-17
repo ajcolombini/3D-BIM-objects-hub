@@ -4,13 +4,14 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Script.Serialization;
+using System.Web.UI;
 
 namespace UI
 {
     /// <summary>
-    /// Summary description for FileUploadReceiver
+    /// Summary description for ImageUploadReceiver
     /// </summary>
-    public class FileUploadReceiver : IHttpHandler
+    public class ImageUploadReceiver : IHttpHandler
     {
 
         public void ProcessRequest(HttpContext context)
@@ -19,9 +20,9 @@ namespace UI
             {
                 context.Response.ContentType = "text/plain";
                 context.Response.Expires = -1;
-
                 HttpFileCollection files = context.Request.Files;
-
+                
+                //string pathrefer = context.Request.UrlReferrer.ToString();
                 for (int i = 0; i < files.Count; i++)
                 {
                     string file = string.Empty;
@@ -29,10 +30,8 @@ namespace UI
                     var extraData = context.Request.Params["id"];
 
                     string newId = extraData;
+                    string fileDirectory = HttpContext.Current.Server.MapPath("tempFiles/img/") + newId;
 
-                    string pathrefer = context.Request.UrlReferrer.ToString();
-                    string fileDirectory = HttpContext.Current.Server.MapPath("tempFiles/doc/") + newId; 
-                   
 
                     //In case of IE
                     if (HttpContext.Current.Request.Browser.Browser.ToUpper() == "IE")
@@ -48,7 +47,7 @@ namespace UI
 
                     if (!Directory.Exists(fileDirectory))
                         Directory.CreateDirectory(fileDirectory);
-
+                                       
                     if (context.Request.QueryString["fileName"] != null)
                     {
                         file = context.Request.QueryString["fileName"];
@@ -64,8 +63,7 @@ namespace UI
                     var fileNamePath = fileDirectory + "\\" + file;
 
                     postedFile.SaveAs(fileNamePath);
-
-                }
+                }//for
 
                 context.Response.AddHeader("Vary", "Accept");
                 try
@@ -83,7 +81,7 @@ namespace UI
                 // store a successful response (default at least an empty array). You
                 // could return any additional response info you need to the plugin for
                 // advanced implementations.             
-                context.Response.Write("{}");
+                context.Response.Write("{}"); 
 
             }
             catch (HttpException ex)

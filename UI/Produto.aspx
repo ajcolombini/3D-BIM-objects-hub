@@ -13,12 +13,26 @@
     <script src="bootstrap/js/themes/explorer/theme.js"></script>
     <!-- /FILEUPLOAD: load the JS files in the right order -->
 
+    <script>
+        //Generate new guid
+        function S4() {
+            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        }
+        function newGuid() {
+            // then to call it, plus stitch in '4' in the third group
+            guid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+            return guid;
+        }
+    </script>
+
     <div class="float-container">
         <div class="row">
             <div class="col-lg-12">
                 <h3>Produtos </h3>
+
             </div>
         </div>
+        <asp:HiddenField ID="hdnProdutoId" runat="server" OnValueChanged="hdnProdutoId_ValueChanged" />
         <div class="row">
             <div class="col-sm-12 col-md-10 col-lg-8">
                 <div class="panel panel-default">
@@ -167,93 +181,145 @@
 
 
                         <div class="form-group row">
-                            <label for="imgProduto" class="col-sm-2 col-form-label">Imagem</label>
-                            <div class="col-sm-8 col-md-6 col-lg-4">
-                                <asp:Image ID="imgProduto" runat="server" />
-                            </div>
-                        </div>
 
+                            <label for="imgProdUpload" class="col-form-label">Imagem do Produto</label>
+                             <div><small>Extensões aceitas: jpg", "png", "jpeg", "bmp"</small></div>
+                            <input id="imgProdUpload" type="file" class="file-loading" accept="image/*" />
+                            <script>
+                                var newImageId = newGuid(); //new guid for docs and images: use it to the database too.
+                                __doPostBack('<%=hdnProdutoId.ClientID%>', newGuid);
+
+                                $(document).on('ready', function () {
+
+                                    //Get file input object
+                                    var $inputCtrl = $("#imgProdUpload");
+
+                                    $("#imgProdUpload").fileinput({
+                                        language: "pt-BR",
+                                        theme: "explorer",
+                                        previewFileType: "image",
+                                        browseOnZoneClick: true,
+                                        uploadAsync: true,
+                                        //uploadAsync: false,
+                                        //showUpload: false, // hide upload button
+                                        //showRemove: true,
+                                        uploadUrl: "ImageUploadReceiver.ashx",
+                                        showUploadedThumbs: false,
+                                        allowedFileExtensions: ["jpg", "png", "jpeg", "bmp"],
+                                        uploadExtraData: { id: newImageId }
+                                    });
+                                    //.on("filebatchselected", function (event, files) {
+                                    //    // trigger upload method immediately after files are selected
+                                    //    $inputCtrl.fileinput("upload");
+                                    //});
+                                });
+                            </script>
+                        </div>
+                        <br />
                         <div class="form-group row">
                             <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
                             <label class="control-label">Selecione o(s) Arquivo(s)</label>
-                            <input id="input-pt-br" name="inputptbr[]" type="file" multiple class="file-loading">
-                            <div><small>Máximo 5 arquivos por vez.</small></div>
-                        </div>
+                            <div><small>Máximo 7 arquivos por vez. Extensões aceitas: "rvt", "rfa", "pla", "skp", "pln", "gsm", "dwg"</small></div>
+                            <input id="docsFileUpload" name="docsFileUpload[]" multiple type="file" class="file-loading" />
+                            <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
+                            <script>
+                                $(document).on('ready', function () {
 
+                                    //Get file input object
+                                    var $inputCtrl = $("#docsFileUpload");
 
-                        <div class="form-group row">
-                            <div class="col-sm-4 col-md-4 col-lg-2">
-                                <asp:LinkButton ID="lnkRegistrar" runat="server" class="btn btn-success btn-lg" OnClick="lnkRegistrar_Click"><i class="fa fa-check">&nbsp;</i>Registrar</asp:LinkButton>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-2">
-                                <asp:LinkButton ID="lnkEditar" runat="server" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o">&nbsp;</i>Editar</asp:LinkButton>
-                            </div>
-                            <div class="col-sm-4 col-md-4 col-lg-2">
-                                <asp:LinkButton ID="lnkExcluir" runat="server" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">&nbsp;</i>Excluir</asp:LinkButton>
-                            </div>
+                                    $("#docsFileUpload").fileinput({
+                                        language: "pt-BR",
+                                        theme: "explorer",
+                                        fileTypeSettings: ["object"],
+                                        allowedPreviewTypes: false,
+                                        browseOnZoneClick: true,
+                                        uploadAsync: true,
+                                        //uploadAsync: false,
+                                        //showUpload: false, // hide upload button
+                                        //showRemove: true,
+                                        previewFileIconSettings: {
+                                            'rvt': '<i class="fa fa-cubes text-primary"></i>',
+                                            'rfa': '<i class="fa fa-cubes text-success"></i>',
+                                            'skp': '<i class="fa fa-cubes text-danger"></i>',
+                                            'pla': '<i class="fa fa-cubes text-warning"></i>',
+                                            'gsm': '<i class="fa fa-cubes text-info"></i>',
+                                            'dwg': '<i class="fa fa-cubes text-default"></i>',
+                                            'pla': '<i class="fa fa-cubes"></i>'
+                                        },
+                                        minFileCount: 1,
+                                        maxFileCount: 7,
+                                        uploadUrl: "FileUploadReceiver.ashx",
+                                        allowedFileExtensions: ["rvt", "rfa", "pla", "skp", "pln", "gsm", "dwg"],
+                                        uploadExtraData: { id: newImageId }
+
+                                    })//.on("filebatchselected", function (event, files) {
+                                        //// trigger upload method immediately after files are selected
+                                        //$inputCtrl.fileinput("upload");
+
+                                    .on('filedeleted', function (event, key) {
+                                       alert('Key = ' + key);
+                                    });
+                                        
+                                });
+                            </script>
                         </div>
 
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-    <div class="row">
-        <asp:Panel ID="pnlError" runat="server" Visible="false">
-            <div class="col-sm-12 col-md-10 col-lg-8">
-                <div id="divError" class="alert alert-dismissable alert-danger">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Atenção</strong>
-                    <asp:Label ID="lblErrorMsg" runat="server" Text=""></asp:Label>
-                </div>
-            </div>
-        </asp:Panel>
-    </div>
-    <div class="row">
-        <asp:Panel ID="pnlInfo" runat="server" Visible="false">
-            <div class="col-sm-12 col-md-10 col-lg-8">
-                <div id="divInfo" class="alert alert-dismissable alert-info">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Aviso</strong>
-                    <asp:Label ID="lblInfoMsg" runat="server" Text=""></asp:Label>
-                </div>
-            </div>
-        </asp:Panel>
-    </div>
-    <div class="row">
-        <asp:Panel ID="pnlSuccess" runat="server" Visible="false">
-            <div class="col-sm-12 col-md-10 col-lg-8">
-                <div id="divSuccess" class="alert alert-dismissable alert-success">
-                    <button type="button" class="close" data-dismiss="alert">&times;</button>
-                    <strong>Aviso</strong>
-                    <asp:Label ID="lblSuccessMsg" runat="server" Text=""></asp:Label>
-                </div>
-            </div>
-        </asp:Panel>
-    </div>
 
-    <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
-    <script>
-        $("#input-pt-br").fileinput({
-            language: "pt-BR",
-            theme: "explorer",
-            fileTypeSettings: ["object"],
-            uploadAsync: true,
-            allowedPreviewTypes: false, // set to empty, null or false to disable preview for all types
-            previewFileIcon: '<i class="fa fa-file"></i>',
-            //initialPreviewAsData: false, // defaults markup  
-            previewFileIconSettings: {
-                'rvt': '<i class="fa fa-cubes-o text-primary"></i>',
-                'rfa': '<i class="fa fa-cubes text-success"></i>',
-                'skp': '<i class="fa fa-cubes text-danger"></i>',
-                'pla': '<i class="fa fa-cubes text-warning"></i>',
-                'gsm': '<i class="fa fa-cubes text-info"></i>',
-                'dwg': '<i class="fa fa-cubes text-default"></i>',
-            },
-            minFileCount: 1,
-            maxFileCount: 5,
-            uploadUrl: "FileUploadReceiver.ashx",
-            allowedFileExtensions: ["rvt", "rfa", "pla", "skp", "pln", "gsm", "dwg"]
-        });
-    </script>
+            <div class="row">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group row">
+                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                    <asp:LinkButton ID="lnkRegistrar" runat="server" class="btn btn-success btn-lg" OnClick="lnkRegistrar_Click"><i class="fa fa-check">&nbsp;</i>Registrar</asp:LinkButton>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                    <asp:LinkButton ID="lnkEditar" runat="server" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o">&nbsp;</i>Editar</asp:LinkButton>
+                                </div>
+                                <div class="col-sm-4 col-md-4 col-lg-2">
+                                    <asp:LinkButton ID="lnkExcluir" runat="server" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">&nbsp;</i>Excluir</asp:LinkButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <asp:Panel ID="pnlError" runat="server" Visible="false">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <div id="divError" class="alert alert-dismissable alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Atenção</strong>
+                        <asp:Label ID="lblErrorMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
+        <div class="row">
+            <asp:Panel ID="pnlInfo" runat="server" Visible="false">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <div id="divInfo" class="alert alert-dismissable alert-info">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Aviso</strong>
+                        <asp:Label ID="lblInfoMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
+        <div class="row">
+            <asp:Panel ID="pnlSuccess" runat="server" Visible="false">
+                <div class="col-sm-12 col-md-10 col-lg-8">
+                    <div id="divSuccess" class="alert alert-dismissable alert-success">
+                        <button type="button" class="close" data-dismiss="alert">&times;</button>
+                        <strong>Aviso</strong>
+                        <asp:Label ID="lblSuccessMsg" runat="server" Text=""></asp:Label>
+                    </div>
+                </div>
+            </asp:Panel>
+        </div>
 </asp:Content>

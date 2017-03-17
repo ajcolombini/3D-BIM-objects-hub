@@ -225,6 +225,7 @@
     <Content Include="font-awesome\scss\_stacked.scss" />
     <Content Include="font-awesome\scss\_variables.scss" />
     <Content Include="FileUploadReceiver.ashx" />
+    <Content Include="ImageUploadReceiver.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -269,6 +270,9 @@
     <Compile Include="HUB.Master.designer.cs">
       <DependentUpon>HUB.Master</DependentUpon>
     </Compile>
+    <Compile Include="ImageUploadReceiver.ashx.cs">
+      <DependentUpon>ImageUploadReceiver.ashx</DependentUpon>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -305,7 +309,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="tempFiles\Families\" />
+    <Folder Include="tempFiles\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BIM.BLL\BIM.BLL.csproj">

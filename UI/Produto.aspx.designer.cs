@@ -13,6 +13,15 @@ namespace UI {
     public partial class Register {
         
         /// <summary>
+        /// hdnProdutoId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnProdutoId;
+        
+        /// <summary>
         /// lblFabricanteNome control.
         /// </summary>
         /// <remarks>
@@ -155,15 +164,6 @@ namespace UI {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlStatus;
-        
-        /// <summary>
-        /// imgProduto control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgProduto;
         
         /// <summary>
         /// lnkRegistrar control.

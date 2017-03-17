@@ -27,6 +27,16 @@
                             <label for="lblFabricanteNome" class="col-sm-2 col-form-label">Fabricante</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
                                 <asp:Label ID="lblFabricanteNome" runat="server" Text=""></asp:Label>
+                                <asp:HiddenField ID="hdnFabricanteId" runat="server" />
+
+                                <asp:Panel ID="pnlDDLFabricante" runat="server" Visible="true">
+                                    <div class="form-group row">
+                                        <label for="txtPhone" class="col-sm-2 col-form-label">Fabricante</label>
+                                        <div class="col-sm-8 col-md-6 col-lg-6">
+                                            <asp:DropDownList ID="ddlFabricante" runat="server" CssClass="form-control"></asp:DropDownList>
+                                        </div>
+                                    </div>
+                                </asp:Panel>
                             </div>
                         </div>
                     </div>
@@ -143,50 +153,50 @@
                                     <asp:TextBox ID="txtPreco" class="form-control" runat="server" placeholder=""></asp:TextBox>
                                 </div>
                             </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="ddlStatus" class="col-sm-2 col-form-label">Status</label>
-                        <div class="col-sm-8 col-md-6 col-lg-4">
-                            <asp:DropDownList ID="ddlStatus" runat="server" Enabled="false" CssClass="form-control">
-                                <asp:ListItem Text="Ativo" Value="1"></asp:ListItem>
-                                <asp:ListItem Text="Inativo" Value="0"></asp:ListItem>
-                            </asp:DropDownList>
                         </div>
-                    </div>
 
-
-                    <div class="form-group row">
-                        <label for="imgProduto" class="col-sm-2 col-form-label">Imagem</label>
-                        <div class="col-sm-8 col-md-6 col-lg-4">
-                            <asp:Image ID="imgProduto" runat="server" />
+                        <div class="form-group row">
+                            <label for="ddlStatus" class="col-sm-2 col-form-label">Status</label>
+                            <div class="col-sm-8 col-md-6 col-lg-4">
+                                <asp:DropDownList ID="ddlStatus" runat="server" Enabled="false" CssClass="form-control">
+                                    <asp:ListItem Text="Ativo" Value="1"></asp:ListItem>
+                                    <asp:ListItem Text="Inativo" Value="0"></asp:ListItem>
+                                </asp:DropDownList>
+                            </div>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
-                        <label class="control-label">Selecione o(s) Arquivo(s)</label>
-                        <input id="input-pt-br" name="inputptbr[]" type="file" multiple class="file-loading">
-                        <div><small>Máximo 5 arquivos por vez.</small></div>
-                    </div>
 
 
-                    <div class="form-group row">
-                        <div class="col-sm-4 col-md-4 col-lg-2">
-                            <asp:LinkButton ID="lnkRegistrar" runat="server" class="btn btn-success btn-lg"><i class="fa fa-check">&nbsp;</i>Registrar</asp:LinkButton>
+                        <div class="form-group row">
+                            <label for="imgProduto" class="col-sm-2 col-form-label">Imagem</label>
+                            <div class="col-sm-8 col-md-6 col-lg-4">
+                                <asp:Image ID="imgProduto" runat="server" />
+                            </div>
                         </div>
-                        <div class="col-sm-4 col-md-4 col-lg-2">
-                            <asp:LinkButton ID="lnkEditar" runat="server" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o">&nbsp;</i>Editar</asp:LinkButton>
-                        </div>
-                        <div class="col-sm-4 col-md-4 col-lg-2">
-                            <asp:LinkButton ID="lnkExcluir" runat="server" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">&nbsp;</i>Excluir</asp:LinkButton>
-                        </div>
-                    </div>
 
+                        <div class="form-group row">
+                            <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
+                            <label class="control-label">Selecione o(s) Arquivo(s)</label>
+                            <input id="input-pt-br" name="inputptbr[]" type="file" multiple class="file-loading">
+                            <div><small>Máximo 5 arquivos por vez.</small></div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <div class="col-sm-4 col-md-4 col-lg-2">
+                                <asp:LinkButton ID="lnkRegistrar" runat="server" class="btn btn-success btn-lg" OnClick="lnkRegistrar_Click"><i class="fa fa-check">&nbsp;</i>Registrar</asp:LinkButton>
+                            </div>
+                            <div class="col-sm-4 col-md-4 col-lg-2">
+                                <asp:LinkButton ID="lnkEditar" runat="server" class="btn btn-primary btn-lg"><i class="fa fa-pencil-square-o">&nbsp;</i>Editar</asp:LinkButton>
+                            </div>
+                            <div class="col-sm-4 col-md-4 col-lg-2">
+                                <asp:LinkButton ID="lnkExcluir" runat="server" class="btn btn-danger btn-lg"><i class="fa fa-trash-o">&nbsp;</i>Excluir</asp:LinkButton>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <div class="row">
         <asp:Panel ID="pnlError" runat="server" Visible="false">

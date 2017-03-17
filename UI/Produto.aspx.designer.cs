@@ -22,6 +22,33 @@ namespace UI {
         protected global::System.Web.UI.WebControls.Label lblFabricanteNome;
         
         /// <summary>
+        /// hdnFabricanteId control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hdnFabricanteId;
+        
+        /// <summary>
+        /// pnlDDLFabricante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlDDLFabricante;
+        
+        /// <summary>
+        /// ddlFabricante control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlFabricante;
+        
+        /// <summary>
         /// txtCodigo control.
         /// </summary>
         /// <remarks>

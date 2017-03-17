@@ -32,19 +32,21 @@ namespace BIM.Model
     {
         public Guid Id { get; set; }
         public string Codigo { get; set; }
-        public int IdSubtipo { get; set; }
-        public int IdCategoria { get; set; }
         public int IdFabricante { get; set; }
         public int IdFamilia { get; set; }
+        public int IdSubtipo { get; set; }
+        //public int IdCategoria { get; set; }
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public string Dimensoes { get; set; }
         public string Voltagem { get; set; }
         public string ClasseConsumo { get; set; }
-        public string Preco { get; set; }
+        public decimal Preco { get; set; }
         public string Status { get; set; }
         public byte[] Imagem { get; set; }
         public List<Documento> docs { get; set; }
+
+
         public Produto() { this.docs = new List<Documento>(); }
 
         public void Dispose()
@@ -57,9 +59,10 @@ namespace BIM.Model
     public class Documento : IDisposable
     {
         public Guid Id { get; set; }
+        public Guid IdProduto { get; set; }
         public string Titulo { get; set; }
         public string Formato { get; set; }
-        public string TamanhoKb { get; set; }
+        public double TamanhoKb { get; set; }
         public byte[] Objeto { get; set; }
 
         public void Dispose()

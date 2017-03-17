@@ -123,6 +123,7 @@ namespace BIM.DAL
 
         public static Guid Insert(Produto oProduct)
         {
+            #region procParams
             /*@OpType int = null,
 								  @Id uniqueidentifier = null,
 								  @IdFabricante  uniqueidentifier = null,
@@ -139,6 +140,8 @@ namespace BIM.DAL
 								  @Status varchar(250) = null,
 								  @Imagem varchar(1000) = null
                */
+            #endregion
+
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
                 new SqlParameter("OpType", (int)OperatinType.Insert),
@@ -146,7 +149,7 @@ namespace BIM.DAL
                 new SqlParameter("@Codigo", oProduct.Codigo),
                 new SqlParameter("@Nome", oProduct.Nome),
                 new SqlParameter("@Descricao", oProduct.Descricao),
-                new SqlParameter("@IdCategoria", oProduct.IdCategoria),
+                //new SqlParameter("@IdCategoria", oProduct.IdCategoria),
                 new SqlParameter("@IdFamilia", oProduct.IdFamilia),
                 new SqlParameter("@IdSubtipo", oProduct.IdSubtipo),
                 new SqlParameter("@Dimensoes", oProduct.Dimensoes),
@@ -182,7 +185,7 @@ namespace BIM.DAL
                 new SqlParameter("@Codigo", oProduct.Codigo),
                 new SqlParameter("@Nome", oProduct.Nome),
                 new SqlParameter("@Descricao", oProduct.Descricao),
-                new SqlParameter("@IdCategoria", oProduct.IdCategoria),
+                //new SqlParameter("@IdCategoria", oProduct.IdCategoria),
                 new SqlParameter("@IdFamilia", oProduct.IdFamilia),
                 new SqlParameter("@IdSubtipo", oProduct.IdSubtipo),
                 new SqlParameter("@Dimensoes", oProduct.Dimensoes),
@@ -219,65 +222,48 @@ namespace BIM.DAL
             return clsCrudGenericDAO.FindId<Documento>("[spGetDocumento]", _paramList);
         }
 
-        //public static Guid Insert(Document oDocument)
-        //{
-           
-        //    List<SqlParameter> _paramList = new List<SqlParameter>()
-        //    {
-        //        new SqlParameter("OpType", (int)OperatinType.Insert),
-        //        new SqlParameter("@IdFabricante", oDocument.manufacturerId),
-        //        new SqlParameter("@Codigo", oDocument.code),
-        //        new SqlParameter("@Nome", oDocument.name),
-        //        new SqlParameter("@Descricao", oDocument.description),
-        //        new SqlParameter("@IdCategoria", oDocument.categoryId),
-        //        new SqlParameter("@IdFamilia", oDocument.familyId),
-        //        new SqlParameter("@IdSubtipo", oDocument.subTypeId),
-        //        new SqlParameter("@Dimensoes", oDocument.dimensions),
-        //        new SqlParameter("@Voltagem", oDocument.voltage),
-        //        new SqlParameter("@ClasseConsumo", oDocument.energyConsumpsionClass),
-        //        new SqlParameter("@Preco", oDocument.price),
-        //        new SqlParameter("@Status", oDocument.status),
-        //        new SqlParameter("@Imagem", oDocument.image)
+        public static Guid Insert(Documento oDocumento)
+        {
 
-        //    };
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("OpType", (int)OperatinType.Insert),
+                new SqlParameter("@IdProduto", oDocumento.IdProduto),
+                new SqlParameter("@Titulo", oDocumento.Titulo),
+                new SqlParameter("@Formato", oDocumento.Formato),
+                new SqlParameter("@TamanhoKb", oDocumento.TamanhoKb),
+                new SqlParameter("@Objeto", oDocumento.Objeto)
+            };
 
-        //    return clsCrudGenericDAO.InsertAndReturnGuid("[spSetDocumento]", _paramList);
-        //}
+            return clsCrudGenericDAO.InsertAndReturnGuid("[spSetDocumento]", _paramList);
+        }
 
-        //public static void Delete(Document oDocument)
-        //{
-        //    List<SqlParameter> _paramList = new List<SqlParameter>()
-        //    {
-        //        new SqlParameter("OpType", (int)OperatinType.Delete),
-        //        new SqlParameter("@Id", oDocument.id)
-        //    };
+        public static void Delete(Documento oDocumento)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("OpType", (int)OperatinType.Delete),
+                new SqlParameter("@Id", oDocumento.Id)
+            };
 
-        //    clsCrudGenericDAO.Delete("[spSetDocumento]", _paramList);
-        //}
+            clsCrudGenericDAO.Delete("[spSetDocumento]", _paramList);
+        }
 
-        //public static void Update(Document oDocument)
-        //{
-        //    List<SqlParameter> _paramList = new List<SqlParameter>()
-        //    {
-        //        new SqlParameter("OpType", (int)OperatinType.Update),
-        //        new SqlParameter("@Id", oDocument.id),
-        //        new SqlParameter("@IdFabricante", oDocument.manufacturerId),
-        //        new SqlParameter("@Codigo", oDocument.code),
-        //        new SqlParameter("@Nome", oDocument.name),
-        //        new SqlParameter("@Descricao", oDocument.description),
-        //        new SqlParameter("@IdCategoria", oDocument.categoryId),
-        //        new SqlParameter("@IdFamilia", oDocument.familyId),
-        //        new SqlParameter("@IdSubtipo", oDocument.subTypeId),
-        //        new SqlParameter("@Dimensoes", oDocument.dimensions),
-        //        new SqlParameter("@Voltagem", oDocument.voltage),
-        //        new SqlParameter("@ClasseConsumo", oDocument.energyConsumpsionClass),
-        //        new SqlParameter("@Preco", oDocument.price),
-        //        new SqlParameter("@Status", oDocument.status),
-        //        new SqlParameter("@Imagem", oDocument.image)
-        //    };
+        public static void Update(Documento oDocumento)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>()
+            {
+                new SqlParameter("OpType", (int)OperatinType.Update),
+                new SqlParameter("@Id", oDocumento.Id),
+                new SqlParameter("@IdProduto", oDocumento.IdProduto),
+                new SqlParameter("@Titulo", oDocumento.Titulo),
+                new SqlParameter("@Formato", oDocumento.Formato),
+                new SqlParameter("@TamanhoKb", oDocumento.TamanhoKb),
+                new SqlParameter("@Objeto", oDocumento.Objeto)
+            };
 
-        //    clsCrudGenericDAO.Update("[spSetDocumento]", _paramList);
-        //}
+            clsCrudGenericDAO.Update("[spSetDocumentoo]", _paramList);
+        }
     }
     #endregion
 

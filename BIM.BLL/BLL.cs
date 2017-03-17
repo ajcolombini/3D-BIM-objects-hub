@@ -41,7 +41,10 @@ namespace BIM.BLL
         }
     }
 
+
+
     public static class ProdutoBLO {
+
         public static List<Produto> FindAll()
         {
             return ProdutoDAO.FindAll();
@@ -74,6 +77,8 @@ namespace BIM.BLL
 
     }
 
+
+    
     public static class DocumentBLO {
 
         public static List<Documento> FindAll()
@@ -91,20 +96,20 @@ namespace BIM.BLL
             return DocumentoDAO.FindId(Id);
         }
 
-        //public static Guid Insert(Document oDocument)
-        //{
-        //    return DocumentDAO.Insert(oDocument);
-        //}
+        public static Guid Insert(Documento oDocumento)
+        {
+            return DocumentoDAO.Insert(oDocumento);
+        }
 
-        //public static void Delete(Document oDocument)
-        //{
-        //    DocumentDAO.Delete(oDocument);
-        //}
+        public static void Delete(Documento oDocumento)
+        {
+            DocumentoDAO.Delete(oDocumento);
+        }
 
-        //public static void Update(Document oDocument)
-        //{
-        //    DocumentDAO.Update(oDocument);
-        //}
+        public static void Update(Documento oDocumento)
+        {
+            DocumentoDAO.Update(oDocumento);
+        }
     }
 
 

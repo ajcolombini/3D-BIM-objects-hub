@@ -116,7 +116,7 @@ namespace UI
                 {
                     pnlError.Visible = true;
                     //clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Atenção", AlertType.Warning, this.Master.updPnlMaster);
-                    clsAlerts.bootstrapConfirm("As imagens e arquivos selecionados ainda não foram enviados. Enviar agora?", "Aviso", "uploadFiles()", this.Master.updPnlMaster);
+                    clsAlerts.bootstrapConfirm("As imagens e arquivos selecionados ainda não foram enviados. Enviar agora?", "Aviso", "setDialogResult()", this.Master.updPnlMaster);
                 }
 
             }

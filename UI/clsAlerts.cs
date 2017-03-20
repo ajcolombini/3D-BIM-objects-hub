@@ -208,7 +208,7 @@ namespace UI
             //Build the jQuery script
             StringBuilder sb = new StringBuilder();
 
-            sb.AppendLine("jAlertConfirm('" + msg + "', '" + title + "', '" + callBackFunction.ToLower() + "');");
+            sb.AppendLine("jAlertConfirm('" + msg + "', '" + title + "', '" + callBackFunction + "');");
 
             if (oRenderer.GetType().Equals(typeof(Page)))
             {

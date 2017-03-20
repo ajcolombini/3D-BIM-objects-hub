@@ -40,7 +40,7 @@
                         <div class="form-group row">
                             <label for="txtName" class="col-sm-2 col-form-label">Razão Social</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
-                                <asp:TextBox ID="txtName" class="form-control" runat="server" placeholder="Nome registrado no CNPJ" required></asp:TextBox>
+                                <asp:TextBox ID="txtFormalName" class="form-control" runat="server" placeholder="Nome registrado no CNPJ" required></asp:TextBox>
                             </div>
                         </div>
 
@@ -48,7 +48,7 @@
                             <label for="txtFormalName" class="col-sm-2 col-form-label">Nome Comercial</label>
                             <div class="col-sm-10 col-md-10 col-lg-12">
 
-                                <asp:TextBox ID="txtFormalName" class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)"></asp:TextBox>
+                                <asp:TextBox ID="txtName" class="form-control" runat="server" placeholder="Nome Comercial (Como é conhecido pelo público)"></asp:TextBox>
                             </div>
                         </div>
 

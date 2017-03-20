@@ -145,6 +145,7 @@ namespace BIM.DAL
             List<SqlParameter> _paramList = new List<SqlParameter>()
             {
                 new SqlParameter("OpType", (int)OperatinType.Insert),
+                new SqlParameter("@Id", oProduct.Id),
                 new SqlParameter("@IdFabricante", oProduct.IdFabricante),
                 new SqlParameter("@Codigo", oProduct.Codigo),
                 new SqlParameter("@Nome", oProduct.Nome),

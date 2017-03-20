@@ -12,18 +12,31 @@ namespace UI
     public partial class Register : System.Web.UI.Page
     {
 
-        public Guid newProdId { get; set; }
+
 
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
-                newProdId = Guid.NewGuid();
-                hdnProdutoId.Value = newProdId.ToString();
-
+                this.hdnProdutoId.Value = Guid.NewGuid().ToString();
+                
+                CarregaFabricantes();
                 CarregaFamilias();
                 CarregaSubtipos();
             }
+        }
+
+        private void CarregaFabricantes()
+        {
+            ddlFamilia.AppendDataBoundItems = true;
+            ddlFamilia.Items.Clear();
+            ddlFamilia.Items.Add(new ListItem("[Selecione]", "0"));
+
+            List<Fabricante> _lstFabricante = BIM.BLL.FabricanteBLO.FindAll();
+            this.ddlFabricante.DataTextField = "Nome";
+            this.ddlFabricante.DataValueField = "Id";
+            this.ddlFabricante.DataSource = _lstFabricante;
+            this.ddlFabricante.DataBind();
         }
 
         private void CarregaFamilias()
@@ -59,12 +72,12 @@ namespace UI
             {
                
                 BIM.Model.Produto _prod = new Produto();
-                _prod.Id = newProdId;
+                _prod.Id = Guid.Parse(hdnProdutoId.Value);
                 _prod.ClasseConsumo = ddlClasseConsumo.SelectedValue;
                 _prod.Codigo = txtCodigo.Text;
                 _prod.Descricao = txtDescricao.Text;
                 _prod.Dimensoes = string.Concat(txtLargura.Text + " X " + txtAltura.Text + " X " + txtProfundidade.Text);
-                _prod.IdFabricante = int.Parse(hdnFabricanteId.Value);
+                _prod.IdFabricante = Guid.Parse(ddlFabricante.SelectedValue);
                 _prod.IdFamilia = int.Parse(ddlFamilia.SelectedValue);
                 _prod.IdSubtipo = int.Parse(ddlSubgrupo.SelectedValue);
                 _prod.Nome = txtName.Text;
@@ -77,7 +90,7 @@ namespace UI
 
                 Guid _retProdId = BIM.BLL.ProdutoBLO.Insert(_prod);
 
-                if (_retProdId == newProdId)
+                if (_retProdId == _prod.Id)
                 {
                     //Salva documentos
                     foreach (BIM.Model.Documento _doc in _prod.docs)

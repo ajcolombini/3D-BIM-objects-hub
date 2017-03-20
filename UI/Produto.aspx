@@ -14,15 +14,15 @@
     <!-- /FILEUPLOAD: load the JS files in the right order -->
 
     <script>
-        //Generate new guid
-        function S4() {
-            return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
-        }
-        function newGuid() {
-            // then to call it, plus stitch in '4' in the third group
-            guid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
-            return guid;
-        }
+        ////Generate new guid
+        //function S4() {
+        //    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+        //}
+        //function newGuid() {
+        //    // then to call it, plus stitch in '4' in the third group
+        //    guid = (S4() + S4() + "-" + S4() + "-4" + S4().substr(0, 3) + "-" + S4() + "-" + S4() + S4() + S4()).toLowerCase();
+        //    return guid;
+        //}
     </script>
 
     <div class="float-container">
@@ -188,7 +188,7 @@
                             <script>
                                 
                                 var newImageId = $('#<%=hdnProdutoId.ClientID%>').val();
-                                alert('newImageId:' + newImageId);
+                                //lert('newImageId:  ' + newImageId);
 
                                 $(document).on('ready', function () {
 

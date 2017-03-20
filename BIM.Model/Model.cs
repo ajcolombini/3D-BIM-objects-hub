@@ -31,8 +31,8 @@ namespace BIM.Model
     public class Produto : IDisposable
     {
         public Guid Id { get; set; }
+        public Guid IdFabricante { get; set; }
         public string Codigo { get; set; }
-        public int IdFabricante { get; set; }
         public int IdFamilia { get; set; }
         public int IdSubtipo { get; set; }
         //public int IdCategoria { get; set; }

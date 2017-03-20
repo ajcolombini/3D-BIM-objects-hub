@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
+using System.Text;
 
 namespace Framework.Data
 {
@@ -70,13 +71,24 @@ namespace Framework.Data
                 comando.CommandText = nameProcedure;
                 comando.Connection = this.sqlconnection;
 
-                if (listParameter != null)
+                #region DEBUG
+                StringBuilder _sb = new StringBuilder();
+                _sb.AppendLine("");
+                _sb.AppendLine("-".PadLeft(150, '-'));
+                _sb.AppendLine(comando.CommandType.ToString());
+                _sb.AppendLine(nameProcedure);
+
+                if (listParameter != null && listParameter.Count > 0)
                 {
-                    foreach (var objList in listParameter)
+                    foreach (var objParam in listParameter)
                     {
-                        comando.Parameters.AddWithValue(objList.ParameterName + "", objList.SqlDbType).Value = objList.Value;
+                        _sb.AppendLine("   " + objParam.ParameterName + " = " + ((objParam.Value == null || objParam.Value == DBNull.Value) ? "NULL," : "'" + objParam.Value.ToString() + "',"));
+                        comando.Parameters.AddWithValue(objParam.ParameterName + "", objParam.SqlDbType).Value = objParam.Value;
                     }
                 }
+                if (Debugger.IsAttached)
+                    Debug.Print(_sb.ToString());
+                #endregion 
                 //Executa a query sql.
                 var retornaQuery = comando.ExecuteReader();
                 comando.Dispose();
@@ -106,13 +118,24 @@ namespace Framework.Data
                 comando.CommandText = nameProcedure;
                 comando.Connection = this.sqlconnection;
 
-                if (listParameter != null)
+                #region DEBUG
+                StringBuilder _sb = new StringBuilder();
+                _sb.AppendLine("");
+                _sb.AppendLine("-".PadLeft(150, '-'));
+                _sb.AppendLine(comando.CommandType.ToString());
+                _sb.AppendLine(nameProcedure);
+
+                if (listParameter != null && listParameter.Count > 0)
                 {
-                    foreach (var objList in listParameter)
+                    foreach (var objParam in listParameter)
                     {
-                        comando.Parameters.AddWithValue(objList.ParameterName + "", objList.SqlDbType).Value = objList.Value;
+                        _sb.AppendLine("   " + objParam.ParameterName + " = " + ((objParam.Value == null || objParam.Value == DBNull.Value) ? "NULL," : "'" + objParam.Value.ToString() + "',"));
+                        comando.Parameters.AddWithValue(objParam.ParameterName + "", objParam.SqlDbType).Value = objParam.Value;
                     }
                 }
+                if (Debugger.IsAttached)
+                    Debug.Print(_sb.ToString());
+                #endregion 
 
                 //Instância o sqldataAdapter.
                 SqlDataAdapter adapter = new SqlDataAdapter(comando);
@@ -164,13 +187,24 @@ namespace Framework.Data
                 if (transaction != null)
                     comando.Transaction = transaction;
 
-                if (listParameter.Count > 0)
+                #region DEBUG
+                StringBuilder _sb = new StringBuilder();
+                _sb.AppendLine("");
+                _sb.AppendLine("-".PadLeft(150, '-'));
+                _sb.AppendLine(comando.CommandType.ToString());
+                _sb.AppendLine(nameProcedure);
+
+                if (listParameter != null && listParameter.Count > 0)
                 {
-                    foreach (var objList in listParameter)
+                    foreach (var objParam in listParameter)
                     {
-                        comando.Parameters.AddWithValue(objList.ParameterName + "", objList.SqlDbType).Value = objList.Value;
+                        _sb.AppendLine("   " + objParam.ParameterName + " = " + ((objParam.Value == null || objParam.Value == DBNull.Value) ? "NULL," : "'" + objParam.Value.ToString() + "',"));
+                        comando.Parameters.AddWithValue(objParam.ParameterName + "", objParam.SqlDbType).Value = objParam.Value;
                     }
                 }
+                if (Debugger.IsAttached)
+                    Debug.Print(_sb.ToString());
+                #endregion 
                 //Executa a query sql.
                 comando.ExecuteNonQuery();
             }
@@ -195,13 +229,24 @@ namespace Framework.Data
                 comando.CommandText = nameProcedure;
                 comando.Connection = this.sqlconnection;
 
-                if (listParameter.Count > 0)
+                #region DEBUG
+                StringBuilder _sb = new StringBuilder();
+                _sb.AppendLine("");
+                _sb.AppendLine("-".PadLeft(150, '-'));
+                _sb.AppendLine(comando.CommandType.ToString());
+                _sb.AppendLine(nameProcedure);
+
+                if (listParameter != null && listParameter.Count > 0)
                 {
-                    foreach (var objList in listParameter)
+                    foreach (var objParam in listParameter)
                     {
-                        comando.Parameters.AddWithValue(objList.ParameterName + "", objList.SqlDbType).Value = objList.Value;
+                        _sb.AppendLine("   " + objParam.ParameterName + " = " + ((objParam.Value == null || objParam.Value == DBNull.Value) ? "NULL," : "'" + objParam.Value.ToString() + "',"));
+                        comando.Parameters.AddWithValue(objParam.ParameterName + "", objParam.SqlDbType).Value = objParam.Value;
                     }
                 }
+                if (Debugger.IsAttached)
+                    Debug.Print(_sb.ToString());
+                #endregion 
 
                 //Executa a query sql.
                 return Convert.ToInt32(comando.ExecuteScalar());
@@ -256,15 +301,24 @@ namespace Framework.Data
                 comando.Connection = this.sqlconnection;
                 comando.UpdatedRowSource = UpdateRowSource.OutputParameters;
 
-                if (listParameter.Count > 0)
+                #region DEBUG
+                StringBuilder _sb = new StringBuilder();
+                _sb.AppendLine("");
+                _sb.AppendLine("-".PadLeft(150, '-'));
+                _sb.AppendLine(comando.CommandType.ToString());
+                _sb.AppendLine(nameProcedure);
+
+                if (listParameter != null && listParameter.Count > 0)
                 {
-                    Debug.Print(nameProcedure + Environment.NewLine);
                     foreach (var objParam in listParameter)
                     {
+                        _sb.AppendLine("   " + objParam.ParameterName + " = " + ((objParam.Value == null || objParam.Value == DBNull.Value) ? "NULL," : "'" + objParam.Value.ToString() + "',"));
                         comando.Parameters.AddWithValue(objParam.ParameterName + "", objParam.SqlDbType).Value = objParam.Value;
-                        Debug.Print( objParam.ParameterName + " = " + (objParam.Value == DBNull.Value ? "NULL": "," + objParam.Value.ToString()));
                     }
                 }
+                if (Debugger.IsAttached)
+                    Debug.Print(_sb.ToString());
+                #endregion  
 
                 //Executa a query sql.
                 object _retObj = comando.ExecuteScalar();
@@ -319,13 +373,25 @@ namespace Framework.Data
                 comando.Connection = this.sqlconnection;
                 comando.Transaction = transaction;
 
-                if (listParameter.Count > 0)
+                #region DEBUG
+                StringBuilder _sb = new StringBuilder();
+                _sb.AppendLine("");
+                _sb.AppendLine("-".PadLeft(200, '-'));
+                _sb.AppendLine(comando.CommandType.ToString());
+                _sb.AppendLine(nameProcedure);
+
+                if (listParameter != null && listParameter.Count > 0)
                 {
-                    foreach (var objList in listParameter)
+                    foreach (var objParam in listParameter)
                     {
-                        comando.Parameters.AddWithValue(objList.ParameterName + "", objList.SqlDbType).Value = objList.Value;
+                        _sb.AppendLine("   " + objParam.ParameterName + " = " + ((objParam.Value == null || objParam.Value == DBNull.Value) ? "NULL," : "'" + objParam.Value.ToString() + "',"));
+                        comando.Parameters.AddWithValue(objParam.ParameterName + "", objParam.SqlDbType).Value = objParam.Value;
                     }
                 }
+                if (Debugger.IsAttached)
+                    Debug.Print(_sb.ToString());
+                #endregion
+                
                 //Executa a query sql.
                 return comando.ExecuteScalar();
             }

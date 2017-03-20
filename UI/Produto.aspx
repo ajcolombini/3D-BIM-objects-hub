@@ -32,7 +32,7 @@
 
             </div>
         </div>
-        <asp:HiddenField ID="hdnProdutoId" runat="server" OnValueChanged="hdnProdutoId_ValueChanged" />
+        <asp:HiddenField ID="hdnProdutoId" runat="server" />
         <div class="row">
             <div class="col-sm-12 col-md-10 col-lg-8">
                 <div class="panel panel-default">
@@ -87,7 +87,7 @@
                         <div class="form-group row">
                             <label for="txtPhone" class="col-sm-2 col-form-label">Família</label>
                             <div class="col-sm-8 col-md-6 col-lg-6">
-                                <asp:DropDownList ID="ddlFamilia" runat="server" required CssClass="form-control"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlFamilia" runat="server" CssClass="form-control" required></asp:DropDownList>
                             </div>
                         </div>
 
@@ -183,38 +183,8 @@
                         <div class="form-group row">
 
                             <label for="imgProdUpload" class="col-form-label">Imagem do Produto</label>
-                             <div><small>Extensões aceitas: jpg", "png", "jpeg", "bmp"</small></div>
+                            <div><small>Extensões aceitas: jpg", "png", "jpeg", "bmp"</small></div>
                             <input id="imgProdUpload" type="file" class="file-loading" accept="image/*" />
-                            <script>
-                                
-                                var newImageId = $('#<%=hdnProdutoId.ClientID%>').val();
-                                alert('newImageId:  ' + newImageId);
-
-                                $(document).on('ready', function () {
-
-                                    //Get file input object
-                                    var $inputCtrl = $("#imgProdUpload");
-
-                                    $("#imgProdUpload").fileinput({
-                                        language: "pt-BR",
-                                        theme: "explorer",
-                                        previewFileType: "image",
-                                        browseOnZoneClick: true,
-                                        uploadAsync: true,
-                                        //uploadAsync: false,
-                                        //showUpload: false, // hide upload button
-                                        //showRemove: true,
-                                        uploadUrl: "ImageUploadReceiver.ashx",
-                                        showUploadedThumbs: false,
-                                        allowedFileExtensions: ["jpg", "png", "jpeg", "bmp"],
-                                        uploadExtraData: { id: newImageId }
-                                    });
-                                    //.on("filebatchselected", function (event, files) {
-                                    //    // trigger upload method immediately after files are selected
-                                    //    $inputCtrl.fileinput("upload");
-                                    //});
-                                });
-                            </script>
                         </div>
                         <br />
                         <div class="form-group row">
@@ -222,48 +192,6 @@
                             <label class="control-label">Selecione o(s) Arquivo(s)</label>
                             <div><small>Máximo 7 arquivos por vez. Extensões aceitas: "rvt", "rfa", "pla", "skp", "pln", "gsm", "dwg"</small></div>
                             <input id="docsFileUpload" name="docsFileUpload[]" multiple type="file" class="file-loading" />
-                            <!-- PORTUGESE (BRAZILIAN) FILE INPUT -->
-                            <script>
-                                $(document).on('ready', function () {
-
-                                    //Get file input object
-                                    var $inputCtrl = $("#docsFileUpload");
-
-                                    $("#docsFileUpload").fileinput({
-                                        language: "pt-BR",
-                                        theme: "explorer",
-                                        fileTypeSettings: ["object"],
-                                        allowedPreviewTypes: false,
-                                        browseOnZoneClick: true,
-                                        uploadAsync: true,
-                                        //uploadAsync: false,
-                                        //showUpload: false, // hide upload button
-                                        //showRemove: true,
-                                        previewFileIconSettings: {
-                                            'rvt': '<i class="fa fa-cubes text-primary"></i>',
-                                            'rfa': '<i class="fa fa-cubes text-success"></i>',
-                                            'skp': '<i class="fa fa-cubes text-danger"></i>',
-                                            'pla': '<i class="fa fa-cubes text-warning"></i>',
-                                            'gsm': '<i class="fa fa-cubes text-info"></i>',
-                                            'dwg': '<i class="fa fa-cubes text-default"></i>',
-                                            'pla': '<i class="fa fa-cubes"></i>'
-                                        },
-                                        minFileCount: 1,
-                                        maxFileCount: 7,
-                                        uploadUrl: "FileUploadReceiver.ashx",
-                                        allowedFileExtensions: ["rvt", "rfa", "pla", "skp", "pln", "gsm", "dwg"],
-                                        uploadExtraData: { id: newImageId }
-
-                                    })//.on("filebatchselected", function (event, files) {
-                                        //// trigger upload method immediately after files are selected
-                                        //$inputCtrl.fileinput("upload");
-
-                                    .on('filedeleted', function (event, key) {
-                                       alert('Key = ' + key);
-                                    });
-                                        
-                                });
-                            </script>
                         </div>
 
                     </div>
@@ -323,4 +251,77 @@
                 </div>
             </asp:Panel>
         </div>
+        <script>
+            
+            function createUploaders() {
+
+                var newImageId = $('#<%=hdnProdutoId.ClientID%>').val();
+                //alert('newImageId:  ' + newImageId);
+
+                //Get file input object
+                //var $inputCtrl = $("#docsFileUpload");
+
+                $("#docsFileUpload").fileinput({
+                    language: "pt-BR",
+                    theme: "explorer",
+                    fileTypeSettings: ["object"],
+                    allowedPreviewTypes: false,
+                    browseOnZoneClick: true,
+                    uploadAsync: true,
+                    //uploadAsync: false,
+                    //showUpload: false, // hide upload button
+                    //showRemove: true,
+                    previewFileIconSettings: {
+                        'rvt': '<i class="fa fa-cubes text-primary"></i>',
+                        'rfa': '<i class="fa fa-cubes text-success"></i>',
+                        'skp': '<i class="fa fa-cubes text-danger"></i>',
+                        'pla': '<i class="fa fa-cubes text-warning"></i>',
+                        'gsm': '<i class="fa fa-cubes text-info"></i>',
+                        'dwg': '<i class="fa fa-cubes text-default"></i>',
+                        'pla': '<i class="fa fa-cubes"></i>'
+                    },
+                    minFileCount: 1,
+                    maxFileCount: 7,
+                    uploadUrl: "FileUploadReceiver.ashx",
+                    allowedFileExtensions: ["rvt", "rfa", "pla", "skp", "pln", "gsm", "dwg"],
+                    uploadExtraData: { id: newImageId }
+
+                });
+
+                //Get file input object
+                // var $inputCtrl = $("#imgProdUpload");
+
+                $("#imgProdUpload").fileinput({
+                    language: "pt-BR",
+                    theme: "explorer",
+                    previewFileType: "image",
+                    browseOnZoneClick: true,
+                    uploadAsync: true,
+                    //uploadAsync: false,
+                    //showUpload: false, // hide upload button
+                    //showRemove: true,
+                    uploadUrl: "ImageUploadReceiver.ashx",
+                    showUploadedThumbs: false,
+                    allowedFileExtensions: ["jpg", "png", "jpeg", "bmp"],
+                    uploadExtraData: { id: newImageId }
+                });
+            }
+
+            $(document).on('ready', function () {
+                createUploaders();
+            });
+
+            //function pageLoad(sender, args) 
+            //{
+            //    createUploaders();
+            //}
+
+            /* Bind asyc postbacks - Para quem usa ToolKit*/
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+
+            // AFTER POST BACK //    
+            function EndRequestHandler(sender, args) {
+                createUploaders();
+            }
+        </script>
 </asp:Content>

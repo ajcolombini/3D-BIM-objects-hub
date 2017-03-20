@@ -21,7 +21,7 @@ namespace UI
             if (!IsPostBack)
             {
                 this.hdnProdutoId.Value = Guid.NewGuid().ToString();
-                clsAlerts.bootstrapAlert(hdnProdutoId.Value, "", AlertType.Info, this.Page);
+                //clsAlerts.bootstrapAlert(hdnProdutoId.Value, "", AlertType.Info, this.Master.updPnlMaster);
 
                 CarregaFabricantes();
                 CarregaFamilias();
@@ -38,7 +38,7 @@ namespace UI
             List<Fabricante> _lstFabricante = BIM.BLL.FabricanteBLO.FindAll();
             this.ddlFabricante.DataTextField = "Nome";
             this.ddlFabricante.DataValueField = "Id";
-            this.ddlFabricante.DataSource = _lstFabricante;
+            this.ddlFabricante.DataSource = _lstFabricante.OrderBy(x => x.Nome);
             this.ddlFabricante.DataBind();
         }
 
@@ -51,7 +51,7 @@ namespace UI
             List<Familia> _lstFamilias = BIM.BLL.FamiliaBLO.FindAll();
             this.ddlFamilia.DataTextField = "Descricao";
             this.ddlFamilia.DataValueField = "Id";
-            this.ddlFamilia.DataSource = _lstFamilias;
+            this.ddlFamilia.DataSource = _lstFamilias.OrderBy(x => x.Descricao);
             this.ddlFamilia.DataBind();
         }
 
@@ -71,47 +71,66 @@ namespace UI
 
         protected void lnkRegistrar_Click(object sender, EventArgs e)
         {
-            if (ValidaForm())
+            try
             {
-
-                BIM.Model.Produto _prod = new Produto();
-                _prod.Id = Guid.Parse(hdnProdutoId.Value);
-                _prod.ClasseConsumo = ddlClasseConsumo.SelectedValue;
-                _prod.Codigo = txtCodigo.Text;
-                _prod.Descricao = txtDescricao.Text;
-                _prod.Dimensoes = string.Concat(txtLargura.Text + " X " + txtAltura.Text + " X " + txtProfundidade.Text);
-                _prod.IdFabricante = Guid.Parse(ddlFabricante.SelectedValue);
-                _prod.IdFamilia = int.Parse(ddlFamilia.SelectedValue);
-                _prod.IdSubtipo = int.Parse(ddlSubgrupo.SelectedValue);
-                _prod.Nome = txtName.Text;
-                _prod.Preco = decimal.Parse(txtPreco.Text);
-                _prod.Status = ddlStatus.SelectedValue;
-                _prod.Voltagem = ddlVoltagem.SelectedValue;
-                _prod.Imagem = RecuperaImagem();
-
-                _prod.docs = RecuperaDocumentos();
-
-                Guid _retProdId = BIM.BLL.ProdutoBLO.Insert(_prod);
-
-                if (_retProdId == _prod.Id)
+                
+                if (ValidaForm())
                 {
-                    //Salva documentos
-                    foreach (BIM.Model.Documento _doc in _prod.docs)
+
+                    BIM.Model.Produto _prod = new Produto();
+                    _prod.Id = Guid.Parse(hdnProdutoId.Value);
+                    _prod.ClasseConsumo = ddlClasseConsumo.SelectedValue;
+                    _prod.Codigo = txtCodigo.Text;
+                    _prod.Descricao = txtDescricao.Text;
+                    _prod.Dimensoes = string.Concat(txtLargura.Text + " X " + txtAltura.Text + " X " + txtProfundidade.Text);
+                    _prod.IdFabricante = Guid.Parse(ddlFabricante.SelectedValue);
+                    _prod.IdFamilia = int.Parse(ddlFamilia.SelectedValue);
+                    _prod.IdSubtipo = int.Parse(ddlSubgrupo.SelectedValue);
+                    _prod.Nome = txtName.Text;
+                    _prod.Preco = decimal.Parse(txtPreco.Text);
+                    _prod.Status = ddlStatus.SelectedValue;
+                    _prod.Voltagem = ddlVoltagem.SelectedValue;
+                    _prod.Imagem = RecuperaImagem();
+
+                    _prod.docs = RecuperaDocumentos();
+
+                    Guid _retProdId = BIM.BLL.ProdutoBLO.Insert(_prod);
+
+                    if (_retProdId == _prod.Id)
                     {
-                        DocumentBLO.Insert(_doc);
+                        //Salva documentos
+                        foreach (BIM.Model.Documento _doc in _prod.docs)
+                        {
+                            DocumentBLO.Insert(_doc);
+                        }
                     }
+                    else
+                    {
+                        lblErrorMsg.Text = "Erro ao salvar Produto.";
+                        pnlError.Visible = true;
+                    }
+
+                    clsAlerts.bootstrapAlert("Produto incluído com sucesso!", "Sucesso", AlertType.Success, this.Master.updPnlMaster);
                 }
                 else
                 {
-                    this.Master.showMessage("Erro ao salvar Produto.", "Erro", AlertType.Error);
+                    pnlError.Visible = true;
+                    clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Atenção", AlertType.Warning, this.Master.updPnlMaster);
                 }
+
+            }
+            catch (Exception ex)
+            {
+                lblErrorMsg.Text = ex.Message;
+                pnlError.Visible = true;
+                clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Atenção", AlertType.Error, this.Master.updPnlMaster);
             }
         }
 
         private List<Documento> RecuperaDocumentos()
         {
             List<Documento> _lstDocs = new List<Documento>();
-            
+
             string _docPath = Server.MapPath("tempFiles/doc/") + hdnProdutoId.Value;
             if (System.IO.Directory.Exists(_docPath))
             {
@@ -120,7 +139,7 @@ namespace UI
                 {
 
                     Documento _doc = new Documento();
-                    
+
                     _doc.Id = Guid.NewGuid();
                     _doc.IdProduto = Guid.Parse(hdnProdutoId.Value);
                     _doc.Formato = _file.Extension;
@@ -150,7 +169,7 @@ namespace UI
                     _imgArr = System.IO.File.ReadAllBytes(_files[0].FullName);
                 }
             }
-          
+
             return _imgArr;
         }
 
@@ -158,8 +177,23 @@ namespace UI
         //Validar campos do formulário
         public bool ValidaForm()
         {
-            //Todo
-
+            
+            //Existe Documento?
+            string _docPath = Server.MapPath("tempFiles/doc/") + hdnProdutoId.Value;
+            if (System.IO.Directory.Exists(_docPath))
+            {
+                FileInfo[] _files = Framework.Util.clsFileUtil.ReadsFilesDirectory(_docPath, "*");
+                if (_files.Count() == 0)
+                {
+                    lblErrorMsg.Text += "Faça upload do(s) arquivo(s) do produto.";
+                    return false;
+                }
+            }
+            else
+            {
+                lblErrorMsg.Text += "Faça upload do(s) arquivo(s) do produto.";
+                return false;
+            }
             return true;
         }
 

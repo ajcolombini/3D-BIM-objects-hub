@@ -59,7 +59,6 @@
     <Compile Include="clsExcelUtil.cs" />
     <Compile Include="clsFormPageUtil.cs" />
     <Compile Include="clsIPUtil.cs" />
-    <Compile Include="clsJQuery.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

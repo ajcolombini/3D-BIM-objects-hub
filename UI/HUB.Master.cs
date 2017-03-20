@@ -28,10 +28,10 @@ namespace UI
             clsAlerts.bootstrapAlert(message, title, type, this.updPanelMain);
         }
 
-        public void showConfirm(string message, string title)
-        {
-            clsAlerts.bootstrapConfirm(message, title, true, this.updPanelMain);
-        }
+        //public void showConfirm(string message, string title)
+        //{
+        //    clsAlerts.bootstrapConfirm(message, title, this.updPanelMain);
+        //}
 
         public void showConfirm(string message, string title, string callbackfunc)
         {

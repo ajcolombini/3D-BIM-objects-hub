@@ -501,7 +501,7 @@
         //Fecha anteriores - Ajcolo - 01/10/2014
         exports.hideAll();
 
-        options = mergeDialogOptions("warning", ["ok"], ["title", "message", "callback"], arguments);
+        options = mergeDialogOptions("warning", ["ok"], ["title", "message", callback], arguments);
 
         if (options.callback && !$.isFunction(options.callback)) {
             throw new Error("alert requires callback property to be a function when provided");
@@ -642,21 +642,36 @@
         //Fecha anteriores - Ajcolo - 01/10/2014
         exports.hideAll();
 
-        options = mergeDialogOptions("confirm", ["cancel", "confirm"], ["title", "message", "callback"], arguments);
+        options = mergeDialogOptions("confirm", ["cancel", "confirm"], ["message", "callback"], arguments);
+
+        //options = mergeDialogOptions("confirm", ["cancel", "confirm"], ["title", "message", callback], arguments);
 
         /**
         * overrides; undo anything the user tried to set they shouldn't have
         */
+  
+        //options.buttons.cancel.id = "btnCancel";
+        //options.buttons.cancel.callback = options.onEscape = function () {
+        //    return processCallback(false);
+        //};
 
-        options.buttons.cancel.id = "btnCancel";
-        options.buttons.cancel.callback = options.onEscape = function () {
-            return setDialogResult(false);
+        //options.buttons.confirm.id = "btnConfirm";
+        //options.buttons.confirm.callback = function () {
+        //    return processCallback(true);
+        //};
+
+         options.buttons.cancel.callback = options.onEscape = function () {
+            return options.callback(false);
         };
 
-        options.buttons.confirm.id = "btnConfirm";
         options.buttons.confirm.callback = function () {
-            return setDialogResult(true);
+            return options.callback(true);
         };
+
+        // confirm specific validation
+        if (!$.isFunction(options.callback)) {
+            throw new Error("confirm requires a callback");
+        }
 
         return exports.dialog(options);
     };
@@ -688,7 +703,7 @@
             inputType: "text"
         };
 
-        options = validateButtons(mergeArguments(defaults, arguments, ["title", "message", "callback"]), ["cancel", "confirm"]);
+        options = validateButtons(mergeArguments(defaults, arguments, ["title", "message", callback]), ["cancel", "confirm"]);
 
         // capture the user's show value; we always set this to false before
         // spawning the dialog to give us a chance to attach some handlers to

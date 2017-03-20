@@ -115,7 +115,8 @@ namespace UI
                 else
                 {
                     pnlError.Visible = true;
-                    clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Atenção", AlertType.Warning, this.Master.updPnlMaster);
+                    //clsAlerts.bootstrapAlert(lblErrorMsg.Text, "Atenção", AlertType.Warning, this.Master.updPnlMaster);
+                    clsAlerts.bootstrapConfirm("As imagens e arquivos selecionados ainda não foram enviados. Enviar agora?", "Aviso", "uploadFiles()", this.Master.updPnlMaster);
                 }
 
             }
@@ -185,13 +186,13 @@ namespace UI
                 FileInfo[] _files = Framework.Util.clsFileUtil.ReadsFilesDirectory(_docPath, "*");
                 if (_files.Count() == 0)
                 {
-                    lblErrorMsg.Text += "Faça upload do(s) arquivo(s) do produto.";
+                    //lblErrorMsg.Text += "Faça upload do(s) arquivo(s) do produto.";
                     return false;
                 }
             }
             else
             {
-                lblErrorMsg.Text += "Faça upload do(s) arquivo(s) do produto.";
+                //lblErrorMsg.Text += "Faça upload do(s) arquivo(s) do produto.";
                 return false;
             }
             return true;

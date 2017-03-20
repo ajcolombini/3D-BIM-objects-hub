@@ -222,10 +222,11 @@ namespace UI
                 cs.RegisterStartupScript(cstype, "jsConfirm", sb.ToString(), true);
 
             }
+
             if (oRenderer.GetType().Equals(typeof(UpdatePanel)))
             {
                 //Registra Script de dentro de um UpdatePanel
-                System.Web.UI.ScriptManager.RegisterStartupScript(((Page)oRenderer), ((Page)oRenderer).GetType(), "jsConfirm", sb.ToString(), true);
+                System.Web.UI.ScriptManager.RegisterStartupScript(((UpdatePanel)oRenderer), ((UpdatePanel)oRenderer).GetType(), "jsConfirm", sb.ToString(), true);
             }
         }
 

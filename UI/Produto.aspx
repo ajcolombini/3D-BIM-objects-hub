@@ -311,6 +311,25 @@
                 createUploaders();
             });
 
+
+            function setDialogResult(result)
+            {
+                //Se confirmou, faz upload
+                if (result) {
+
+                    //Get file input objects
+                    var $inputFiles = $("#docsFileUpload");
+                    var $inputImage = $("#imgProdUpload");
+
+                    //if ($inputFiles.fileinput.loadedImages.uploadcount == 0)
+                        $inputFiles.fileinput("upload");
+
+                    //if ($inputImage.fileinput.loadedImages.uploadcount == 0)
+                        $inputImage.fileinput("upload");
+                }
+            }
+
+
             //function pageLoad(sender, args) 
             //{
             //    createUploaders();

@@ -5,7 +5,7 @@ using System.Text;
 using System.IO;
 using System.Globalization;
 
-namespace ACE.Util
+namespace Framework.Util
 {
     public class clsTextUtil
     {

@@ -162,7 +162,7 @@ namespace BIM.DAL
                 
             };
 
-            return clsCrudGenericDAO.InsertAndReturnGuid("[spSetProducto]", _paramList);
+            return clsCrudGenericDAO.InsertAndReturnGuid("[spSetProduto]", _paramList);
         }
 
         public static void Delete(Produto oProduct)

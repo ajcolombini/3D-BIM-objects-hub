@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.IO;
 
 
-namespace ACE.Util
+namespace Framework.Util
 {
     /// <summary>
     /// Enumerator com os tipos de classes para criptografia.

@@ -188,7 +188,7 @@
                             <script>
                                 
                                 var newImageId = $('#<%=hdnProdutoId.ClientID%>').val();
-                                //lert('newImageId:  ' + newImageId);
+                                alert('newImageId:  ' + newImageId);
 
                                 $(document).on('ready', function () {
 

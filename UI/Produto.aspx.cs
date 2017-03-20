@@ -6,6 +6,8 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using BIM.Model;
 using BIM.BLL;
+using Framework.Util;
+using System.IO;
 
 namespace UI
 {
@@ -19,7 +21,8 @@ namespace UI
             if (!IsPostBack)
             {
                 this.hdnProdutoId.Value = Guid.NewGuid().ToString();
-                
+                clsAlerts.bootstrapAlert(hdnProdutoId.Value, "", AlertType.Info, this.Page);
+
                 CarregaFabricantes();
                 CarregaFamilias();
                 CarregaSubtipos();
@@ -68,9 +71,9 @@ namespace UI
 
         protected void lnkRegistrar_Click(object sender, EventArgs e)
         {
-            if(ValidaForm())
+            if (ValidaForm())
             {
-               
+
                 BIM.Model.Produto _prod = new Produto();
                 _prod.Id = Guid.Parse(hdnProdutoId.Value);
                 _prod.ClasseConsumo = ddlClasseConsumo.SelectedValue;
@@ -86,7 +89,7 @@ namespace UI
                 _prod.Voltagem = ddlVoltagem.SelectedValue;
                 _prod.Imagem = RecuperaImagem();
 
-                //_prod.docs = RecuperaDocumentos();
+                _prod.docs = RecuperaDocumentos();
 
                 Guid _retProdId = BIM.BLL.ProdutoBLO.Insert(_prod);
 
@@ -105,34 +108,64 @@ namespace UI
             }
         }
 
-        //private List<Documento> RecuperaDocumentos()
-        //{
-        //    List<Documento> _lstDocs = new List<Documento>();
+        private List<Documento> RecuperaDocumentos()
+        {
+            List<Documento> _lstDocs = new List<Documento>();
+            
+            string _docPath = Server.MapPath("tempFiles/doc/") + hdnProdutoId.Value;
+            if (System.IO.Directory.Exists(_docPath))
+            {
+                FileInfo[] _files = Framework.Util.clsFileUtil.ReadsFilesDirectory(_docPath, "*");
+                foreach (FileInfo _file in _files)
+                {
 
-        //    return _lstDocs;
-        //}
+                    Documento _doc = new Documento();
+                    
+                    _doc.Id = Guid.NewGuid();
+                    _doc.IdProduto = Guid.Parse(hdnProdutoId.Value);
+                    _doc.Formato = _file.Extension;
+                    _doc.TamanhoKb = _file.Length / 1024;
+                    _doc.Titulo = _file.Name;
+
+                    byte[] bytes = System.IO.File.ReadAllBytes(_file.FullName);
+                    _doc.Objeto = bytes;
+
+                    _lstDocs.Add(_doc);
+                }
+            }
+
+            return _lstDocs;
+        }
 
         private byte[] RecuperaImagem()
         {
             byte[] _imgArr = null;
 
+            string _imgPath = Server.MapPath("tempFiles/img/") + hdnProdutoId.Value;
+            if (System.IO.Directory.Exists(_imgPath))
+            {
+                FileInfo[] _files = Framework.Util.clsFileUtil.ReadsFilesDirectory(_imgPath, "*");
+                if (_files != null)
+                {
+                    _imgArr = System.IO.File.ReadAllBytes(_files[0].FullName);
+                }
+            }
+          
             return _imgArr;
         }
 
+
+        //Validar campos do formulário
         public bool ValidaForm()
         {
-
-
-
-
-          
+            //Todo
 
             return true;
         }
 
-        protected void hdnProdutoId_ValueChanged(object sender, EventArgs e)
-        {
-            ViewState["IdProduto"] = hdnProdutoId.Value;
-        }
+        //protected void hdnProdutoId_ValueChanged(object sender, EventArgs e)
+        //{
+        //    ViewState["IdProduto"] = hdnProdutoId.Value;
+        //}
     }
 }

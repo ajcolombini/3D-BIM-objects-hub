@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 
 namespace Framework.Data
 {
@@ -257,10 +258,11 @@ namespace Framework.Data
 
                 if (listParameter.Count > 0)
                 {
+                    Debug.Print(nameProcedure + Environment.NewLine);
                     foreach (var objParam in listParameter)
                     {
                         comando.Parameters.AddWithValue(objParam.ParameterName + "", objParam.SqlDbType).Value = objParam.Value;
-                        //Debug.Print( objParam.ParameterName + " = " + (objParam.Value == DBNull.Value ? "NULL": objParam.Value.ToString()));
+                        Debug.Print( objParam.ParameterName + " = " + (objParam.Value == DBNull.Value ? "NULL": "," + objParam.Value.ToString()));
                     }
                 }
 

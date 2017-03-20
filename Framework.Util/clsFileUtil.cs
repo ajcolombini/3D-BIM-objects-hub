@@ -6,7 +6,7 @@ using System.IO;
 using System.Diagnostics;
 using System.Web;
 
-namespace ACE.Util
+namespace Framework.Util
 {
     /// <summary>
     /// Class File Manipulation

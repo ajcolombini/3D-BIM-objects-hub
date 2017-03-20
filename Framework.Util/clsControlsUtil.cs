@@ -7,7 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.UI;
 
-namespace ACE.Util
+namespace Framework.Util
 {
     public class clsControlsUtil
     {

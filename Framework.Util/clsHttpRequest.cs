@@ -11,7 +11,7 @@ using System.IO;
 using System.Net;
 
 
-namespace ACE.Util
+namespace Framework.Util
 {
 
     /// <summary>

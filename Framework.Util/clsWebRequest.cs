@@ -8,7 +8,7 @@ using System.Web;
 using System.Xml;
 
 
-namespace ACE.Util
+namespace Framework.Util
 {
     public class clsWebRequest
     {

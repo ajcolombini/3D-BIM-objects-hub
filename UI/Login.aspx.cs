@@ -4,8 +4,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using Firebase.Auth;
-using FireSharp;
 using System.Configuration;
 
 namespace UI
@@ -21,28 +19,14 @@ namespace UI
 
         protected async void btnSignIn_Click(object sender, EventArgs e)
         {
-            string _apiKey = ConfigurationManager.AppSettings["FireBaseToken"];
+           
 
             try
             {
-                FirebaseAuthProvider _fireAuth = new FirebaseAuthProvider(new FirebaseConfig(_apiKey));
-                if (chkAnonimous.Checked)
-                {
-                    var _fbAuth = await _fireAuth.SignInAnonymouslyAsync();
-                }
-                else
-                {
-                    var _fbAuth = await _fireAuth.SignInWithEmailAndPasswordAsync(this.txtEmail.Text, this.txtPassword.Text);
-
-                    if (_fbAuth.User != null)
-                    {
-                        Session["CurrentUser"] = _fbAuth.User;
-                    }
-                }
-
+              
                 Response.Redirect("Home.aspx");
             }
-            catch (Firebase.Auth.FirebaseAuthException)
+            catch (Exception ex)
             {
                 this.pnlError.Visible = true;
                 this.lblErrorMsg.Text = "E-Mail ou Senha inválidos.";

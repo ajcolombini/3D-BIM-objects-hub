@@ -1,16 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
-using Firebase.Auth;
-using FireSharp;
 using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-using FireSharp.Response;
-using System.Configuration;
 using BIM.BLL;
 using BIM.Model;
 using AjaxControlToolkit;
@@ -23,7 +13,7 @@ namespace UI
         {
             this.Form.DefaultButton = btnRegistrar.UniqueID;
 
-
+            
             ((ToolkitScriptManager)this.Master.FindControl("ToolkitScriptManager1")).RegisterAsyncPostBackControl(this.AsyncFileUpload1);
 
             if (!IsPostBack)

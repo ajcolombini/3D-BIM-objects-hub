@@ -1,0 +1,140 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="HUB.master.cs" Inherits="UI.HUB" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title></title>
+
+
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/local.css" />
+
+
+    <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+    <script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/plugins/bootbox.js"></script>
+
+    <style>
+        .post-container {
+            overflow: auto;
+        }
+
+        .post-thumb {
+            float: left;
+        }
+
+            .post-thumb img {
+                display: block;
+            }
+
+        .post-content {
+            margin-left: 210px;
+        }
+
+        .post-title {
+            font-weight: bold;
+            font-size: 180%;
+            width: 200px;
+        }
+    </style>
+    <style type="text/css">
+        .centered_loader {
+            padding: 10px 10px 10px 10px;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            margin-top: -100px;
+            margin-left: -100px;
+            display: block;
+            z-index: 10000;
+            width: 90px;
+            height: 90px;
+        }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <asp:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server" LoadScriptsBeforeUI="true" AsyncPostBackTimeout="360" EnableScriptGlobalization="true" EnableScriptLocalization="true" OnAsyncPostBackError="ToolkitScriptManager1_AsyncPostBackError">
+        </asp:ToolkitScriptManager>
+        <asp:UpdateProgress ID="UpdateProgress1" runat="server" AssociatedUpdatePanelID="updPanelMain">
+            <ProgressTemplate>
+                <div id="divLoader">
+                    <img alt="loader" class="centered_loader" src="images/circle_loader1.gif" id="loading-indicator" />
+                </div>
+            </ProgressTemplate>
+        </asp:UpdateProgress>
+
+        <div id="wrapper">
+            <asp:UpdatePanel ID="updPanelMain" runat="server" UpdateMode="Always">
+                <ContentTemplate>
+                    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <div class="post-container">
+                                <div class="post-thumb">
+                                    <%--<img alt="logo" src="images/BIM.Sphere.Logo.PNG" style="width: 55px; height: auto; border: 0px" />--%>
+                                </div>
+                                <h3 class="post-title">&nbsp;</h3>
+                            </div>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-ex1-collapse">
+                            <ul class="nav navbar-nav side-nav">
+                                <li><a href="Dashboard.aspx"><i class="fa fa-list-ul"></i>&nbsp;Dashboard</a></li>
+                                <li><a href="Home.aspx"><i class="fa fa-search"></i>&nbsp;Busca</a></li>
+                                <li><a href="Usuario.aspx"><i class="fa fa-user"></i>&nbsp;Usuário</a></li>
+                                <li><a href="Fabricante.aspx"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;Registrar Fabricante</a></li>
+                                <li><a href="Produto.aspx"><i class="fa fa-cube"></i>&nbsp;Registrar Produto</a></li>
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right navbar-user">
+                                <li class="dropdown user-dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>&nbsp;<asp:Label ID="lblUser" runat="server" Text=""></asp:Label><b class="caret"></b></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#"><i class="fa fa-user"></i>&nbsp;Perfil</a></li>
+                                        <li><a href="#"><i class="fa fa-gear"></i>&nbsp;Configurações</a></li>
+                                        <li class="divider"></li>
+                                        <li><a href="#"><i class="fa fa-power-off"></i>&nbsp;Sair</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                    <!-- /#navbar-menu -->
+                    <div id="page-wrapper">
+                        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </div>
+                    <!-- /#page-wrapper -->
+                </ContentTemplate>
+            </asp:UpdatePanel>
+
+        </div>
+        <!-- /#wrapper -->
+    </form>
+
+    <script type="text/javascript">
+        /* Bind asyc postbacks - Para quem usa ToolKit*/
+        Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+        Sys.WebForms.PageRequestManager.getInstance().add_beginRequest(BeginRequestHandler);
+
+        // BEFORE POST BACK //
+        function BeginRequestHandler(sender, args) {
+            $('.centered_loader').show();
+        }
+
+        // AFTER POST BACK //    
+        function EndRequestHandler(sender, args) {
+            $('.centered_loader').hide();
+        }
+    </script>
+</body>
+</html>

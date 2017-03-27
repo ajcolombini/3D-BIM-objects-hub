@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Framework.Data;
 using BIM.Model;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace BIM.DAL
 {
@@ -20,7 +21,12 @@ namespace BIM.DAL
     #region Fabricante
     public static class FabricanteDAO
     {
-        
+        public static DataSet FindAnything(string param)
+        {
+            List<SqlParameter> _paramList = new List<SqlParameter>() { new SqlParameter("@param", param) };
+            return (new clsConexaoDAO()).ReturnDataSet("[spGetAll]", _paramList);
+        }
+
         public static List<Fabricante> FindAll()
         {
             return clsCrudGenericDAO.FindAll<Fabricante>("[spGetFabricante]", null);
@@ -330,7 +336,6 @@ namespace BIM.DAL
 
     }
     #endregion
-
 
     #region Subtipo
     public static class SubtipoDAO

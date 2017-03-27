@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ACE.Interop")]
+[assembly: AssemblyTitle("Framework.Interop")]
 [assembly: AssemblyDescription("Módulo Interop")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("ACE Seguradora S/A")]
-[assembly: AssemblyProduct("ACE.Interop")]
+[assembly: AssemblyProduct("Framework.Interop")]
 [assembly: AssemblyCopyright("Copyright © ACE Seguradora S/A 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

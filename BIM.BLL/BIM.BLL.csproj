@@ -41,6 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BLL.cs" />
+    <Compile Include="clsProfileBLL.cs" />
+    <Compile Include="clsProfilePermissionBLO.cs" />
+    <Compile Include="clsUserBLO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

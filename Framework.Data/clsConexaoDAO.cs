@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
@@ -12,34 +13,75 @@ namespace Framework.Data
     /// </summary>
     public class clsConexaoDAO : IDisposable, IDbConnection
     {
+        
+        #region Propriedades privadas
+
+        //Instancia o sqlconnection.
+        private SqlConnection sqlconnection = null;
+        public string _connectionString = ConfigurationManager.ConnectionStrings[0].ConnectionString;
+        public string _connectionStringNoTrans = ConfigurationManager.ConnectionStrings[0].ConnectionString  + ";Enlist=false";
+        #endregion
 
         #region Propriedades públicas
 
         /// <summary>
         /// Propriedade que atribui ou retorna a string de conexão
         /// </summary>
-        public string ConnectionString { get; set; }
+        public string ConnectionString
+        {
+            get { return _connectionString; }
+            set { _connectionString = value; }
+        }
+
+
+        public string ConnectionStringNoTrans
+        {
+            get { return _connectionStringNoTrans; }
+            set { _connectionStringNoTrans = value; }
+        }
 
         #endregion
+        
+        ///// <summary>
+        ///// Retorna string de conexao descriptografada
+        ///// </summary>
+        ///// <returns></returns>
+        //public static string StringConexao()
+        //{
+        //    string _strConn = ConfigurationManager.ConnectionStrings[0].ConnectionString;
+        //    return _strConn;
+        //}
 
-        #region Propriedades privadas
+        ///// <summary>
+        ///// Conexão que utiliza 'Enlist=false' na connectionString para nao incluí-la nas transações abertas
+        ///// </summary>
+        ///// <returns></returns>
+        //public static string ConexaoSemTransacao()
+        //{
+        //    string _strConn = StringConexao();
+        //    return _strConn += ";Enlist=false"; // Acrescenta diretiva para não listar no Transaction Scope
+        //}
 
-        //Instância o sqlconnection.
-        private SqlConnection sqlconnection = null;
 
-        #endregion
+        //#region Propriedades privadas
+
+        ////Instância o sqlconnection.
+        //private SqlConnection sqlconnection = null;
+
+        //#endregion
 
         #region Construtores
 
         public clsConexaoDAO()
         {
-            sqlconnection = new SqlConnection();
+            sqlconnection = new SqlConnection(this.ConnectionString); //Abre conexao padrao
+            openConnection();
         }
 
         public clsConexaoDAO(string connString)
         {
-            sqlconnection = new SqlConnection(connString);
-            connection();
+            sqlconnection = new SqlConnection(connString); //Abre conexao passada por parametro.
+            openConnection();
         }
 
         #endregion
@@ -337,10 +379,10 @@ namespace Framework.Data
         #region Métodos privados
 
         /// <summary>
-        /// Método que retorna a conexão com a base de dados. O nome da ConnectionString no Web.config deve ser ConnectionAce
+        /// Método que retorna a conexão com a base de dados. 
         /// </summary>
         /// <returns></returns>
-        private void connection()
+        private void openConnection()
         {
             try
             {

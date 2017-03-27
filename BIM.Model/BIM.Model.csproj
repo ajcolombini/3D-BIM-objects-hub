@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsEnumBO.cs" />
+    <Compile Include="clsModuleBO.cs" />
+    <Compile Include="clsProfileBO.cs" />
+    <Compile Include="clsProfilePermissionBO.cs" />
+    <Compile Include="clsUserBO.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

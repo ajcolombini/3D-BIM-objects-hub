@@ -40,6 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsEnumDAO.cs" />
+    <Compile Include="clsModuleDAO.cs" />
+    <Compile Include="clsProfileDAO.cs" />
+    <Compile Include="clsProfilePermissionDAO.cs" />
+    <Compile Include="clsUserDAO.cs" />
     <Compile Include="DAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

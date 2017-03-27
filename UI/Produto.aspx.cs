@@ -90,7 +90,7 @@ namespace UI
                     _prod.Preco = decimal.Parse(txtPreco.Text);
                     _prod.Status = ddlStatus.SelectedValue;
                     _prod.Voltagem = ddlVoltagem.SelectedValue;
-                    _prod.Imagem = RecuperaImagem();
+                    _prod.Imagem = RecuperaImagemByteArray();
 
                     _prod.docs = RecuperaDocumentos();
 
@@ -156,9 +156,9 @@ namespace UI
             return _lstDocs;
         }
 
-        private byte[] RecuperaImagem()
+        private byte[] RecuperaImagemByteArray()
         {
-            byte[] _imgArr = null;
+            byte[] bytes = null;
 
             string _imgPath = Server.MapPath("tempFiles/img/") + hdnProdutoId.Value;
             if (System.IO.Directory.Exists(_imgPath))
@@ -166,11 +166,31 @@ namespace UI
                 FileInfo[] _files = Framework.Util.clsFileUtil.ReadsFilesDirectory(_imgPath, "*");
                 if (_files != null)
                 {
-                    _imgArr = System.IO.File.ReadAllBytes(_files[0].FullName);
+                    bytes = System.IO.File.ReadAllBytes(_files[0].FullName);
                 }
             }
 
-            return _imgArr;
+            return bytes;
+        }
+
+
+
+        private string RecuperaImagemBase64Str()
+        {
+            string base64String = null;
+
+            string _imgPath = Server.MapPath("tempFiles/img/") + hdnProdutoId.Value;
+            if (System.IO.Directory.Exists(_imgPath))
+            {
+                FileInfo[] _files = Framework.Util.clsFileUtil.ReadsFilesDirectory(_imgPath, "*");
+                if (_files != null)
+                {
+                    byte[] bytes = System.IO.File.ReadAllBytes(_files[0].FullName);
+                    base64String = Convert.ToBase64String(bytes, 0, bytes.Length);
+                }
+            }
+
+            return base64String;
         }
 
 

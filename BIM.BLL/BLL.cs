@@ -5,11 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using BIM.Model;
 using BIM.DAL;
+using System.Data;
 
 namespace BIM.BLL
 {
     public class FabricanteBLO
     {
+        public static DataSet FindAnything(string param)
+        {
+            return FabricanteDAO.FindAnything(param);
+        }
+
         public static List<Fabricante> FindAll()
         {
             return FabricanteDAO.FindAll();

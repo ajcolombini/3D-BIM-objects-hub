@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.InteropServices;
 
-namespace ACE.Interop
+namespace Framework.Interop
 {
     public class clsWin32NativeMethods
     {

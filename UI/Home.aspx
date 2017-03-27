@@ -28,16 +28,45 @@
     <!-- /.row -->
     <div class="row">
         <div class="col-lg-12">
-            <asp:Panel ID="pnlResults" runat="server" Visible="false">
-                <div class="panel panel-primary">
+            <asp:Panel ID="pnlResults" runat="server" Visible="true">
+                <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><i class="fa fa-grid"></i>Resultados</h3>
                     </div>
                     <!-- Table -->
                     <div class="panel-body">
-                        <asp:GridView ID="gvwResults" runat="server" class="table table-responsive table-hover"></asp:GridView>
+                        <asp:GridView ID="gvwResults" runat="server" class="table table-responsive table-hover" AutoGenerateColumns="False" OnRowDataBound="gvwResults_RowDataBound">
+                            <Columns>
+                                <asp:TemplateField HeaderText="Fabricante">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblFabricante" runat="server" Text='<%# Eval("NomeFabricante")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Produto">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblProduto" runat="server" Text='<%# Eval("DescricaoProduto")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Família">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblFamilia" runat="server" Text='<%# Eval("Familia")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Tipo">
+                                    <ItemTemplate>
+                                        <asp:Label ID="lblSubtipo" runat="server" Text='<%# Eval("Tipo")%>'></asp:Label>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                                <asp:TemplateField HeaderText="Imagem">
+                                    <ItemTemplate>
+                                        <div class="thumbnail">
+                                            <asp:Image ID="imgProduto" runat="server" ImageUrl='<%=Getbase64Image(Eval("Imagem"))%>'  />
+                                        </div>
+                                    </ItemTemplate>
+                                </asp:TemplateField>
+                            </Columns>
+                        </asp:GridView>
                     </div>
-
                 </div>
             </asp:Panel>
         </div>

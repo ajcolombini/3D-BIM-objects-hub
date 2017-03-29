@@ -151,7 +151,7 @@
     <Content Include="font-awesome\css\font-awesome.css" />
     <Content Include="font-awesome\css\font-awesome.min.css" />
     <Content Include="font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Home.aspx" />
+    <Content Include="Search.aspx" />
     <Content Include="images\BIM.sphere.logo.png" />
     <Content Include="images\BIM.sphere.png" />
     <Content Include="images\BIMHub.PNG" />
@@ -241,12 +241,12 @@
     <Compile Include="FileUploadReceiver.ashx.cs">
       <DependentUpon>FileUploadReceiver.ashx</DependentUpon>
     </Compile>
-    <Compile Include="Home.aspx.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Home.aspx.designer.cs">
-      <DependentUpon>Home.aspx</DependentUpon>
+    <Compile Include="Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
     </Compile>
     <Compile Include="HUB.Master.cs">
       <DependentUpon>HUB.Master</DependentUpon>

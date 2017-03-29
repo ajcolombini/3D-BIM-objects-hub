@@ -76,21 +76,18 @@ namespace UI
 
         protected void gvwResults_RowDataBound(object sender, GridViewRowEventArgs e)
         {
-            //if (e.Row.RowType == DataControlRowType.DataRow)
-            //{
-            //    Image _imgCtrl = (Image)(e.Row).FindControl("imgProduto");
-            //    object _oImgData = e.Row.DataItem;
-                
-            //    // Retrieve the underlying data item. In this example
-            //    // the underlying data item is a DataRowView object. 
-            //    DataRowView rowView = (DataRowView)e.Row.DataItem;
+            if (e.Row.RowType == DataControlRowType.DataRow)
+            {
+                Image _imgCtrl = (Image)(e.Row).FindControl("imgProduto");
+                object _oImgData = e.Row.DataItem;
 
-            //    // Retrieve the state value for the current row. 
-            //    byte[] bytes = (byte[])rowView["Imagem"];
+                // Retrieve the underlying data item. In this example
+                // the underlying data item is a DataRowView object. 
+                DataRowView rowView = (DataRowView)e.Row.DataItem;
 
-            //    if (bytes != null && _imgCtrl != null)
-            //        _imgCtrl.ImageUrl = Getbase64Image(bytes);
-            //}
+                string _id = rowView["IdProduto"].ToString();
+                _imgCtrl.ImageUrl = GetTempImage(rowView["Imagem"], _id, ".png");
+            }
         }
 
         private System.Drawing.Image GetSystemDrawingImage(object imgByteArray)
@@ -103,15 +100,21 @@ namespace UI
             return img;
         }
 
-        public string Getbase64Image(object input)
+        public string GetTempImage(object input, string fileName, string extension)
         {
 
+            if (input != null) { }
             byte[] bytes = (byte[])input;
-            return "data:image/jpeg;base64," +  Convert.ToBase64String(bytes, Base64FormattingOptions.None);
 
-            //string encoded = HttpUtility.UrlEncode(Convert.ToBase64String(bytes));
-            //return "HttpImageHandler?imgByteArray=" + encoded;
+            string _phisicalPath = Server.MapPath("tempFiles/img/");
+            string _fileWithExt = fileName + extension;
+            string _filePath = _phisicalPath + fileName;
+            if (!File.Exists(Path.Combine(_filePath , _fileWithExt)))
+                (new Framework.Util.clsImageUtil()).ConvertByteToFile(bytes, _phisicalPath + fileName + "\\", extension, fileName);
+
+            return "tempFiles/img/" + fileName + "/" + fileName + extension;
         }
+      
 
     }
 }

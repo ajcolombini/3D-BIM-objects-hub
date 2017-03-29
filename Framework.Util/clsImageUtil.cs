@@ -50,8 +50,8 @@ namespace Framework.Util
         /// Converte Array de Bytes em arquivo
         /// </summary>
         /// <param name="fileBytes">Array de Byte</param>
-        /// <param name="caminhoSalvarArquivo">Caminho para salvar o arquivo</param>
-        /// <param name="extensaoArquivo">extensão do arquivo</param>
+        /// <param name="caminhoSalvarArquivo">Caminho para salvar o arquivo com "\" no final</param>
+        /// <param name="extensaoArquivo">extensão do arquivo (com ponto) Ex:  ".txt", ".jpg"</param>
         /// <param name="NomeArquivo">Nome para salvar o arquivo</param>
         public void ConvertByteToFile(Byte[] fileBytes, string caminhoSalvarArquivo, string extensaoArquivo, string NomeArquivo)
         {

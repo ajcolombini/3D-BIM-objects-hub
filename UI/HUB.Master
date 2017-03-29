@@ -90,7 +90,7 @@
                         <div class="collapse navbar-collapse navbar-ex1-collapse">
                             <ul class="nav navbar-nav side-nav">
                                 <li><a href="Dashboard.aspx"><i class="fa fa-list-ul"></i>&nbsp;Dashboard</a></li>
-                                <li><a href="Home.aspx"><i class="fa fa-search"></i>&nbsp;Busca</a></li>
+                                <li><a href="Search.aspx"><i class="fa fa-search"></i>&nbsp;Busca</a></li>
                                 <li><a href="Usuario.aspx"><i class="fa fa-user"></i>&nbsp;Usuário</a></li>
                                 <li><a href="Fabricante.aspx"><i class="fa fa-building" aria-hidden="true"></i>&nbsp;Registrar Fabricante</a></li>
                                 <li><a href="Produto.aspx"><i class="fa fa-cube"></i>&nbsp;Registrar Produto</a></li>

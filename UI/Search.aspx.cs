@@ -102,19 +102,24 @@ namespace UI
 
         public string GetTempImage(object input, string fileName, string extension)
         {
+            string _imgFile = string.Empty;
 
-            if (input != null) { }
-            byte[] bytes = (byte[])input;
+            if (input != null && !string.IsNullOrEmpty(input.ToString()))
+            {
+                byte[] bytes = (byte[])input;
 
-            string _phisicalPath = Server.MapPath("tempFiles/img/");
-            string _fileWithExt = fileName + extension;
-            string _filePath = _phisicalPath + fileName;
-            if (!File.Exists(Path.Combine(_filePath , _fileWithExt)))
-                (new Framework.Util.clsImageUtil()).ConvertByteToFile(bytes, _phisicalPath + fileName + "\\", extension, fileName);
+                string _phisicalPath = Server.MapPath("tempFiles/img/");
+                string _fileWithExt = fileName + extension;
+                string _filePath = _phisicalPath + fileName;
+                if (!File.Exists(Path.Combine(_filePath, _fileWithExt)))
+                    (new Framework.Util.clsImageUtil()).ConvertByteToFile(bytes, _phisicalPath + fileName + "\\", extension, fileName);
 
-            return "tempFiles/img/" + fileName + "/" + fileName + extension;
+                _imgFile = "tempFiles/img/" + fileName + "/" + fileName + extension;
+            }
+
+            return _imgFile;
         }
-      
+
 
     }
 }

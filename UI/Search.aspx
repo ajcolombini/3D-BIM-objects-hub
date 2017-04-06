@@ -4,21 +4,21 @@
 
     <div class="row">
         <div class="col-lg-12">
-            <h3>Buscar </h3>
+           <%-- <h3>Buscar </h3>
             <div class="alert alert-success alert-dismissable">
                 <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                Bem-vindo ao BIM Sphere. 
+                Bem-vindo! 
                  <br />
-                Faça sua busca por código de modelo, nome do modelo ou fabricante...
-            </div>
+                Busque por nome de fabricante, produto, código de modelo etc...
+            </div>--%>
         </div>
     </div>
     <div class="row">
         <div class="col-lg-12">
             <div class="input-group input-group-lg">
-                <asp:TextBox ID="txtBusca" CssClass="form-control" type="text" placeholder="Fabricante, Modelo, Código ..." runat="server"></asp:TextBox>
+                <asp:TextBox ID="txtBusca" CssClass="form-control" type="text" placeholder="fabricante, produto, código de modelo etc ..." runat="server"></asp:TextBox>
                 <span class="input-group-btn">
-                    <asp:Button ID="btnBuscar" CssClass="btn btn-success" runat="server" Text="Buscar" OnClick="btnBuscar_Click" />
+                    <asp:LinkButton ID="lnkBuscar" CssClass="btn btn-primary" runat="server" OnClick="btnBuscar_Click"><i class="fa fa-search"></i> &nbsp; Buscar</asp:LinkButton>
                 </span>
             </div>
             <!-- /input-group -->
